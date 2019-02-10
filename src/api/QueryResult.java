@@ -1,12 +1,10 @@
 package api;
 
-import java.util.ArrayList;
-
-public class APIReturnObject {
+public class QueryResult {
     private Species acceptedName;
-    private ArrayList<Species> synonyms;
+    private Species[] synonyms;
 
-    public APIReturnObject(Species acceptedName, ArrayList<Species> synonyms) {
+    public QueryResult(Species acceptedName, Species[] synonyms) {
         this.acceptedName = acceptedName;
         this.synonyms = synonyms;
     }
@@ -19,11 +17,11 @@ public class APIReturnObject {
         this.acceptedName = acceptedName;
     }
 
-    public ArrayList<Species> getSynonyms() {
+    public Species[] getSynonyms() {
         return synonyms;
     }
 
-    public void setSynonyms(ArrayList<Species> synonyms) {
+    public void setSynonyms(Species[] synonyms) {
         this.synonyms = synonyms;
     }
 }

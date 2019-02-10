@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07147442-f47f-402b-9b51-39acf3ff4e12" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/api/QueryBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/com_google_code_gson_gson_2_8_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/APIMatchReturnObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/APIServiceImplTest.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/GBIFNameSearchReturnObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/GBIFSynonymSearchReturnObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/APIReturnObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/APIReturnObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/million-plant-map.iml" beforeDir="false" afterPath="$PROJECT_DIR$/million-plant-map.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/APIReturnObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/QueryResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/APIService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/APIService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/APIServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/APIServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/QueryBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/QueryBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/Species.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/Species.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -15,6 +22,25 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/api/APIServiceImplTest.groovy">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="630">
+                    <caret line="35" column="13" lean-forward="true" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="1304401480">
@@ -27,76 +53,60 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="5" />
+          <entry key="groovy" value="2" />
+          <entry key="java" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="5" />
+          <entry key="Groovy" value="2" />
+          <entry key="JAVA" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1953" />
-          <entry key="txt" value="58" />
+          <entry key="groovy" value="1761" />
+          <entry key="java" value="6646" />
+          <entry key="txt" value="98" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1953" />
-          <entry key="PLAIN_TEXT" value="58" />
+          <entry key="Groovy" value="1761" />
+          <entry key="JAVA" value="6646" />
+          <entry key="PLAIN_TEXT" value="98" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/api/APIServiceImpl.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/api/QueryBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="33" column="78" selection-start-line="33" selection-start-column="78" selection-end-line="33" selection-end-column="78" />
+            <state relative-caret-position="162">
+              <caret line="9" column="95" selection-start-line="9" selection-start-column="95" selection-end-line="9" selection-end-column="95" />
               <folding>
-                <element signature="e#526#527#0" expanded="true" />
-                <element signature="e#553#554#0" expanded="true" />
-                <element signature="e#625#626#0" expanded="true" />
-                <element signature="e#652#653#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#671#672#0" expanded="true" />
+                <element signature="e#706#707#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/api/QueryBuilder.java">
+        <entry file="file://$PROJECT_DIR$/src/api/APIMatchReturnObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/api/APIService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/api/APIReturnObject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="13" column="37" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
+            <state relative-caret-position="72">
+              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
               <folding>
-                <element signature="e#222#223#0" expanded="true" />
-                <element signature="e#279#280#0" expanded="true" />
-                <element signature="e#327#328#0" expanded="true" />
-                <element signature="e#374#375#0" expanded="true" />
-                <element signature="e#405#406#0" expanded="true" />
-                <element signature="e#465#466#0" expanded="true" />
-                <element signature="e#505#506#0" expanded="true" />
+                <element signature="e#79#80#0" expanded="true" />
+                <element signature="e#110#111#0" expanded="true" />
+                <element signature="e#150#151#0" expanded="true" />
+                <element signature="e#189#190#0" expanded="true" />
+                <element signature="e#223#224#0" expanded="true" />
+                <element signature="e#253#254#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -105,11 +115,78 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/api/Species.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+            <state relative-caret-position="54">
+              <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
               <folding>
-                <element signature="e#160#161#0" expanded="true" />
-                <element signature="e#194#195#0" expanded="true" />
+                <element signature="e#90#91#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/api/QueryResult.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/api/GBIFNameSearchReturnObject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-60">
+              <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+              <folding>
+                <element signature="e#112#113#0" expanded="true" />
+                <element signature="e#141#142#0" expanded="true" />
+                <element signature="e#169#170#0" expanded="true" />
+                <element signature="e#208#209#0" expanded="true" />
+                <element signature="e#243#244#0" expanded="true" />
+                <element signature="e#272#273#0" expanded="true" />
+                <element signature="e#300#301#0" expanded="true" />
+                <element signature="e#337#338#0" expanded="true" />
+                <element signature="e#367#368#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/api/APIService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/api/APIServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="522">
+              <caret line="93" selection-start-line="93" selection-end-line="93" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/api/GBIFSynonymSearchReturnObject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+              <folding>
+                <element signature="e#197#198#0" expanded="true" />
+                <element signature="e#226#227#0" expanded="true" />
+                <element signature="e#254#255#0" expanded="true" />
+                <element signature="e#293#294#0" expanded="true" />
+                <element signature="e#328#329#0" expanded="true" />
+                <element signature="e#365#366#0" expanded="true" />
+                <element signature="e#395#396#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -124,6 +201,11 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <dirStrings>
+      <dir>$PROJECT_DIR$/src/api</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -154,15 +236,22 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/api/Synonym.java" />
-        <option value="$PROJECT_DIR$/src/api/QueryBuilder.java" />
-        <option value="$PROJECT_DIR$/src/api/APIService.java" />
+        <option value="$PROJECT_DIR$/src/api/SynonymQueryResponse.java" />
+        <option value="$PROJECT_DIR$/src/api/QueryResult.java" />
         <option value="$PROJECT_DIR$/src/api/APIReturnObject.java" />
-        <option value="$PROJECT_DIR$/src/api/APIServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/api/APISearchReturnObject.java" />
+        <option value="$PROJECT_DIR$/src/api/GBIFNameSearchReturnObject.java" />
+        <option value="$PROJECT_DIR$/src/api/GBIFSynonymSearchReturnObject.java" />
+        <option value="$PROJECT_DIR$/src/api/APIService.java" />
         <option value="$PROJECT_DIR$/src/api/Species.java" />
+        <option value="$PROJECT_DIR$/src/api/QueryBuilder.java" />
+        <option value="$PROJECT_DIR$/src/api/APIServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/api/APIMatchReturnObject.java" />
+        <option value="$PROJECT_DIR$/src/api/APIServiceImplTest.groovy" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="964" />
     <option name="width" value="956" />
     <option name="height" value="1030" />
@@ -184,6 +273,11 @@
             <path>
               <item name="million-plant-map" type="b2602c69:ProjectViewProjectNode" />
               <item name="million-plant-map" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="million-plant-map" type="b2602c69:ProjectViewProjectNode" />
+              <item name="million-plant-map" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -191,6 +285,10 @@
               <item name="million-plant-map" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="million-plant-map" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -200,10 +298,24 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Spock" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Spock" value="spock.lang.Specification" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.30574712" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="api" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="spock.lang.Specification" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -217,7 +329,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.APIServiceImplTest.can get the accepted name from a general query">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -226,6 +338,55 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="APIServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="million-plant-map" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="api" />
+      <option name="MAIN_CLASS_NAME" value="api.APIServiceImplTest" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="APIServiceImplTest.can get a list of all synonyms" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="million-plant-map" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="api" />
+      <option name="MAIN_CLASS_NAME" value="api.APIServiceImplTest" />
+      <option name="METHOD_NAME" value="can get a list of all synonyms" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="APIServiceImplTest.can get the accepted name from a general query" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="million-plant-map" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="api" />
+      <option name="MAIN_CLASS_NAME" value="api.APIServiceImplTest" />
+      <option name="METHOD_NAME" value="can get the accepted name from a general query" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -253,6 +414,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.APIServiceImplTest.can get the accepted name from a general query" />
+      <item itemvalue="JUnit.APIServiceImplTest" />
+      <item itemvalue="JUnit.APIServiceImplTest.can get a list of all synonyms" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.APIServiceImplTest.can get the accepted name from a general query" />
+        <item itemvalue="JUnit.APIServiceImplTest.can get a list of all synonyms" />
+        <item itemvalue="JUnit.APIServiceImplTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -265,7 +438,7 @@
       <option name="presentableId" value="Default" />
       <updated>1549536192103</updated>
       <workItem from="1549536197030" duration="4273000" />
-      <workItem from="1549638605123" duration="1167000" />
+      <workItem from="1549638605123" duration="23772000" />
     </task>
     <task id="LOCAL-00001" summary="Starting working on API calls">
       <created>1549537648750</created>
@@ -281,25 +454,65 @@
       <option name="project" value="LOCAL" />
       <updated>1549539428100</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Working on completing API queries">
+      <created>1549639797746</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1549639797746</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="APIServiceImplTest_can_get_a_list_of_all_synonyms - 2019.02.10 at 17h 33m 08s.xml">
+      <configuration name="APIServiceImplTest.can get a list of all synonyms" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="APIServiceImplTest_can_get_a_list_of_all_synonyms - 2019.02.10 at 17h 40m 04s.xml">
+      <configuration name="APIServiceImplTest.can get a list of all synonyms" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="APIServiceImplTest_can_get_a_list_of_all_synonyms - 2019.02.10 at 17h 40m 53s.xml">
+      <configuration name="APIServiceImplTest.can get a list of all synonyms" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="APIServiceImplTest_can_get_a_list_of_all_synonyms - 2019.02.10 at 17h 41m 37s.xml">
+      <configuration name="APIServiceImplTest.can get a list of all synonyms" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="APIServiceImplTest_can_get_a_list_of_all_synonyms - 2019.02.10 at 17h 42m 06s.xml">
+      <configuration name="APIServiceImplTest.can get a list of all synonyms" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="APIServiceImplTest_can_get_a_list_of_all_synonyms - 2019.02.10 at 17h 42m 50s.xml">
+      <configuration name="APIServiceImplTest.can get a list of all synonyms" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="APIServiceImplTest_can_get_a_list_of_all_synonyms - 2019.02.10 at 18h 10m 14s.xml">
+      <configuration name="APIServiceImplTest.can get a list of all synonyms" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="APIServiceImplTest_can_get_the_accepted_name_from_a_general_query - 2019.02.10 at 18h 15m 22s.xml">
+      <configuration name="APIServiceImplTest.can get the accepted name from a general query" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="APIServiceImplTest_can_get_the_accepted_name_from_a_general_query - 2019.02.10 at 18h 16m 07s.xml">
+      <configuration name="APIServiceImplTest.can get the accepted name from a general query" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="APIServiceImplTest_can_get_the_accepted_name_from_a_general_query - 2019.02.10 at 18h 17m 04s.xml">
+      <configuration name="APIServiceImplTest.can get the accepted name from a general query" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5440000" />
+    <option name="totallyTimeSpent" value="28045000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
+    <frame x="964" y="0" width="956" height="1030" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20117396" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.32637364" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" weight="0.32963374" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32963374" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32963374" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39955604" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -315,6 +528,32 @@
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Maven Projects" order="6" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.32637364" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.32963374" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.32963374" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.39955604" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Palette&#9;" order="5" />
+      <window_info anchor="right" id="Maven Projects" order="6" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -322,62 +561,181 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Starting working on API calls" />
     <MESSAGE value="Implementing interfaces" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementing interfaces" />
+    <MESSAGE value="Working on completing API queries" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on completing API queries" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/api/APIServiceImpl.java</url>
+          <line>48</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/api/QueryBuilder.java</url>
+          <line>26</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/api/APIServiceImplTest.groovy</url>
+          <line>29</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/api/APIServiceImplTest.groovy</url>
+          <line>31</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/api/APIServiceImplTest.groovy</url>
+          <line>25</line>
+          <properties />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/api/APIServiceImplTest.groovy</url>
+          <line>22</line>
+          <properties />
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/api/APIServiceImpl.java</url>
+          <line>33</line>
+          <properties />
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/api/APIServiceImpl.java</url>
+          <line>65</line>
+          <properties />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="setValue">
+      <expression>
+        <expression-string>&quot;http://api.gbif.org/v1/species/search/?q=Cristata&amp;status=SYNONYM&quot;</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/api/QueryBuilder.java">
+    <entry file="file://$PROJECT_DIR$/src/api/SynonymQueryResponse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="108">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/APIReturnObject.java">
+    <entry file="file://$PROJECT_DIR$/src/api/GBIFSynonymSearchReturnObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="37" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
+        <state relative-caret-position="126">
+          <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
           <folding>
-            <element signature="e#222#223#0" expanded="true" />
-            <element signature="e#279#280#0" expanded="true" />
-            <element signature="e#327#328#0" expanded="true" />
-            <element signature="e#374#375#0" expanded="true" />
-            <element signature="e#405#406#0" expanded="true" />
-            <element signature="e#465#466#0" expanded="true" />
-            <element signature="e#505#506#0" expanded="true" />
+            <element signature="e#197#198#0" expanded="true" />
+            <element signature="e#226#227#0" expanded="true" />
+            <element signature="e#254#255#0" expanded="true" />
+            <element signature="e#293#294#0" expanded="true" />
+            <element signature="e#328#329#0" expanded="true" />
+            <element signature="e#365#366#0" expanded="true" />
+            <element signature="e#395#396#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/QueryBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="95" selection-start-line="9" selection-start-column="95" selection-end-line="9" selection-end-column="95" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#671#672#0" expanded="true" />
+            <element signature="e#706#707#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/APIMatchReturnObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding>
+            <element signature="e#79#80#0" expanded="true" />
+            <element signature="e#110#111#0" expanded="true" />
+            <element signature="e#150#151#0" expanded="true" />
+            <element signature="e#189#190#0" expanded="true" />
+            <element signature="e#223#224#0" expanded="true" />
+            <element signature="e#253#254#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/Species.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+          <folding>
+            <element signature="e#90#91#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/QueryResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/GBIFNameSearchReturnObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-60">
+          <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+          <folding>
+            <element signature="e#112#113#0" expanded="true" />
+            <element signature="e#141#142#0" expanded="true" />
+            <element signature="e#169#170#0" expanded="true" />
+            <element signature="e#208#209#0" expanded="true" />
+            <element signature="e#243#244#0" expanded="true" />
+            <element signature="e#272#273#0" expanded="true" />
+            <element signature="e#300#301#0" expanded="true" />
+            <element signature="e#337#338#0" expanded="true" />
+            <element signature="e#367#368#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/api/APIService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+        <state relative-caret-position="54">
+          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/Species.java">
+    <entry file="file://$PROJECT_DIR$/src/api/APIServiceImplTest.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-          <folding>
-            <element signature="e#160#161#0" expanded="true" />
-            <element signature="e#194#195#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="630">
+          <caret line="35" column="13" lean-forward="true" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/api/APIServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="33" column="78" selection-start-line="33" selection-start-column="78" selection-end-line="33" selection-end-column="78" />
+        <state relative-caret-position="522">
+          <caret line="93" selection-start-line="93" selection-end-line="93" />
           <folding>
-            <element signature="e#526#527#0" expanded="true" />
-            <element signature="e#553#554#0" expanded="true" />
-            <element signature="e#625#626#0" expanded="true" />
-            <element signature="e#652#653#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -391,7 +749,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.30574712" />
               </list>
             </option>
           </splitter-proportions>
@@ -403,7 +761,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.30574712" />
               </list>
             </option>
           </splitter-proportions>
@@ -414,7 +772,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.30574712" />
               </list>
             </option>
           </splitter-proportions>
@@ -426,7 +784,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.30574712" />
               </list>
             </option>
           </splitter-proportions>
@@ -459,10 +817,11 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>com.google.code.gson:gson:2.8.5</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.30574712" />
               </list>
             </option>
           </splitter-proportions>

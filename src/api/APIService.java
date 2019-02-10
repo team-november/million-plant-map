@@ -1,11 +1,11 @@
 package api;
 
-import java.util.ArrayList;
-
 public interface APIService {
-     Species getAcceptedName(String name);
+     Species getAcceptedSpecies(String name);
 
-     ArrayList<Species> getSynonyms(String acceptedKey);
+     Species[] getSynonyms(String acceptedKey);
 
-     APIReturnObject getAcceptedNameAndSynonyms(String name);
+     QueryResult getAcceptedNameAndSynonyms(String name);
+
+     String getAcceptedKey(String name);
 }
