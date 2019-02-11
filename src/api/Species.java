@@ -10,6 +10,7 @@ public class Species {
     private String species;
     private boolean synonym;
     private String authorship;
+    private String scientificName;
 
     public String getKey() {
         return key;
@@ -42,6 +43,10 @@ public class Species {
 
     public boolean isSynonym() {
         return synonym;
+    }
+
+    public String getScientificName() {
+        return scientificName;
     }
 
 }

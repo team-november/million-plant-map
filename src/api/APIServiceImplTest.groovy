@@ -24,23 +24,29 @@ class APIServiceImplTest extends Specification {
 
         and: "An accepted key"
         String acceptedKey = service.getAcceptedKey(name)
-        println(acceptedKey)
 
-        when: "Wse search for synonyms"
+        when: "We search for synonyms"
         Species[] synonymsReturned = service.getSynonyms(acceptedKey)
 
-        then:
+        and: "convert it to a list of canonical names"
+        def canonicalNames = []
         for (Species s : synonymsReturned) {
-            synonyms.contains(s.getCanonicalName())
-            println(s.getCanonicalName())
+            String name = s.getCanonicalName()
+            if (!canonicalNames.contains(name)) {
+                canonicalNames.add(name)
+            }
         }
 
-        where:
-        name << ["Vanda Cristata", "Alnus glutinosa"]
-        synonyms << [["Aerides cristata", "Vanda striata", "Luisia striata", "Trudelia cristata"], ["Alnus vulgaris", "Betula alnus", "Betula glutinosa"]]
-    }
+        and: "sort the expected and actual lists alphabetically"
+        canonicalNames.sort()
+        synonyms.sort()
 
-    def "GetAcceptedNameAndSynonyms"() {
+        then: "the list of synonyms returned should match"
+        canonicalNames == synonyms
+
+        where:
+        name << ["Vanda Cristata"]
+        synonyms << [["Aerides cristata", "Vanda striata", "Luisia striata", "Trudelia cristata"]]
     }
 
 }

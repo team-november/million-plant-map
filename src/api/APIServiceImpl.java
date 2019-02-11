@@ -87,8 +87,8 @@ public class APIServiceImpl implements APIService {
     public String getAcceptedKey(String name) {
         String query = queryBuilder.searchForSpecies(name);
         String json = submitQuery(query);
-        APIMatchReturnObject returnObject = gson.fromJson(json, APIMatchReturnObject.class);
-        String acceptedKey = (returnObject.isSynonym()) ? returnObject.getAcceptedUsageKey() : returnObject.getUsageKey();
+        GBIFMatchReturnObject returnObject = gson.fromJson(json, GBIFMatchReturnObject.class);
+        String acceptedKey = returnObject.getAcceptedUsageKey();
         return acceptedKey;
     }
 }

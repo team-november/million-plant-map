@@ -7,7 +7,7 @@ public class QueryBuilder {
     private final String GBIF_API_URL = "http://api.gbif.org/v1";
 
     public String searchForSpecies(String name) {
-        return String.format("%s/species/match?name=%s", GBIF_API_URL, encode(name.toLowerCase()));
+        return String.format("%s/species/match?name=%s&strict=TRUE&verbose=TRUE", GBIF_API_URL, encode(name.toLowerCase()));
     }
 
     public String searchForSynonyms(String acceptedKey) {
