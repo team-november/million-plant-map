@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07147442-f47f-402b-9b51-39acf3ff4e12" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/api/GBIFMatchReturnObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/QueryBuilderTest.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/APIMatchReturnObject.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/APIServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/APIServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/APIServiceImplTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/APIServiceImplTest.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/GBIFNameSearchReturnObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/QueryBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/QueryBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/Species.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/Species.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -23,11 +20,20 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file pinned="false" current-in-tab="true">
+            <file pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/api/APIServiceImplTest.groovy">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="860">
-                    <caret line="51" column="1" lean-forward="true" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
+                  <state relative-caret-position="5544">
+                    <caret line="308" column="37" selection-start-line="308" selection-start-column="37" selection-end-line="308" selection-end-column="37" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/api/QueryBuilderTest.groovy">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="288">
+                    <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
                   </state>
                 </provider>
               </entry>
@@ -48,40 +54,40 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="groovy" value="2" />
+          <entry key="groovy" value="4" />
           <entry key="java" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Groovy" value="2" />
+          <entry key="Groovy" value="4" />
           <entry key="JAVA" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="4" />
-          <entry key="groovy" value="2795" />
-          <entry key="java" value="6983" />
-          <entry key="txt" value="146" />
+          <entry key="groovy" value="4390" />
+          <entry key="java" value="7343" />
+          <entry key="txt" value="185" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Groovy" value="2795" />
-          <entry key="JAVA" value="6983" />
-          <entry key="PLAIN_TEXT" value="150" />
+          <entry key="Groovy" value="4390" />
+          <entry key="JAVA" value="7343" />
+          <entry key="PLAIN_TEXT" value="189" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/api/QueryBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
-              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+              <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#677#678#0" expanded="true" />
@@ -107,13 +113,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/api/Species.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="47" column="60" selection-start-line="47" selection-start-column="60" selection-end-line="47" selection-end-column="60" />
+            <state relative-caret-position="-204">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
               <folding>
                 <element signature="e#64#65#0" expanded="true" />
                 <element signature="e#90#91#0" expanded="true" />
                 <element signature="e#816#817#0" expanded="true" />
                 <element signature="e#846#847#0" expanded="true" />
+                <element signature="e#922#923#0" expanded="true" />
+                <element signature="e#959#960#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -137,11 +145,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/api/APIServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="81" column="39" selection-start-line="81" selection-start-column="39" selection-end-line="81" selection-end-column="39" />
+            <state relative-caret-position="156">
+              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -219,10 +227,11 @@
         <option value="$PROJECT_DIR$/src/api/GBIFSynonymSearchReturnObject.java" />
         <option value="$PROJECT_DIR$/src/api/APIService.java" />
         <option value="$PROJECT_DIR$/src/api/APIMatchReturnObject.java" />
-        <option value="$PROJECT_DIR$/src/api/APIServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/api/QueryBuilder.java" />
         <option value="$PROJECT_DIR$/src/api/Species.java" />
+        <option value="$PROJECT_DIR$/src/api/APIServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/api/APIServiceImplTest.groovy" />
+        <option value="$PROJECT_DIR$/src/api/QueryBuilderTest.groovy" />
       </list>
     </option>
   </component>
@@ -303,7 +312,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.APIServiceImplTest">
+  <component name="RunManager" selected="JUnit.QueryBuilderTest.can generate query to search for species">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -365,6 +374,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="QueryBuilderTest.can generate query to search for species" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="million-plant-map" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="api" />
+      <option name="MAIN_CLASS_NAME" value="api.QueryBuilderTest" />
+      <option name="METHOD_NAME" value="can generate query to search for species" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
@@ -392,9 +418,11 @@
       <item itemvalue="JUnit.APIServiceImplTest.can get the accepted name from a general query" />
       <item itemvalue="JUnit.APIServiceImplTest" />
       <item itemvalue="JUnit.APIServiceImplTest.can get a list of all synonyms" />
+      <item itemvalue="JUnit.QueryBuilderTest.can generate query to search for species" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.QueryBuilderTest.can generate query to search for species" />
         <item itemvalue="JUnit.APIServiceImplTest" />
         <item itemvalue="JUnit.APIServiceImplTest.can get the accepted name from a general query" />
         <item itemvalue="JUnit.APIServiceImplTest.can get a list of all synonyms" />
@@ -412,7 +440,7 @@
       <option name="presentableId" value="Default" />
       <updated>1549536192103</updated>
       <workItem from="1549536197030" duration="4273000" />
-      <workItem from="1549638605123" duration="27284000" />
+      <workItem from="1549638605123" duration="33102000" />
     </task>
     <task id="LOCAL-00001" summary="Starting working on API calls">
       <created>1549537648750</created>
@@ -442,28 +470,17 @@
       <option name="project" value="LOCAL" />
       <updated>1549830933627</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="finished with testing api querying">
+      <created>1549877601959</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1549877601959</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="APIServiceImplTest_can_get_the_accepted_name_from_a_general_query - 2019.02.10 at 18h 16m 07s.xml">
-      <configuration name="APIServiceImplTest.can get the accepted name from a general query" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="APIServiceImplTest_can_get_the_accepted_name_from_a_general_query - 2019.02.10 at 18h 17m 04s.xml">
-      <configuration name="APIServiceImplTest.can get the accepted name from a general query" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="APIServiceImplTest_can_get_the_accepted_name_from_a_general_query - 2019.02.11 at 08h 54m 30s.xml">
-      <configuration name="APIServiceImplTest.can get the accepted name from a general query" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="APIServiceImplTest_can_get_the_accepted_name_from_a_general_query - 2019.02.11 at 08h 55m 07s.xml">
-      <configuration name="APIServiceImplTest.can get the accepted name from a general query" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="APIServiceImplTest - 2019.02.11 at 08h 58m 44s.xml">
-      <configuration name="APIServiceImplTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="APIServiceImplTest - 2019.02.11 at 09h 01m 37s.xml">
-      <configuration name="APIServiceImplTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="APIServiceImplTest - 2019.02.11 at 09h 08m 43s.xml">
       <configuration name="APIServiceImplTest" configurationId="JUnit" />
     </history-entry>
@@ -476,9 +493,27 @@
     <history-entry file="APIServiceImplTest - 2019.02.11 at 09h 29m 36s.xml">
       <configuration name="APIServiceImplTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="APIServiceImplTest - 2019.02.11 at 09h 30m 41s.xml">
+      <configuration name="APIServiceImplTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="APIServiceImplTest - 2019.02.12 at 10h 32m 58s.xml">
+      <configuration name="APIServiceImplTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="APIServiceImplTest - 2019.02.12 at 10h 33m 22s.xml">
+      <configuration name="APIServiceImplTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="APIServiceImplTest - 2019.02.12 at 10h 33m 28s.xml">
+      <configuration name="APIServiceImplTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="APIServiceImplTest - 2019.02.12 at 10h 33m 47s.xml">
+      <configuration name="APIServiceImplTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="APIServiceImplTest - 2019.02.12 at 11h 17m 18s.xml">
+      <configuration name="APIServiceImplTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31557000" />
+    <option name="totallyTimeSpent" value="37375000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="956" height="1030" extended-state="0" />
@@ -540,11 +575,13 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="Starting working on API calls" />
     <MESSAGE value="Implementing interfaces" />
     <MESSAGE value="Working on completing API queries" />
     <MESSAGE value="fixing issues with finding synonyms" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing issues with finding synonyms" />
+    <MESSAGE value="finished with testing api querying" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished with testing api querying" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -596,7 +633,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/api/APIServiceImpl.java</url>
-          <line>65</line>
+          <line>66</line>
           <properties />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
@@ -620,6 +657,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/GBIFNameSearchReturnObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+          <folding>
+            <element signature="e#112#113#0" expanded="true" />
+            <element signature="e#141#142#0" expanded="true" />
+            <element signature="e#169#170#0" expanded="true" />
+            <element signature="e#208#209#0" expanded="true" />
+            <element signature="e#243#244#0" expanded="true" />
+            <element signature="e#272#273#0" expanded="true" />
+            <element signature="e#300#301#0" expanded="true" />
+            <element signature="e#337#338#0" expanded="true" />
+            <element signature="e#367#368#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/api/APIService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -627,13 +682,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/GBIFMatchReturnObject.java">
+    <entry file="file://$PROJECT_DIR$/src/api/Species.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        <state relative-caret-position="-204">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
           <folding>
-            <element signature="e#223#224#0" expanded="true" />
-            <element signature="e#253#254#0" expanded="true" />
+            <element signature="e#64#65#0" expanded="true" />
+            <element signature="e#90#91#0" expanded="true" />
+            <element signature="e#816#817#0" expanded="true" />
+            <element signature="e#846#847#0" expanded="true" />
+            <element signature="e#922#923#0" expanded="true" />
+            <element signature="e#959#960#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -654,45 +713,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/Species.java">
+    <entry file="file://$PROJECT_DIR$/src/api/APIServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="47" column="60" selection-start-line="47" selection-start-column="60" selection-end-line="47" selection-end-column="60" />
-          <folding>
-            <element signature="e#64#65#0" expanded="true" />
-            <element signature="e#90#91#0" expanded="true" />
-            <element signature="e#816#817#0" expanded="true" />
-            <element signature="e#846#847#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/QueryBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+        <state relative-caret-position="156">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#677#678#0" expanded="true" />
-            <element signature="e#712#713#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/GBIFNameSearchReturnObject.java">
+    <entry file="file://$PROJECT_DIR$/src/api/GBIFMatchReturnObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+        <state relative-caret-position="54">
+          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
           <folding>
-            <element signature="e#112#113#0" expanded="true" />
-            <element signature="e#141#142#0" expanded="true" />
-            <element signature="e#169#170#0" expanded="true" />
-            <element signature="e#208#209#0" expanded="true" />
-            <element signature="e#243#244#0" expanded="true" />
-            <element signature="e#272#273#0" expanded="true" />
-            <element signature="e#300#301#0" expanded="true" />
-            <element signature="e#337#338#0" expanded="true" />
-            <element signature="e#367#368#0" expanded="true" />
+            <element signature="e#223#224#0" expanded="true" />
+            <element signature="e#253#254#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -704,20 +741,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/APIServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/api/APIServiceImplTest.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="81" column="39" selection-start-line="81" selection-start-column="39" selection-end-line="81" selection-end-column="39" />
+        <state relative-caret-position="5544">
+          <caret line="308" column="37" selection-start-line="308" selection-start-column="37" selection-end-line="308" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/QueryBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#677#678#0" expanded="true" />
+            <element signature="e#712#713#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/APIServiceImplTest.groovy">
+    <entry file="file://$PROJECT_DIR$/src/api/QueryBuilderTest.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="860">
-          <caret line="51" column="1" lean-forward="true" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
+        <state relative-caret-position="288">
+          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
         </state>
       </provider>
     </entry>

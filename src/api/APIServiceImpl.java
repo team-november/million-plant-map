@@ -35,7 +35,7 @@ public class APIServiceImpl implements APIService {
         StringBuffer response = null;
         try {
             if (connection.getResponseCode() == HTTP_OK) {
-                String readLine = null;
+                String readLine;
                 BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 response = new StringBuffer();
                 while ((readLine = in.readLine()) != null) {
@@ -46,8 +46,7 @@ public class APIServiceImpl implements APIService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String result = response.toString();
-        return (result == null) ? "" : result;
+        return response.toString();
     }
 
     private HttpURLConnection openConnection(String apiUrl) {
@@ -61,6 +60,7 @@ public class APIServiceImpl implements APIService {
         }
         return null;
     }
+
     @Override
     public Species getAcceptedSpecies(String name) {
         String query = queryBuilder.searchForAcceptedName(getAcceptedKey(name));
@@ -71,24 +71,28 @@ public class APIServiceImpl implements APIService {
     public Species[] getSynonyms(String acceptedKey) {
         String query = queryBuilder.searchForSynonyms(acceptedKey);
         String json = submitQuery(query);
-        GBIFSynonymSearchReturnObject species = gson.fromJson(json, GBIFSynonymSearchReturnObject.class);
-        return species.getResults();
+        return deserializeSynonymReturnObject(json).getResults();
     }
 
     @Override
     public QueryResult getAcceptedNameAndSynonyms(String name) {
         Species acceptedName = getAcceptedSpecies(name);
         Species[] synonyms = getSynonyms(acceptedName.getAcceptedKey());
-        QueryResult returnObject = new QueryResult(acceptedName, synonyms);
-        return returnObject;
+        return new QueryResult(acceptedName, synonyms);
     }
 
     @Override
     public String getAcceptedKey(String name) {
         String query = queryBuilder.searchForSpecies(name);
         String json = submitQuery(query);
-        GBIFMatchReturnObject returnObject = gson.fromJson(json, GBIFMatchReturnObject.class);
-        String acceptedKey = returnObject.getAcceptedUsageKey();
-        return acceptedKey;
+        return deserializeMatchReturnObject(json).getAcceptedUsageKey();
+    }
+
+    public GBIFSynonymSearchReturnObject deserializeSynonymReturnObject(String json) {
+        return gson.fromJson(json, GBIFSynonymSearchReturnObject.class);
+    }
+
+    public GBIFMatchReturnObject deserializeMatchReturnObject(String json) {
+        return gson.fromJson(json, GBIFMatchReturnObject.class);
     }
 }
