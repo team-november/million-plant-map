@@ -14,8 +14,8 @@ class APIServiceImplTest extends Specification {
         accepted.getCanonicalName().toLowerCase() == acceptedName.toLowerCase()
 
         where:
-        name << ["Vanda Cristata", "Trudelia Cristata", "Alnus vulgaris", "Betula glutinosa"]
-        acceptedName << ["Vanda Cristata", "Vanda Cristata", "Alnus glutinosa", "Alnus glutinosa"]
+        name << ["Vanda Cristata", "vanda cristata", "Trudelia Cristata", "trudelia cristata", "Alnus vulgaris", "Betula glutinosa"]
+        acceptedName << ["Vanda Cristata", "Vanda Cristata", "Vanda Cristata", "Vanda Cristata", "Alnus glutinosa", "Alnus glutinosa"]
     }
 
     def "can get a list of all synonyms"() {
@@ -45,8 +45,8 @@ class APIServiceImplTest extends Specification {
         canonicalNames == synonyms
 
         where:
-        name << ["Vanda Cristata"]
-        synonyms << [["Aerides cristata", "Vanda striata", "Luisia striata", "Trudelia cristata"]]
+        name << ["Vanda Cristata", "vanda cristata"]
+        synonyms << [["Aerides cristata", "Vanda striata", "Luisia striata", "Trudelia cristata"], ["Aerides cristata", "Vanda striata", "Luisia striata", "Trudelia cristata"]]
     }
 
     def "can deserialize a synonym query response"() {
