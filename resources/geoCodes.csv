@@ -1,0 +1,746 @@
+code,definition
+1,Europe
+10,Northern Europe
+DEN,Denmark
+FIN,Finland
+FOR,Føroyar
+GRB,Great Britain
+ICE,Iceland
+IRE,Ireland
+IRE-IR,Ireland
+IRE-NI,Northern Ireland
+NOR,Norway
+SVA,Svalbard
+SWE,Sweden
+11,Middle Europe
+AUT,Austria
+AUT-AU,Austria
+AUT-LI,Liechtenstein
+BGM,Belgium
+BGM-BE,Belgium
+BGM-LU,Luxembourg
+CZE,Czechoslovakia
+CZE-CZ,Czech Republic
+CZE-SL,Slovakia
+GER,Germany
+HUN,Hungary
+NET,Netherlands
+POL,Poland
+SWI,Switzerland
+12,Southwestern Europe
+BAL,Baleares
+COR,Corse
+FRA,France
+FRA-CI,Channel Is.
+FRA-FR,France
+FRA-MO,Monaco
+POR,Portugal
+SAR,Sardegna
+SPA,Spain
+SPA-AN,Andorra
+SPA-GI,Gibraltar
+SPA-SP,Spain
+13,Southeastern Europe
+ALB,Albania
+BUL,Bulgaria
+GRC,Greece
+ITA,Italy
+ITA-IT,Italy
+ITA-SM,San Marino
+ITA-VC,Vatican City
+KRI,Kriti
+ROM,Romania
+SIC,Sicilia
+SIC-MA,Malta
+SIC-SI,Sicilia
+TUE,Turkey-in-Europe
+YUG,Yugoslavia
+YUG-BH,Bosnia- Herzegovina
+YUG-CR,Croatia
+YUG-KO,Kosovo
+YUG-MA,Macedonia
+YUG-MN,Montenegro
+YUG-SE,Serbia
+YUG-SL,Slovenia
+14,Eastern Europe
+BLR,Belarus
+BLT,Baltic States
+BLT-ES,Estonia
+BLT-KA,Kaliningrad
+BLT-LA,Latvia
+BLT-LI,Lithuania
+KRY,Krym
+RUC,Central European Russia
+RUE,East European Russia
+RUN,North European Russia
+RUS,South European Russia
+RUW,Northwest European Russia
+UKR,Ukraine
+UKR-MO,Moldova
+UKR-UK,Ukraine
+2,Africa
+20,Northern Africa
+ALG,Algeria
+EGY,Egypt
+LBY,Libya
+MOR,Morocco
+MOR-MO,Morocco
+MOR-SP,Spanish North African Territories
+TUN,Tunisia
+WSA,Western Sahara
+21,Macaronesia
+AZO,Azores
+CNY,Canary Is.
+CVI,Cape Verde
+MDR,Madeira
+SEL,Selvagens
+22,West Tropical Africa
+BEN,Benin
+BKN,Burkina
+GAM,"Gambia, The"
+GHA,Ghana
+GNB,Guinea-Bissau
+GUI,Guinea
+IVO,Ivory Coast
+LBR,Liberia
+MLI,Mali
+MTN,Mauritania
+NGA,Nigeria
+NGR,Niger
+SEN,Senegal
+SIE,Sierra Leone
+TOG,Togo
+23,West-Central Tropical Africa
+BUR,Burundi
+CAB,Cabinda
+CAF,Central African Republic
+CMN,Cameroon
+CON,Congo
+EQG,Equatorial Guinea
+GAB,Gabon
+GGI,Gulf of Guinea Is.
+GGI-AN,Annobón
+GGI-BI,Bioko
+GGI-PR,Príncipe
+GGI-ST,São Tomé
+RWA,Rwanda
+ZAI,Zaire
+24,Northeast Tropical Africa
+CHA,Chad
+DJI,Djibouti
+ERI,Eritrea
+ETH,Ethiopia
+SOC,Socotra
+SOM,Somalia
+SUD,Sudan
+25,East Tropical Africa
+KEN,Kenya
+TAN,Tanzania
+UGA,Uganda
+26,South Tropical Africa
+ANG,Angola
+MLW,Malawi
+MOZ,Mozambique
+ZAM,Zambia
+ZIM,Zimbabwe
+27,Southern Africa
+BOT,Botswana
+CPP,Cape Provinces
+CPP-EC,Eastern Cape Province
+CPP-NC,Northern Cape Province
+CPP-WC,Western Cape Province
+CPV,Caprivi Strip
+LES,Lesotho
+NAM,Namibia
+NAT,KwaZulu-Natal
+OFS,Free State
+SWZ,Swaziland
+TVL,Northern Provinces
+TVL-GA,Gauteng
+TVL-MP,Mpumalanga
+TVL-NP,Northern  Province
+TVL-NW,North-West Province
+28,Middle Atlantic Ocean
+ASC,Ascension
+STH,St.Helena
+29,Western Indian Ocean
+ALD,Aldabra
+CGS,Chagos Archipelago
+COM,Comoros
+COM-CO,Comoros
+COM-MA,Mayotte
+MAU,Mauritius
+MCI,Mozambique Channel Is.
+MDG,Madagascar
+REU,Réunion
+ROD,Rodrigues
+SEY,Seychelles
+3,Asia-Temperate
+30,Siberia
+ALT,Altay
+BRY,Buryatiya
+CTA,Chita
+IRK,Irkutsk
+KRA,Krasnoyarsk
+TVA,Tuva
+WSB,West Siberia
+YAK,Yakutskiya
+31,Russian Far East
+AMU,Amur
+KAM,Kamchatka
+KHA,Khabarovsk
+KUR,Kuril Is.
+MAG,Magadan
+PRM,Primorye
+SAK,Sakhalin
+32,Middle Asia
+KAZ,Kazakhstan
+KGZ,Kirgizistan
+TKM,Turkmenistan
+TZK,Tadzhikistan
+UZB,Uzbekistan
+33,Caucasus
+NCS,North Caucasus
+NCS-CH,Chechnya
+NCS-DA,Dagestan
+NCS-IN,Ingushetiya
+NCS-KB,Kabardino-Balkariya
+NCS-KC,Karacheyevo-Cherkessiya
+NCS-KR,Krasnodar
+NCS-SO,Severo-Osetiya
+NCS-ST,Stavropol
+TCS,Transcaucasus
+TCS-AB,Abkhaziya
+TCS-AD,Adzhariya
+TCS-AR,Armenia
+TCS-AZ,Azerbaijan
+TCS-GR,Gruziya
+TCS-NA,Nakhichevan
+TCS-NK,Nagorno Karabakh
+34,Western Asia
+AFG,Afghanistan
+CYP,Cyprus
+EAI,East Aegean Is.
+IRN,Iran
+IRQ,Iraq
+LBS,Lebanon-Syria
+LBS-LB,Lebanon
+LBS-SY,Syria
+PAL,Palestine
+PAL-JO,Jordan
+PAL-IS,Israel
+SIN,Sinai
+TUR,Turkey
+35,Arabian Peninsula
+GST,Gulf States
+GST-BA,Bahrain
+GST-QA,Qatar
+GST-UA,United Arab Emirates
+KUW,Kuwait
+OMA,Oman
+SAU,Saudi Arabia
+YEM,Yemen
+YEM-NY,North Yemen
+YEM-SY,South Yemen
+36,China
+CHC,China South-Central
+CHC-CQ,Chongqing
+CHC-GZ,Guizhou
+CHC-HU,Hubei
+CHC-SC,Sichuan
+CHC-YN,Yunnan
+CHH,Hainan
+CHI,Inner Mongolia
+CHI-NM,Nei Mongol
+CHI-NX,Ningxia
+CHM,Manchuria
+CHM-HJ,Heilongjiang
+CHM-JL,Jilin
+CHM-LN,Liaoning
+CHN,China North-Central
+CHN-BJ,Beijing
+CHN-GS,Gansu
+CHN-HB,Hebei
+CHN-SA,Shaanxi
+CHN-SD,Shandong
+CHN-SX,Shanxi
+CHN-TJ,Tianjin
+CHQ,Qinghai
+CHS,China Southeast
+CHS-AH,Anhui
+CHS-FJ,Fujian
+CHS-GD,Guangdong
+CHS-GX,Guangxi
+CHS-HE,Henan
+CHS-HK,Hong Kong
+CHS-HN,Hunan
+CHS-JS,Jiangsu
+CHS-JX,Jiangxi
+CHS-KI,Kin-Men
+CHS-MA,Macau
+CHS-MP,Ma-tsu-Pai-chuan
+CHS-SH,Shanghai
+CHS-ZJ,Zhejiang
+CHT,Tibet
+CHX,Xinjiang
+37,Mongolia
+MON,Mongolia
+38,Eastern Asia
+JAP,Japan
+JAP-HK,Hokkaido
+JAP-HN,Honshu
+JAP-KY,Kyushu
+JAP-SH,Shikoku
+KOR,Korea
+KOR-NK,North Korea
+KOR-SK,South Korea
+KZN,Kazan-retto
+NNS,Nansei-shoto
+OGA,Ogasawara-shoto
+TAI,Taiwan
+4,Asia-Tropical
+40,Indian Subcontinent
+ASS,Assam
+ASS-AS,Assam
+ASS-MA,Manipur
+ASS-ME,Meghalaya
+ASS-MI,Mizoram
+ASS-NA,Nagaland
+ASS-TR,Tripura
+BAN,Bangladesh
+EHM,East Himalaya
+EHM-AP,Arunachal Pradesh
+EHM-BH,Bhutan
+EHM-DJ,Darjiling
+EHM-SI,Sikkim
+IND,India
+IND-AP,Andhra Pradesh
+IND-BI,Bihar
+IND-CH,Chandigarh
+IND-CT,Chattisgarh
+IND-DD,Dadra-Nagar-Haveli
+IND-DE,Delhi
+IND-DI,Diu
+IND-DM,Daman
+IND-GO,Goa
+IND-GU,Gujarat
+IND-HA,Haryana
+IND-JK,Jharkhand
+IND-KE,Kerala
+IND-KL,Karaikal
+IND-KT,Karnataka
+IND-MH,Mahe
+IND-MP,Madhya Pradesh
+IND-MR,Maharashtra
+IND-OR,Orissa
+IND-PO,Pondicherry
+IND-PU,Punjab
+IND-RA,Rajasthan
+IND-TN,Tamil Nadu
+IND-UP,Uttar Pradesh
+IND-WB,West Bengal
+IND-YA,Yanam
+LDV,Laccadive Is.
+MDV,Maldives
+NEP,Nepal
+PAK,Pakistan
+SRL,Sri Lanka
+WHM,West Himalaya
+WHM-HP,Himachal Pradesh
+WHM-JK,Jammu-Kashmir
+WHM-UT,Uttaranchal
+41,Indo-China
+AND,Andaman Is.
+AND-AN,Andaman Is.
+AND-CO,Coco Is.
+CBD,Cambodia
+LAO,Laos
+MYA,Myanmar
+NCB,Nicobar Is.
+SCS,South China Sea
+SCS-PI,Paracel Is.
+SCS-SI,Spratly Is.
+THA,Thailand
+VIE,Vietnam
+42,Malesia
+BOR,Borneo
+BOR-BR,Brunei
+BOR-KA,Kalimantan
+BOR-SB,Sabah
+BOR-SR,Sarawak
+CKI,Cocos (Keeling) Is.
+JAW,Jawa
+LSI,Lesser Sunda Is.
+LSI-BA,Bali
+LSI-ET,East Timor
+LSI-LS,Lesser Sunda Is.
+MLY,Malaya
+MLY-PM,Peninsular Malaysia
+MLY-SI,Singapore
+MOL,Maluku
+PHI,Philippines
+SUL,Sulawesi
+SUM,Sumatera
+XMS,Christmas I.
+43,Papuasia
+BIS,Bismarck Archipelago
+NWG,New Guinea
+NWG-PN,Papua New Guinea
+NWG-IJ,Irian Jaya
+SOL,Solomon Is.
+SOL-NO,North Solomons
+SOL-SO,South Solomons
+5,Australasia
+50,Australia
+NFK,Norfolk Is.
+NFK-LH,Lord Howe I.
+NFK-NI,Norfolk I.
+NSW,New South Wales
+NSW-CT,Australian Capital Territory
+NSW-NS,New South Wales
+NTA,Northern Territory
+QLD,Queensland
+QLD-CS,Coral Sea Is. Territory
+QLD-QU,Queensland
+SOA,South Australia
+TAS,Tasmania
+VIC,Victoria
+WAU,Western Australia
+WAU-AC,Ashmore-Cartier Is.
+WAU-WA,Western Australia
+51,New Zealand
+ATP,Antipodean Is.
+CTM,Chatham Is.
+KER,Kermadec Is.
+NZN,New Zealand North
+NZS,New Zealand South
+6,Pacific
+60,Southwestern Pacific
+FIJ,Fiji
+GIL,Gilbert Is.
+HBI,Howland-Baker Is.
+NRU,Nauru
+NUE,Niue
+NWC,New Caledonia
+PHX,Phoenix Is.
+SAM,Samoa
+SAM-AS,American Samoa
+SAM-WS,Samoa
+SCZ,Santa Cruz Is.
+TOK,Tokelau-Manihiki
+TOK-MA,Manihiki Is.
+TOK-SW,Swains I.
+TOK-TO,Tokelau
+TON,Tonga
+TUV,Tuvalu
+VAN,Vanuatu
+WAL,Wallis-Futuna Is.
+61,South-Central Pacific
+COO,Cook Is.
+EAS,Easter Is.
+LIN,Line Is.
+LIN-KI,Kiribati Line Is.
+LIN-US,U.S. Line Is.
+MRQ,Marquesas
+PIT,Pitcairn Is.
+SCI,Society Is.
+TUA,Tuamotu
+TUB,Tubuai Is.
+62,Northwestern Pacific
+CRL,Caroline Is.
+CRL-MF,Micronesia Federated States
+CRL-PA,Palau
+MCS,Marcus I.
+MRN,Marianas
+MRN-GU,Guam
+MRN-NM,Northern Marianas
+MRS,Marshall Is.
+WAK,Wake I.
+63,North-Central Pacific
+HAW,Hawaii
+HAW-HI,Hawaiian Is.
+HAW-JI,Johnston I.
+HAW-MI,Midway Is.
+7,Northern America
+70,Subarctic America
+ALU,Aleutian Is.
+ASK,Alaska
+GNL,Greenland
+NUN,Nunavut
+NWT,Northwest Territories
+YUK,Yukon
+71,Western Canada
+ABT,Alberta
+BRC,British Columbia
+MAN,Manitoba
+SAS,Saskatchewan
+72,Eastern Canada
+LAB,Labrador
+NBR,New Brunswick
+NFL,Newfoundland
+NFL-NE,Newfoundland
+NFL-SP,St. Pierre-Miquelon
+NSC,Nova Scotia
+ONT,Ontario
+PEI,Prince Edward I.
+QUE,Québec
+73,Northwestern U.S.A.
+COL,Colorado
+IDA,Idaho
+MNT,Montana
+ORE,Oregon
+WAS,Washington
+WYO,Wyoming
+74,North-Central U.S.A.
+ILL,Illinois
+IOW,Iowa
+KAN,Kansas
+MIN,Minnesota
+MSO,Missouri
+NDA,North Dakota
+NEB,Nebraska
+OKL,Oklahoma
+SDA,South Dakota
+WIS,Wisconsin
+75,Northeastern U.S.A.
+CNT,Connecticut
+INI,Indiana
+MAI,Maine
+MAS,Massachusetts
+MIC,Michigan
+NWH,New Hampshire
+NWJ,New Jersey
+NWY,New York
+OHI,Ohio
+PEN,Pennsylvania
+RHO,Rhode I.
+VER,Vermont
+WVA,West Virginia
+76,Southwestern U.S.A.
+ARI,Arizona
+CAL,California
+NEV,Nevada
+UTA,Utah
+77,South-Central U.S.A.
+NWM,New Mexico
+TEX,Texas
+78,Southeastern U.S.A.
+ALA,Alabama
+ARK,Arkansas
+DEL,Delaware
+FLA,Florida
+GEO,Georgia
+KTY,Kentucky
+LOU,Louisiana
+MRY,Maryland
+MSI,Mississippi
+NCA,North Carolina
+SCA,South Carolina
+TEN,Tennessee
+VRG,Virginia
+WDC,District of Columbia
+79,Mexico
+MXC,Mexico Central
+MXC-DF,Mexico Distrito Federal
+MXC-ME,Mexico State
+MXC-MO,Morelos
+MXC-PU,Puebla
+MXC-TL,Tlaxcala
+MXE,Mexico Northeast
+MXE-AG,Aguascalientes
+MXE-CO,Coahuila
+MXE-CU,Chihuahua
+MXE-DU,Durango
+MXE-GU,Guanajuato
+MXE-HI,Hidalgo
+MXE-NL,Nuevo Leon
+MXE-QU,Queretaro
+MXE-SL,San Luis Potosi
+MXE-TA,Tamaulipas
+MXE-ZA,Zacatecas
+MXG,Mexico Gulf
+MXG-VC,Veracruz
+MXI,Mexican Pacific Is.
+MXI-GU,Guadalupe I.
+MXI-RA,Rocas Alijos
+MXI-RG,Revillagigedo Is.
+MXN,Mexico Northwest
+MXN-BC,Baja California
+MXN-BS,Baja California Sur
+MXN-SI,Sinaloa
+MXN-SO,Sonora
+MXS,Mexico Southwest
+MXS-CL,Colima
+MXS-GR,Guerrero
+MXS-JA,Jalisco
+MXS-MI,Michoacan
+MXS-NA,Nayarit
+MXS-OA,Oaxaca
+MXT,Mexico Southeast
+MXT-CA,Campeche
+MXT-CI,Chiapas
+MXT-QR,Quintana Roo
+MXT-TB,Tabasco
+MXT-YU,Yucatan
+8,Southern America
+80,Central America
+BLZ,Belize
+COS,Costa Rica
+CPI,Central American Pacific Is.
+CPI-CL,Clipperton I.
+CPI-CO,Cocos I.
+CPI-MA,Malpelo I.
+ELS,El Salvador
+GUA,Guatemala
+HON,Honduras
+NIC,Nicaragua
+PAN,Panama
+81,Caribbean
+ARU,Aruba
+BAH,Bahamas
+BER,Bermuda
+CAY,Cayman Is.
+CUB,Cuba
+DOM,Dominican Republic
+HAI,Haiti
+HAI-HA,Haiti
+HAI-NI,Navassa I.
+JAM,Jamaica
+LEE,Leeward Is.
+LEE-AB,Antigua-Barbuda
+LEE-AG,Anguilla
+LEE-AV,Aves I.
+LEE-BV,British Virgin Is.
+LEE-GU,Guadeloupe
+LEE-MO,Montserrat
+LEE-NL,Netherlands Leeward Is.
+LEE-SK,St. Kitts-Nevis
+LEE-SM,St. Martin-St. Barthelemy
+LEE-VI,Virgin Is.
+NLA,Netherlands Antilles
+NLA-BO,Bonaire
+NLA-CU,Curaçao
+PUE,Puerto Rico
+SWC,Southwest Caribbean
+SWC-CC,Colombian Caribbean Is.
+SWC-HC,Honduran Caribbean Is.
+SWC-NC,Nicaraguan Caribbean Is.
+TCI,Turks-Caicos Is.
+TRT,Trinidad-Tobago
+VNA,Venezuelan Antilles
+WIN,Windward Is.
+WIN-BA,Barbados
+WIN-DO,Dominica
+WIN-GR,Grenada
+WIN-MA,Martinique
+WIN-SL,St. Lucia
+WIN-SV,St. Vincent
+82,Northern South America
+FRG,French Guiana
+GUY,Guyana
+SUR,Suriname
+VEN,Venezuela
+83,Western South America
+BOL,Bolivia
+CLM,Colombia
+ECU,Ecuador
+GAL,Galápagos
+PER,Peru
+84,Brazil
+BZC,Brazil West-Central
+BZC-DF,Brasilia Distrito Federal
+BZC-GO,Goias
+BZC-MS,Mato Grosso do Sul
+BZC-MT,Mato Grosso
+BZE,Brazil Northeast
+BZE-AL,Alagoas
+BZE-BA,Bahia
+BZE-CE,Ceara
+BZE-FN,Fernando de Noronha
+BZE-MA,Maranhao
+BZE-PB,Paraiba
+BZE-PE,Pernambuco
+BZE-PI,Piaui
+BZE-RN,Rio Grande do Norte
+BZE-SE,Sergipe
+BZL,Brazil Southeast
+BZL-ES,Espirito Santo
+BZL-MG,Minas Gerais
+BZL-RJ,Rio de Janeiro
+BZL-SP,Sao Paulo
+BZL-TR,Trindade
+BZN,Brazil North
+BZN-AC,Acre
+BZN-AM,Amazonas
+BZN-AP,Amapa
+BZN-PA,Para
+BZN-RM,Roraima
+BZN-RO,Rondonia
+BZN-TO,Tocantins
+BZS,Brazil South
+BZS-PR,Parana
+BZS-RS,Rio Grande do Sul
+BZS-SC,Santa Catarina
+85,Southern South America
+AGE,Argentina Northeast
+AGE-BA,Buenos Aires
+AGE-CD,Cordoba
+AGE-CH,Chaco
+AGE-CN,Corrientes
+AGE-DF,Argentina Distrito Federal
+AGE-ER,Entre Rios
+AGE-FO,Formosa
+AGE-LP,La Pampa
+AGE-MI,Misiones
+AGE-SF,Santa Fe
+AGS,Argentina South
+AGS-CB,Chubut
+AGS-NE,Neuquen
+AGS-RN,Rio Negro
+AGS-SC,Santa Cruz
+AGS-TF,Tierra del Fuego (Argentina)
+AGW,Argentina Northwest
+AGW-CA,Catamarca
+AGW-JU,Jujuy
+AGW-LR,La Rioja
+AGW-ME,Mendoza
+AGW-SA,Salta
+AGW-SE,Santiago del Estero
+AGW-SJ,San Juan
+AGW-SL,San Luis
+AGW-TU,Tucuman
+CLC,Chile Central
+CLC-BI,Biobio
+CLC-CO,Coquimbo
+CLC-LA,La Araucania
+CLC-MA,Maule
+CLC-OH,O'Higgins
+CLC-SA,Santiago
+CLC-VA,Valparaiso
+CLN,Chile North
+CLN-AN,Antofagasta
+CLN-AT,Atacama
+CLN-TA,Tarapaca
+CLS,Chile South
+CLS-AI,Aisen
+CLS-LL,Los Lagos
+CLS-MG,Magellanes
+DSV,Desventurados Is.
+JNF,Juan Fernández Is.
+PAR,Paraguay
+URU,Uruguay
+9,Antarctic
+90,Subantarctic Islands
+ASP,Amsterdam-St.Paul Is.
+BOU,Bouvet I.
+CRZ,Crozet Is.
+FAL,Falkland Is.
+HMD,Heard-McDonald Is.
+KEG,Kerguelen
+MAQ,Macquarie Is.
+MPE,Marion-Prince Edward Is.
+SGE,South Georgia
+SSA,South Sandwich Is.
+TDC,Tristan da Cunha
+91,Antarctic Continent
+ANT,Antarctica
