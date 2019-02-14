@@ -77,7 +77,7 @@ public class APIServiceImpl implements APIService {
     @Override
     public QueryResult getAcceptedNameAndSynonyms(String name) {
         Species acceptedName = getAcceptedSpecies(name);
-        Species[] synonyms = getSynonyms(acceptedName.getAcceptedKey());
+        Species[] synonyms = getSynonyms(acceptedName.getKey());
         return new QueryResult(acceptedName, synonyms);
     }
 
