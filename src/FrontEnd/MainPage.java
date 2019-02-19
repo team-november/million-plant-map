@@ -101,6 +101,8 @@ public class MainPage{
         System.out.println(plantName.getText());
         //take text from box
         String plantNameString=plantName.getText();
+        CSVConverter cs = new CSVConverter();
+        cs.printCSV(plantNameString);
         //search on API
         APIServiceImpl api = APIServiceImpl.getInstance();
         Species acceptedSpecies=api.getAcceptedSpecies(plantNameString);
