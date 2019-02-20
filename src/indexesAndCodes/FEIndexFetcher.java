@@ -13,7 +13,7 @@ public class FEIndexFetcher {
     }
 
     // returns a single family/genus index, using the method above
-    protected String fetchCode(String familyName){
+    public String fetchCode(String familyName){
         return fetchCodes(new String[]{familyName})[0];
     }
 

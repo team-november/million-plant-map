@@ -10,6 +10,9 @@ public class Species {
     private boolean synonym;
     private String authorship;
     private String scientificName;
+    private boolean isInHerbarium;
+    private String BHcode;
+    private String FEcode;
 
     public String getKey() {
         return key;
@@ -46,6 +49,19 @@ public class Species {
 
     public String getScientificName() {
         return scientificName;
+    }
+
+    public String getBHcode() { return BHcode; }
+    public void setBHcode(String newBHcode) { BHcode=newBHcode; }
+
+    public String getFEcode() { return FEcode; }
+    public void setFEcode(String newFEcode) { FEcode=newFEcode; }
+
+    public boolean isInHerbarium() {
+        return isInHerbarium;
+    }
+    public void setIsInHerbarium(boolean newIsInHerbarium) {
+        isInHerbarium = newIsInHerbarium;
     }
 
 }
