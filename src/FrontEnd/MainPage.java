@@ -27,12 +27,13 @@ public class MainPage{
         //gridepane settings
         gridSynonyms.setVgap(4);
         gridSynonyms.setGridLinesVisible(true);
-        gridSynonyms.setLayoutY(130*7);
-        gridSynonyms.setLayoutX(1000);
-        gridSynonyms.setMinWidth(980);
-        gridSynonyms.setMaxWidth(980);
+        //gridSynonyms.setLayoutY(130*7);
+        //gridSynonyms.setLayoutX(1000);
+        //gridSynonyms.setMinWidth(980);
+        //gridSynonyms.setMaxWidth(980);
         scrollPane.setMinWidth(1000);
         scrollPane.setMaxWidth(1000);
+
 
         //info to print
         List<Text> texts = new ArrayList<>();
