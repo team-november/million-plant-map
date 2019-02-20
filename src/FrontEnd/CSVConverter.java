@@ -17,7 +17,7 @@ public class CSVConverter {
 
     public void printCSV(String plantName){
         //create a file csv called like the plantName
-        try (PrintWriter writer = new PrintWriter(new File("plantName.csv"))) {
+        try (PrintWriter writer = new PrintWriter(new File(plantName+".csv"))) {
 
 
             //print what each column is
