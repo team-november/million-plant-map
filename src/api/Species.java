@@ -13,6 +13,17 @@ public class Species {
     private boolean isInHerbarium;
     private String BHcode;
     private String FEcode;
+    private boolean basionym;
+    private String basionymKey;
+
+    public boolean isBasionym() {
+        return basionym;
+    }
+
+    void setBasionym(boolean b) {
+        basionym = b;
+    }
+
 
     public String getKey() {
         return key;
@@ -64,4 +75,7 @@ public class Species {
         isInHerbarium = newIsInHerbarium;
     }
 
+    String getBasionymKey() {
+        return basionymKey;
+    }
 }

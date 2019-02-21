@@ -1,8 +1,10 @@
 package FrontEnd;
 
 import api.APIServiceImpl;
+import api.QueryResult;
 import api.Species;
-import indexesAndCodes.*;
+import indexesAndCodes.BHIndexFetcher;
+import indexesAndCodes.FEIndexFetcher;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,8 +18,9 @@ public class DataCollected {
     public List<Species> DataToPrint(String plantName){
         //search on API
         APIServiceImpl api = APIServiceImpl.getInstance();
-        Species acceptedSpecie = api.getAcceptedSpecies(plantName);
-        Species[] synonyms = api.getSynonyms(acceptedSpecie.getKey());
+        QueryResult result = api.getAcceptedNameAndSynonyms(plantName);
+        Species acceptedSpecie = result.getAcceptedName();
+        Species[] synonyms = result.getSynonyms();
         toPrint= new ArrayList<>(Arrays.asList(synonyms));
         toPrint.add(0,acceptedSpecie);
         // insert additional informations like BH and FE code
