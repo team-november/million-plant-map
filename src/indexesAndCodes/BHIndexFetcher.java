@@ -14,7 +14,6 @@ public class BHIndexFetcher {
     }
 
     // returns a single family index, using the method above
-    @Deprecated
     public String fetchCode(String familyName){
         return fetchCodes(new String[]{familyName})[0];
     }
