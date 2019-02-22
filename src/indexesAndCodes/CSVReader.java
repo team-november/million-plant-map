@@ -227,6 +227,9 @@ public class CSVReader {
             // Open the csv
             br = openCSV(csvName);
 
+            // Read columns name line
+            br.readLine();
+
             // Read through the CSV to find the match:
             while((line = br.readLine()) != null){
 
@@ -237,7 +240,7 @@ public class CSVReader {
 
                 if(cols.length == 3) {
                     // Only try and extract if there are values there to take
-                    if (getFirstWord(cols[searchIndex1]).equals(searchTerm1)) {
+                    if (Float.valueOf(getFirstWord(cols[searchIndex1])).equals(Float.valueOf(searchTerm1))) {
 
                         if (getFirstWord(cols[searchIndex2]).equals(searchTerm2)) {
                             // If find match, done, put it in result.
@@ -284,6 +287,9 @@ public class CSVReader {
         for(int i = 0; i < familyIndexes.length; i++){
             if(!genusIndexes[i].equals("")){
                 result += familyIndexes[i] + "/" + genusIndexes[i] + "  ";
+            }
+            else{
+                result += familyIndexes[i] + "/  ";
             }
         }
 
