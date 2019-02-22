@@ -2,7 +2,7 @@ package indexesAndCodes;
 
 public class FEIndexFetcher {
 
-    private final String csvName = "FloraEuropeaGenusIndex";
+    private final String csvName = "FloraEuropaeaGenusIndex";
     private final int searchIndex = 0;
 
     // returns an array of family/genus indexes under the flora europaea scheme, for an array of genus names
