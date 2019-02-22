@@ -16,12 +16,12 @@ public class FEIndexFetcher {
 
     // returns a single family/genus index, using the method above
     @Deprecated
-    protected String fetchCode(String familyName){
+    public String fetchCode(String familyName){
         return fetchCodes(new String[]{familyName})[0];
     }
 
     // Fetch a specimen for Flora Europaea
-    protected String fetchSpecimen(String familyName, String genusName){
+    public String fetchSpecimen(String familyName, String genusName){
 
         CSVReader reader = new CSVReader();
 

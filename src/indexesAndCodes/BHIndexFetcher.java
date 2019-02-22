@@ -15,12 +15,12 @@ public class BHIndexFetcher {
 
     // returns a single family index, using the method above
     @Deprecated
-    protected String fetchCode(String familyName){
+    public String fetchCode(String familyName){
         return fetchCodes(new String[]{familyName})[0];
     }
 
     // Fetch a specimen from Bentham and Hooker
-    protected String fetchSpecimen(String familyName, String genusName){
+    public String fetchSpecimen(String familyName, String genusName){
 
         CSVReader reader = new CSVReader();
 
