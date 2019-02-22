@@ -30,8 +30,10 @@ public class IndexFetcher {
         return "";
     }
 
-
+    @Deprecated
     private static String[][] fetchAll(String[] families, String[] genuses, String[] geoCodes){
+        // Deprecated due to new methods introduced, use those for now on.
+
 
         String [][] results = new String[3][];
         BHIndexFetcher BHfetcher = new BHIndexFetcher();
