@@ -10,11 +10,11 @@ import java.util.Properties;
 
 public final class ConnectionHandler {
   private static final ConnectionHandler INSTANCE = new ConnectionHandler();
+  private static Properties connectionProperties = new Properties();
   private Connection connection;
 
   private ConnectionHandler() {
     // Loads the connection authentication properties.
-    Properties connectionProperties = new Properties();
     try (InputStream input = new FileInputStream(
         "config.properties")) {
       connectionProperties.load(input);
@@ -56,7 +56,11 @@ public final class ConnectionHandler {
     return INSTANCE;
   }
 
-  public void closeConnectionHandler() {
+  public Connection getConnection() {
+    return connection;
+  }
+
+  public void close() {
     try {
       connection.close();
     } catch (SQLException e) {
@@ -64,4 +68,5 @@ public final class ConnectionHandler {
       e.printStackTrace();
     }
   }
+
 }
