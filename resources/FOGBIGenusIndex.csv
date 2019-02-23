@@ -1,0 +1,675 @@
+fam-index,genus-index,genus-name
+86.0,1,albizia
+86.0,2,acacia
+87.0,1,cercis
+87.0,2,senna
+88.0,1,thermopsis
+88.0,2,lupinus
+88.0,3,laburnum
+88.0,4,cytisus
+88.0,5,genista
+88.0,6,spartium
+88.0,7,ulex
+88.0,8,arachis
+88.0,9,wisteria
+88.0,10,glycine
+88.0,11,vigna
+88.0,12,phaseolus
+88.0,13,bituminaria
+88.0,14,cullen
+88.0,15,sesbania
+88.0,16,hippocrepis
+88.0,17,scorpiurus
+88.0,18,securigera
+88.0,19,coronilla
+88.0,20,anthyllis
+88.0,21,hymenocarpus
+88.0,22,ornithopus
+88.0,23,lotus
+88.0,24,dorycnium
+88.0,25,tetragonolobus
+88.0,26,robinia
+88.0,27,oxytropis
+88.0,28,astragalus
+88.0,29,colutea
+88.0,30,galega
+88.0,31,caragana
+88.0,32,hedysarum
+88.0,33,onobrychis
+88.0,34,cicer
+88.0,35,trifolium
+88.0,37,melilotus
+88.0,38,trigonella
+88.0,39,medicago
+88.0,40,vicia
+88.0,41,lens
+88.0,42,lathyrus
+88.0,43,pisum
+89.0,1,hippophae
+89.0,2,elaeagnus
+90.0,1,haloragis
+90.0,2,myriophyllum
+91.0,1,gunnera
+92.0,1,lythrum
+93.0,1,daphne
+94.0,1,luma
+94.0,2,ugni
+94.0,3,eucalyptus
+94.0,4,leptospermum
+95.0,1,epilobium
+95.0,2,chamerion
+95.0,3,ludwigia
+95.0,4,zauscheria
+95.0,5,oenothera
+95.0,6,clarkia
+95.0,7,fuchsia
+95.0,8,circaea
+96.0,1,cornus
+96.0,2,swida
+96.0,3,chamaepericlymenum
+96.0,4,aucuba
+96.1,1,garrya
+97.0,1,thesium
+98.0,1,viscum
+99.0,1,euonymus
+99.0,2,celastrus
+100.0,1,ilex
+101.0,1,buxus
+101.0,2,pachysandra
+102.0,1,mercurialis
+102.0,2,ricinus
+102.0,3,chrozophora
+102.0,4,euphorbia
+103.0,1,rhamnus
+103.0,2,frangula
+104.0,1,vitis
+104.0,2,parthenocissus
+104.0,3,cissus
+105.0,1,linum
+105.0,2,radiola
+106.0,1,polygala
+107.0,1,staphylea
+108.0,1,koelreuteria
+109.0,1,aesculus
+110.0,1,acer
+111.0,1,rhus
+111.0,2,cotinus
+112.0,1,ailanthus
+113.0,1,ruta
+113.0,2,choisya
+113.0,3,skimmia
+113.0,4,correa
+114.0,1,oxalis
+115.0,1,geranium
+115.0,2,monsonia
+115.0,3,erodium
+115.0,4,pelargonium
+116.0,1,limnanthes
+117.0,1,tropaeolum
+118.0,1,impatiens
+119.0,1,hedera
+119.0,2,fatsia
+119.0,3,aralia
+120.0,1,hydrocotyle
+120.0,2,sanicula
+120.0,3,astrantia
+120.0,4,eryngium
+120.0,5,chaerophyllum
+120.0,6,anthriscus
+120.0,7,scandix
+120.0,8,myrrhis
+120.0,9,coriandrum
+120.0,10,bifora
+120.0,11,smyrnium
+120.0,12,bunium
+120.0,13,conopodium
+120.0,14,pimpinella
+120.0,15,aegopodium
+120.0,16,sium
+120.0,17,berula
+120.0,18,crithmum
+120.0,19,seseli
+120.0,20,oenanthe
+120.0,21,aethusa
+120.0,22,foeniculum
+120.0,23,anethum
+120.0,24,silaum
+120.0,25,meum
+120.0,26,physospermum
+120.0,27,conium
+120.0,28,bupleurum
+120.0,29,trinia
+120.0,30,cuminum
+120.0,31,apium
+120.0,32,trachyspermum
+120.0,33,petroselinum
+120.0,34,ridolphia
+120.0,35,sison
+120.0,36,cicuta
+120.0,37,ammi
+120.0,38,falcaria
+120.0,39,carum
+120.0,40,selinum
+120.0,41,ligusticum
+120.0,42,angelica
+120.0,43,levisticum
+120.0,44,ferula
+120.0,45,peucedanum
+120.0,46,pastinaca
+120.0,47,heracleum
+120.0,48,tordylium
+120.0,49,laser
+120.0,50,torilis
+120.0,51,caucalis
+120.0,52,turgenia
+120.0,53,daucus
+121.0,1,cicendia
+121.0,2,exaculum
+121.0,3,centaurium
+121.0,4,blackstonia
+121.0,5,gentianella
+121.0,6,gentiana
+122.0,1,vinca
+122.1,1,nolana
+123.0,1,nicandra
+123.0,2,lycium
+123.0,3,vestia
+123.0,4,iochroma
+123.0,5,atropa
+123.0,6,scopolia
+123.0,7,hyoscyamus
+123.0,8,salpichroa
+123.0,9,physalis
+123.0,10,capsicum
+123.0,11,lycopersicon
+123.0,12,solanum
+124.0,12,datura
+124.0,14,nicotiana
+124.0,15,petunia
+125.0,1,dichondra
+125.0,2,convolvulus
+125.0,3,calystegia
+127.0,1,cuscuta
+127.0,2,nymphoides
+128.0,1,polemonium
+128.0,2,phlox
+128.0,3,navarretia
+129.0,1,phacelia
+129.0,2,nemophila
+130.0,1,heliotropium
+130.0,2,lithospermum
+130.0,3,buglossoides
+130.0,4,echium
+130.0,5,pulmonaria
+130.0,6,symphytum
+130.0,7,brunnera
+130.0,8,nonea
+130.0,9,anchusa
+130.0,10,cynoglottis
+130.0,11,pentaglottis
+130.0,12,borago
+130.0,13,trachystemon
+130.0,14,mertensia
+130.0,15,amsinckia
+130.0,16,plagiobothrys
+130.0,17,asperugo
+130.0,18,myosotis
+130.0,19,lappula
+130.0,20,omphalodes
+130.0,21,cynoglossum
+131.0,1,verbena
+131.0,2,clerodendron
+132.0,1,betonica
+132.0,2,stachys
+132.0,3,ballota
+132.0,4,leonurus
+132.0,5,lamiastrum
+132.0,6,lamium
+132.0,7,galeopsis
+132.0,8,phlomis
+132.0,9,melittis
+132.0,10,marrubium
+132.0,11,scutellaria
+132.0,12,teucrium
+132.0,13,ajuga
+132.0,14,nepeta
+132.0,15,glechoma
+132.0,16,prunella
+132.0,17,dracocephalum
+132.0,18,melissa
+132.0,19,satureja
+132.0,20,clinopodium
+132.0,21,calamintha
+132.0,22,acinos
+132.0,23,hyssopus
+132.0,24,origanum
+132.0,25,thymus
+132.0,26,lycopus
+132.0,27,mentha
+132.0,28,lavandula
+132.0,29,rosmarinus
+132.0,30,salvia
+133.0,1,hippuris
+134.0,1,plantago
+134.0,2,littorella
+135.0,1,buddleja
+136.0,1,osmanthus
+136.0,2,phillyrea
+136.0,3,ligustrum
+136.0,4,syringa
+136.0,5,fraxinus
+136.0,6,forsythia
+136.0,7,jasminum
+137.0,1,verbascum
+137.0,2,scrophularia
+137.0,3,phygelius
+137.0,4,paulownia
+137.0,5,mimulus
+137.0,6,limosella
+137.0,7,calceolaria
+137.0,8,antirrhinum
+137.0,9,chaenorhinum
+137.0,10,misopates
+137.0,11,asarina
+137.0,12,cymbalaria
+137.0,13,kickxia
+137.0,14,linaria
+137.0,15,nemesia
+137.0,16,digitalis
+137.0,17,erinus
+137.0,18,veronica
+137.0,19,veronicastrum
+137.0,20,hebe
+137.0,21,sibthorpia
+137.0,22,melampyrum
+137.0,23,euphrasia
+137.0,24,odontites
+137.0,25,bartsia
+137.0,26,parentucellia
+137.0,27,rhinanthus
+137.0,28,pedicularis
+138.0,1,lathraea
+138.0,2,orobanche
+139.0,1,ramonda
+140.0,1,acanthus
+140.1,1,catalpa
+141.0,1,pinguicula
+141.0,2,utricularia
+142,1,campanula l.
+142,2,legousia
+142,3,wahlenbergia w.
+142,4,trachelium l.
+142,5,phyteuma l.
+142,6,jasione l.
+142,7,lobelia l.
+142,8,pratia p.
+142,9,downingia
+143,1,coprosma
+143,2,nertera
+143,3,sherardia l.
+143,4,phuopsis
+143,5,asperula a.
+143,6,galium l.
+143,7,cruciata
+143,8,rubia l.
+144,1,sambucus l.
+144,2,viburnum l.
+144,3,symphoricarpos
+144,4,linnaea l.
+144,5,leycesteria
+144,6,weigela
+144,7,lonicera l.
+144,8,kolkwitzia
+145,1,adoxa
+146,1,valerianella v.
+146,2,valeriana l.
+146,3,centranthus dc.
+147,1,dipsacus l.
+147,2,cephalaria c.
+147,3,knautia l.
+147,4,succisa
+147,5,scabiosa l.
+148,1,echinops l.
+148,2,carlina l.
+148,3,arctium
+148,4,saussurea
+148,5,carduus l.
+148,6,cirsium c.
+148,7,onopordon l.
+148,8,cynara l.
+148,9,silybum
+148,10,serratula l.
+148,11,acroptilon
+148,12,centaurea l.
+148,13,cnicus
+148,14,carthamus l.
+148,15,scolymus l.
+148,16,cichorium l.
+148,17,catananche l.
+148,18,arnoseris
+148,19,lapsana l.
+148,20,hedypnois
+148,21,rhagadiolus
+148,22,hypochaeris l.
+148,23,scorzoneroides
+148,24,leontodon l.
+148,25,picris l.
+148,26,helminthotheca zinn
+148,27,scorzonera l.
+148,28,tragopogon l.
+148,29,aetheorhiza
+148,30,sonchus l.
+148,31,lactuca l.
+148,32,cicerbita
+148,33,mycelis
+148,34,taraxacum history
+148,35,crepis l.
+148,36,tolpis
+148,37,andryala l.
+148,38,pilosella
+148,39,hieracium l.
+148,40,arctotis l.
+148,41,arctotheca
+148,42,gazania
+148,43,berkheya
+148,44,filago l.
+148,45,antennaria
+148,46,anaphalis dc.
+148,47,gnaphalium l.
+148,48,helichrysum h.
+148,49,cassinia
+148,50,inula l.
+148,51,dittrichia
+148,52,pulicaria
+148,53,buphthalmum l.
+148,54,telekia
+148,55,grindelia
+148,56,calotis c.
+148,57,solidago l.
+148,58,aster l.
+148,59,chrysocoma l.
+148,60,erigeron l.
+148,61,conyza c.
+148,62,callistephus
+148,63,olearia
+148,64,baccharis l.
+148,65,bellis l.
+148,66,tanacetum l.
+148,67,artemisia l.
+148,68,santolina l.
+148,69,otanthus
+148,70,achillea l.
+148,71,chamaemelum
+148,72,anthemis l.
+148,73,xanthophthalmum
+148,74,leucanthemella
+148,75,coleostephus
+148,76,leucanthemum superbum
+148,77,chrysanthemum
+148,78,oncosiphon oncosiphon
+148,79,matricaria l.
+148,80,tripleurospermum
+148,81,cotula
+148,82,senecio l.
+148,83,pericallis
+148,84,tephroseris
+148,85,delairea
+148,86,brachyglottis jubar
+148,87,sincalia
+148,88,ligularia
+148,89,doronicum l.
+148,90,tussilago l.
+148,91,petasites
+148,92,homogyne
+148,93,calendula l.
+148,94,ambrosia l.
+148,95,iva
+148,96,xanthium l.
+148,97,guizotia
+148,98,sigesbeckia l.
+148,99,rudbeckia l.
+148,100,helianthus l.
+148,101,heliopsis
+148,102,galinsoga
+148,103,bidens l.
+148,104,coreopsis l.
+148,105,cosmos
+148,106,dahlia
+148,107,tagetes l.
+148,108,schkuhria
+148,109,gaillardia
+148,110,helenium l.
+148,111,eupatorium l.
+148,112,ageratum l.
+149,1,butomus
+150,1,sagittaria
+150,2,luronium
+150,3,baldellia
+150,4,alisma
+150,5,damasonium
+151,1,hydrocharis
+151,2,stratiotes
+151,3,egeria
+151,4,elodea
+151,5,hydrilla
+151,6,lagarosiphon
+151,7,vallisneria
+152,1,aponogeton
+153,1,scheuchzeria
+154,1,triglochin
+155,1,potamogeton
+155,2,groenlandia
+156,1,ruppia
+157,1,najas
+158,1,zannichellia
+159,1,zostera
+160,1,phoenix
+160,2,trachycarpus
+161,1,acorus
+161,2,lysichiton
+161,3,calla
+161,4,zantedeschia
+161,5,arum
+161,6,dracunculus
+161,7,arisarum
+162,1,wolffia
+162,2,lemna
+162,3,spirodela
+163,1,tradescantia
+164,1,eriocaulon
+165,1,juncus
+165,2,luzula
+166,1,eriophorum
+166,2,trichophorum
+166,3,eleocharis
+166,4,bolboschoenus
+166,5,scirpus
+166,6,scirpoides
+166,7,schoenoplectus
+166,8,isolepis
+166,9,eleogiton
+166,10,blysmus
+166,11,cyperus
+166,12,schoenus
+166,13,rhynchospora
+166,14,cladium
+166,15,kobresia
+166,16,carex
+167,1,yushania
+167,2,fargesia
+167,3,pleioblastus
+167,4,sasa
+167,5,sasaella
+167,6,psuedosasa
+167,7,chimonobambusa
+167,8,leersia
+167,9,ehrharta
+167,10,nardus
+167,11,stipa
+167,12,oryzopsis
+167,13,milium
+167,14,festuca
+167,15,lolium
+167,16,vulpia
+167,17,cynosurus
+167,18,lamarckia
+167,19,puccinellia
+167,20,briza
+167,21,poa
+167,22,dactylis
+167,23,catabrosa
+167,24,catapodium
+167,25,sesleria
+167,26,parapholis
+167,27,hainardia
+167,28,glyceria
+167,29,melica
+167,30,helictotrichon
+167,31,arrhenatherum
+167,32,avena
+167,33,gaudinia
+167,34,trisetum
+167,35,koeleria
+167,36,rostraria
+167,37,deschampsia
+167,38,holcus
+167,39,corynephorus
+167,40,aira
+167,41,hierochloe
+167,42,anthoxanthemum
+167,43,phalaris
+167,44,agrostis
+167,45,calamagrostis
+167,46,ammophila
+167,47,gastridium
+167,48,lagurus
+167,49,apera
+167,50,milbora
+167,51,polypogon
+167,52,alopecurus
+167,53,beckmannia
+167,54,phleum
+167,55,bromus
+167,56,bromopsis
+167,57,anisanthna
+167,58,ceratochloa
+167,59,brachypodium
+167,60,elymus
+167,61,elytrigia
+167,62,leymus
+167,63,hordelymus
+167,64,hordeum
+167,65,secale
+167,66,triticum
+167,67,danthonia
+167,68,rytidosperma
+167,69,schismus
+167,70,cortaderia
+167,71,molinia
+167,72,phragmites
+167,73,leptochloa
+167,74,eragrostis
+167,75,eleusine
+167,76,dactyloctenium
+167,77,sporobolus
+167,78,chloris
+167,79,cynodon
+167,80,spartina
+167,81,tragus
+167,82,panicum
+167,83,echinochloa
+167,84,brachinaria
+167,85,urochloa
+167,86,eriochloa
+167,87,paspalum
+167,88,setaria
+167,89,digitaria
+167,90,cenchrus
+167,91,sorghum
+167,92,zea
+168,1,sparganium
+169,1,typha
+170,1,fascicularia
+170,2,ochagavia
+171,1,pontederia
+172,1,tofieldia
+172,2,narthecium
+172,3,asphodelus
+172,4,veratrum
+172,5,simethis
+172,6,hemerocallis
+172,7,kniphofia
+172,8,colchicum
+172,9,lloydia
+172,10,gagea
+172,11,erythronium
+172,12,tulipa
+172,13,fritillaria
+172,14,lilium
+172,15,convallaria
+172,16,maianthemum
+172,17,polygonatum
+172,18,reineckea
+172,19,paris
+172,20,ornithogalum
+172,21,scilla
+172,22,hyacinthoides
+172,23,hyacinthus
+172,24,chionodoxa
+172,25,muscari
+172,26,allium
+172,27,nectaroscordum
+172,28,nothoscordum
+172,29,agapanthus
+172,30,tristagma
+172,31,amaryllis
+172,32,sternbergia
+172,33,leucojum
+172,34,galanthus
+172,35,narcissus
+172,36,asparagus
+172,37,ruscus
+172,38,alstroemeria
+173,1,libertia
+173,2,homeria
+173,3,sisyrinchium
+173,4,aristea
+173,5,hermodactylus
+173,6,iris
+173,7,watsonia
+173,8,romulea
+173,9,crocus
+173,10,gladiolus
+173,11,ixia
+173,12,sparaxis
+173,13,freesia
+173,14,crocosmia
+173,15,chasmanthe
+174,1,yucca
+174,2,agave
+174,3,cordyline
+174,4,phormium
+175,1,tamus
+176,1,cypripedium
+176,2,cephalanthera
+176,3,epipactis
+176,4,epipogium
+176,5,neottia
+176,6,listera
+176,7,spiranthes
+176,8,goodyera
+176,9,liparis
+176,10,hammarbya
+176,11,corallorrhiza
+176,12,herminium
+176,13,plantanthera
+176,14,anacamptis
+176,15,psuedorchis
+176,16,gymnadenia
+176,17,coeloglossum
+176,18,dactylorchiza
+176,19,neotinea
+176,20,orchis
+176,21,aceras
+176,22,himantoglossum
+176,23,ophrys

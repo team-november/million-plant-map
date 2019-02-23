@@ -61,14 +61,12 @@ public class APIServiceImpl implements APIService {
         return null;
     }
 
-    @Override
-    public Species getAcceptedSpecies(String name) {
+    private Species getAcceptedSpecies(String name) {
         String query = queryBuilder.searchForAcceptedName(getAcceptedKey(name));
         return gson.fromJson(submitQuery(query), Species.class);
     }
 
-    @Override
-    public Species[] getSynonyms(String acceptedKey) {
+    private Species[] getSynonyms(String acceptedKey) {
         String query = queryBuilder.searchForSynonyms(acceptedKey);
         String json = submitQuery(query);
         return deserializeSynonymReturnObject(json).getResults();
@@ -81,8 +79,7 @@ public class APIServiceImpl implements APIService {
         return new QueryResult(acceptedName, synonyms);
     }
 
-    @Override
-    public String getAcceptedKey(String name) {
+    private String getAcceptedKey(String name) {
         String query = queryBuilder.searchForSpecies(name);
         String json = submitQuery(query);
         return deserializeMatchReturnObject(json).getAcceptedUsageKey();

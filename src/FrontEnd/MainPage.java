@@ -15,9 +15,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.Text;
 
-import java.util.Calendar;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class MainPage{
     public Button searchButton;
@@ -25,55 +23,81 @@ public class MainPage{
     @FXML private GridPane gridSynonyms;
     @FXML private ScrollPane scrollPane;
 
-    private void setGridSynonyms(Species[] synonyms){
+    private void setGridSynonyms(List<Species> synonyms){
         //gridepane settings
         gridSynonyms.setVgap(4);
         gridSynonyms.setGridLinesVisible(true);
-        gridSynonyms.setLayoutY(130*7);
-        gridSynonyms.setLayoutX(1000);
-        gridSynonyms.setMinWidth(980);
-        gridSynonyms.setMaxWidth(980);
+        //gridSynonyms.setLayoutY(130*7);
+        //gridSynonyms.setLayoutX(1000);
+        //gridSynonyms.setMinWidth(980);
+        //gridSynonyms.setMaxWidth(980);
         scrollPane.setMinWidth(1000);
         scrollPane.setMaxWidth(1000);
 
 
-        for (int i = 0; i < synonyms.length; i++) {
-            Species current = synonyms[i];
+        //info to print
+        List<Text> texts = new ArrayList<>();
+        texts.add(new Text("Scientific Name"));
+        texts.add(new Text("Species"));
+        texts.add(new Text("Genus"));
+        texts.add(new Text("Family"));
+        texts.add(new Text("BHcode"));
+        texts.add(new Text("FEcode"));
+        texts.add(new Text("Author"));
+        texts.add(new Text("Is Accepted"));
+        //set font, size... for the text boxes
+        for(int j=0;j<texts.size();j++){
+            texts.get(j).setFont(Font.font("roboto", FontPosture.REGULAR, 16));
+            texts.get(j).setTranslateY(20);
+            texts.get(j).setTranslateX(200*j);
+        }
+        //create a pane to insert into the grid
+        Pane synonymPane = new Pane();
+        //add to it the wanted fields
+        for(int j=0;j<texts.size();j++){
+            synonymPane.getChildren().add(texts.get(j));
+        }
+        //add the pane to a grid
+        gridSynonyms.addRow(0, synonymPane);
 
-            //create text boxs containing the data
-            Text scientificName = new Text(current.getScientificName());
-            Text family = new Text(current.getFamily());
-            Text canonicalName = new Text(current.getCanonicalName());
 
+
+
+        for (int i = 0; i < synonyms.size(); i++) {
+            Species current = synonyms.get(i);
+
+            //info to print
+            texts = new ArrayList<>();
+            texts.add(new Text(current.getScientificName()));
+            texts.add(new Text(current.getSpecies()));
+            texts.add(new Text(current.getGenus()));
+            texts.add(new Text(current.getFamily()));
+            texts.add(new Text(current.getBHcode()));
+            texts.add(new Text(current.getFEcode()));
+            texts.add(new Text(current.getAuthorship()));
+            if(!current.isSynonym()){
+                texts.add(new Text("Yes"));
+            }else{
+                texts.add(new Text("No"));
+
+            }
 
             //set font, size... for the text boxes
-            scientificName.setFont(Font.font("roboto", FontPosture.REGULAR, 16));
-            family.setFont(Font.font("roboto", FontPosture.REGULAR, 20));
-            canonicalName.setFont(Font.font("roboto", FontPosture.REGULAR, 20));
-            //position the scientificName
-            scientificName.setTranslateX(10);
-            scientificName.setTranslateY(20);
-
-            //position the chance of family
-            family.setTranslateX(400);
-            family.setTranslateY(20);
-
-            //position the canonicalName
-            canonicalName.setTranslateX(600);
-            canonicalName.setTranslateY(20);
-
+            for(int j=0;j<texts.size();j++){
+                texts.get(j).setFont(Font.font("roboto", FontPosture.REGULAR, 16));
+                texts.get(j).setTranslateY(20);
+                texts.get(j).setTranslateX(200*j);
+            }
 
             //create a pane to insert into the grid
-            Pane synonymPane = new Pane();
+            synonymPane = new Pane();
             //add to it the wanted fields
-            synonymPane.getChildren().add(scientificName);
-            synonymPane.getChildren().add(family);
-            synonymPane.getChildren().add(canonicalName);
-
+            for(int j=0;j<texts.size();j++){
+                synonymPane.getChildren().add(texts.get(j));
+            }
             //add the pane to a grid
-            gridSynonyms.addRow(i, synonymPane);
+            gridSynonyms.addRow(i+1, synonymPane);
         }
-
     }
 
     static void deleteRow(GridPane grid) {
@@ -96,20 +120,24 @@ public class MainPage{
     @FXML
     public void pressSearch(ActionEvent actionEvent)
     {
-
+        // delate previous results of query if any
         deleteRow(gridSynonyms);
-        System.out.println(plantName.getText());
-        //take text from box
+        // take text from box
         String plantNameString=plantName.getText();
-        //search on API
-        APIServiceImpl api = APIServiceImpl.getInstance();
-        Species acceptedSpecies=api.getAcceptedSpecies(plantNameString);
-        System.out.println("the accepted name is:"+acceptedSpecies.getCanonicalName());
-        Species[] synonyms = api.getSynonyms(api.getAcceptedKey(acceptedSpecies.getCanonicalName()));
-        for(int i=0;i<synonyms.length;i++){
-            System.out.println("the synonym "+ (i+1)+ " is: "+synonyms[i].getCanonicalName());
-        }
+        DataCollected dc = new DataCollected();
+        List<Species> synonyms = dc.DataToPrint(plantNameString);
         // fill the grid with the synonyms data
         setGridSynonyms(synonyms);
     }
+
+    public void pressConvertCSV(ActionEvent actionEvent)
+    {
+        // take text from box
+        String plantNameString=plantName.getText();
+        // call function to convert to csv
+        CSVConverter cs = new CSVConverter();
+        cs.printCSV(plantNameString);
+    }
+
+
 }

@@ -8,7 +8,7 @@ class APIServiceImplTest extends Specification {
         APIServiceImpl service = APIServiceImpl.getInstance()
 
         when: "we search for the accepted name"
-        Species accepted = service.getAcceptedSpecies(name)
+        Species accepted = service.getAcceptedNameAndSynonyms(name).acceptedName
 
         then: "the accepted name is returned"
         accepted.getCanonicalName().toLowerCase() == acceptedName.toLowerCase()
@@ -23,10 +23,10 @@ class APIServiceImplTest extends Specification {
         APIServiceImpl service = APIServiceImpl.getInstance()
 
         and: "An accepted key"
-        String acceptedKey = service.getAcceptedKey(name)
+        QueryResult result = service.getAcceptedNameAndSynonyms(name)
 
         when: "We search for synonyms"
-        Species[] synonymsReturned = service.getSynonyms(acceptedKey)
+        Species[] synonymsReturned = result.synonyms
 
         and: "convert it to a list of canonical names"
         def canonicalNames = []
@@ -307,6 +307,32 @@ class APIServiceImplTest extends Specification {
         ]
         acceptedUsageKey << ["2783166", "2783166", "2876213"]
         synonym << [false, true, false]
+    }
+
+    def "update the basionym field properly"() {
+        given: "An API Service"
+        APIServiceImpl service = APIServiceImpl.getInstance()
+
+        when: "We search for a particular plant"
+        QueryResult result = service.getAcceptedNameAndSynonyms(name)
+
+        then: "All the basionym is set appropriately for all values that are returned"
+        if (result.acceptedName.scientificName == basionym) {
+            result.acceptedName.basionym
+        }
+
+        Iterator<Species> iterator = result.iterator()
+        while (iterator.hasNext()) {
+            Species s = iterator.next()
+            if (s.scientificName == basionym) {
+                s.basionym
+            } else {
+                !s.basionym
+            }
+        }
+        where:
+        basionym << ["Vanda cristata Lindl."]
+        name << ["Trudelia cristata"]
     }
 
 }

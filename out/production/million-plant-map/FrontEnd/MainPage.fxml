@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.MainPage">
    <children>
-      <Pane prefHeight="400.0" prefWidth="600.0">
+      <Pane layoutX="5.0" layoutY="7.0" prefHeight="424.0" prefWidth="641.0">
          <children>
             <TextField fx:id="plantName" layoutX="43.0" layoutY="26.0" prefHeight="27.0" prefWidth="392.0" />
             <Button fx:id="searchButton" layoutX="444.0" layoutY="26.0" mnemonicParsing="false" onAction="#pressSearch" text="Search" />
@@ -28,6 +28,7 @@
                   </ScrollPane>
                </children>
             </Pane>
+            <Button fx:id="ConvertCSVButton" layoutX="516.0" layoutY="26.0" mnemonicParsing="false" onAction="#pressConvertCSV" text="Convert to csv" />
          </children>
       </Pane>
    </children>
