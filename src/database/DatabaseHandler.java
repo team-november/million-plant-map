@@ -33,7 +33,10 @@ public class DatabaseHandler {
     // Sets connection parameters from Properties.
     String url = "jdbc:mysql://" 
       + connectionProperties.getProperty("hostname") + "/"
-      + connectionProperties.getProperty("database");
+      + connectionProperties.getProperty("database")
+      + "?verifyServerCertificate=false"
+      + "&useSSL=true"
+      + "&requireSSL=true";
 
     // Creates the database connection.
     Connection connection = null;
