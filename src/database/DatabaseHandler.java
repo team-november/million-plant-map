@@ -50,7 +50,7 @@ public class DatabaseHandler {
         Synonym synonym = new Synonym();
         synonym.setName(resultSet.getString(1));
         synonym.setFamilyName(resultSet.getString(2));
-        synonym.setScheme(getIndexScheme(resultSet.getString(3)));
+        synonym.setScheme(stringToIndexScheme(resultSet.getString(3)));
         synonym.setFamilyNumber(resultSet.getString(4));
         synonym.setGenusNumber(resultSet.getString(5));
         synonym.setAccepted(resultSet.getBoolean(6));
@@ -58,6 +58,7 @@ public class DatabaseHandler {
         synonym.setNote(resultSet.getString(8));
         synonyms.add(synonym);
       }
+
     } catch (SQLException e) {
       System.err.println("Could not execute getSynonym query.");
       e.printStackTrace();
@@ -71,21 +72,125 @@ public class DatabaseHandler {
   }
 
   public Location getLocation(String code) {
+    Location location = null;
 
-    return null;
+    String query = "SELECT "
+      + " (code, code_definition)"
+      + " FROM locations" 
+      + " WHERE code = ?";
+    
+    try (PreparedStatement ps = connection.prepareStatement(query)) {
+      ps.setString(1, code);
+      ResultSet resultSet = ps.executeQuery();
+
+      // Assuming there is a single interpretation to a given geo code.
+      if (resultSet.first()) {
+        location = new Location(resultSet.getString(1),
+                                resultSet.getString(2));
+      }
+
+    } catch (SQLException e) {
+      System.err.println("Could not execute getLocation query.");
+      e.printStackTrace();
+    }
+
+    return location;
   }
 
-  public Family getFamily(String name) {
+  public ArrayList<Family> getFamilies(String name) {
+    ArrayList<Family> families = new ArrayList<>();
+    
+    families.addAll(getFamiliesForScheme(name, IndexScheme.GB_AND_I));
+    families.addAll(getFamiliesForScheme(name, IndexScheme.FLORA_EUROPAEA));
+    families.addAll(getFamiliesForScheme(name, IndexScheme.BENTHAM_HOOKER));
 
-    return null;
+    return families;
   }
 
-  public Genus getGenus(String name) {
+  private ArrayList<Family> getFamiliesForScheme(String name, 
+                                                 IndexScheme scheme) {
+    ArrayList<Family> families = new ArrayList<>();
+    
+    String tableName;
+    if (scheme == IndexScheme.GB_AND_I) tableName = "families_gbi";
+    else if (scheme == IndexScheme.BENTHAM_HOOKER) tableName = "families_bh";
+    else if (scheme == IndexScheme.FLORA_EUROPAEA) tableName = "families_fe";
+    else return families;
 
-    return null;
+    String query = "SELECT "
+      + " (family_name, family_number)"
+      + " FROM " + tableName 
+      + " WHERE family_name = ?";
+
+    try (PreparedStatement ps = connection.prepareStatement(query)) {
+      ps.setString(1, name);
+
+      ResultSet resultSet = ps.executeQuery();
+
+      // Creates a Family object for each row in the ResultSet.
+      while (resultSet.next()) {
+        Family family = new Family(scheme,
+                                   resultSet.getString(1),
+                                   resultSet.getString(2));
+        families.add(family);
+      }
+
+    } catch (SQLException e) {
+      System.err.println("Could not execute getFamilies query.");
+      e.printStackTrace();
+    }
+
+    return families;
   }
 
-  private IndexScheme getIndexScheme(String scheme) {
+  public ArrayList<Genus> getGenera(String name) {
+    ArrayList<Genus> genera = new ArrayList<>();
+    
+    genera.addAll(getGeneraForScheme(name, IndexScheme.GB_AND_I));
+    genera.addAll(getGeneraForScheme(name, IndexScheme.FLORA_EUROPAEA));
+    genera.addAll(getGeneraForScheme(name, IndexScheme.BENTHAM_HOOKER));
+
+    return genera;
+  }
+
+  private ArrayList<Genus> getGeneraForScheme(String name,
+                                              IndexScheme scheme) {
+    ArrayList<Genus> genera = new ArrayList<>();
+
+    String tableName;
+    if (scheme == IndexScheme.GB_AND_I) tableName = "genera_gbi";
+    else if (scheme == IndexScheme.BENTHAM_HOOKER) tableName = "genera_bh";
+    else if (scheme == IndexScheme.FLORA_EUROPAEA) tableName = "genera_fe";
+    else return genera;
+
+    String query = "SELECT "
+      + " (genus_name, family_number, genus_number)"
+      + " FROM " + tableName 
+      + " WHERE genus_name = ?";
+
+    try (PreparedStatement ps = connection.prepareStatement(query)) {
+      ps.setString(1, name);
+
+      ResultSet resultSet = ps.executeQuery();
+
+      // Creates a Family object for each row in the ResultSet.
+      while (resultSet.next()) {
+        Genus genus = new Genus(scheme,
+                                resultSet.getString(1),
+                                resultSet.getString(2),
+                                resultSet.getString(3));
+        genera.add(genus);
+      }
+
+    } catch (SQLException e) {
+      System.err.println("Could not execute getGenera query.");
+      e.printStackTrace();
+    }
+    
+    return genera;
+  }
+
+  private IndexScheme stringToIndexScheme(String scheme) {
     if (scheme.equals("GB_AND_I")) return IndexScheme.GB_AND_I;
     else if (scheme.equals("FLORA_EUROPAEA")) return IndexScheme.FLORA_EUROPAEA;
     else if (scheme.equals("BENTHAM_HOOKER")) return IndexScheme.BENTHAM_HOOKER;
