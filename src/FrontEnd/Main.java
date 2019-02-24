@@ -1,27 +1,28 @@
 package FrontEnd;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import java.awt.*;
-
 
 public class Main extends Application {
 
+    @FXML
+    private JFXTextField searchBar;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
-
+        Parent root = FXMLLoader.load(getClass().getResource("main_scene.fxml"));
         primaryStage.setTitle("Million Plant Map");
+        primaryStage.getIcons().add(new Image("file:resources/icon.png"));
+        Scene scene = new Scene(root,950, 750);
+        scene.getStylesheets().add("file:resources/style.css");
 
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        double width = screenSize.getWidth();
-        int height = (int)screenSize.getHeight();
-
-        primaryStage.setScene(new Scene(root, width-200, height-200));
-
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 
@@ -29,5 +30,5 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
 }
-

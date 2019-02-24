@@ -29,7 +29,7 @@ public class DataCollected {
         for(int i=0;i<toPrint.size();i++){
             Species current = toPrint.get(0);
 
-            current.setBHcode(bHIndexFetcher.fetchCode(current.getFamily()));
+            //current.setBHcode(bHIndexFetcher.fetchCode(current.getFamily()));
             current.setFEcode(fEIndexFetcher.fetchCode(current.getFamily()));
             current.setIsInHerbarium(false);
         }
