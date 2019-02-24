@@ -13,16 +13,16 @@ public class Synonym {
   public Synonym() {}
 
   public Synonym(String name,
-                 IndexScheme scheme,
                  String familyName,
+                 IndexScheme scheme,
                  String familyNumber,
                  String genusNumber,
                  boolean isAccepted,
                  boolean isBasionym,
                  String note) {
     this.name = name;
-    this.scheme = scheme;
     this.familyName = familyName;
+    this.scheme = scheme;
     this.familyNumber = familyNumber;
     this.genusNumber = genusNumber;
     this.isAccepted = isAccepted;
@@ -93,4 +93,20 @@ public class Synonym {
     this.note = note;
   }
 
+  /**
+   * Returns true if two synonyms are equal (case-insensitive comparison).
+   *
+   * @param other synonym to be compared
+   * @return whether the two synonyms are equal
+   */
+  public boolean equals(Synonym other) {
+    return this.getName().equalsIgnoreCase(other.getName())
+            && this.getFamilyName().equalsIgnoreCase(other.getFamilyName())
+            && this.getScheme().equals(other.getScheme())
+            && this.getFamilyNumber().equalsIgnoreCase(other.getFamilyNumber())
+            && this.getGenusNumber().equalsIgnoreCase(other.getGenusNumber())
+            && (this.isAccepted() == other.isAccepted())
+            && (this.isBasionym() == other.isBasionym())
+            && (this.getNote().equalsIgnoreCase(other.getNote()));
+  }
 }

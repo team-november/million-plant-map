@@ -14,7 +14,7 @@ import java.util.Properties;
  */
 public final class ConnectionHandler {
   private static final ConnectionHandler INSTANCE = new ConnectionHandler();
-  private static Properties connectionProperties = new Properties();
+  private static Properties connectionProperties;
   private Connection connection;
 
   /**
@@ -22,12 +22,13 @@ public final class ConnectionHandler {
    * 
    * Registers a new MySQL JDBC driver and logs into the database
    * using the credentials provided in the config.properties file.
-   * The properties should be stored in the project root.
+   * The properties should be stored in the project root directory.
    */
   private ConnectionHandler() {
     // Loads the connection authentication properties.
     try (InputStream input = new FileInputStream(
         "config.properties")) {
+      connectionProperties = new Properties();
       connectionProperties.load(input);
     } catch (IOException e) {
       System.err.println("Could not load the properties file.");
@@ -48,7 +49,7 @@ public final class ConnectionHandler {
       + connectionProperties.getProperty("hostname") + "/"
       + connectionProperties.getProperty("database")
       // + "?verifyServerCertificate=false"
-      + "&useSSL=true"
+      + "?useSSL=true"
       + "&requireSSL=true";
 
     // Creates the database connection.

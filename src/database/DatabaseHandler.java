@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class DatabaseHandler {
   private Connection  connection = ConnectionHandler.getConnectionHandler()
                                                     .getConnection();
+
   /**
    * Inserts the prepared Synonym as a record in the herbarium database.
    * 
@@ -30,19 +31,45 @@ public class DatabaseHandler {
       + " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     
     try (PreparedStatement ps = connection.prepareStatement(query)) {
-      ps.setString(1, synonym.getName().toLowerCase().trim());
-      ps.setString(2, synonym.getScheme().toString().toLowerCase().trim());
-      ps.setString(3, synonym.getFamilyName().toLowerCase().trim());
-      ps.setString(4, synonym.getFamilyNumber().toLowerCase().trim());
-      ps.setString(5, synonym.getGenusNumber().toLowerCase().trim());
-      ps.setBoolean(6, synonym.isAccepted());
-      ps.setBoolean(7, synonym.isBasionym());
-      ps.setString(8, synonym.getNote().trim());
+      prepareSynonymStatement(ps, synonym);
       ps.executeUpdate();
     } catch (SQLException e) {
       System.err.println("Could not execute insertSynonym query.");
       e.printStackTrace();
     }
+  }
+
+  public void deleteSynonym(Synonym synonym) {
+    String query = "DELETE FROM synonyms"
+            + " WHERE species_name = ? "
+            + " AND family_name = ?"
+            + " AND index_scheme = ?"
+            + " AND family_number = ?"
+            + " AND genus_number = ?"
+            + " AND is_accepted = ?"
+            + " AND is_basionym = ?"
+            + " AND note = ?";
+
+    try (PreparedStatement ps = connection.prepareStatement(query)) {
+      prepareSynonymStatement(ps, synonym);
+      ps.executeUpdate();
+    } catch (SQLException e) {
+      System.err.println("Could not execute deleteSynonym query.");
+      e.printStackTrace();
+    }
+  }
+
+  /** Prepares the parameters for the Synonym queries. */
+  private void prepareSynonymStatement(PreparedStatement ps, Synonym synonym)
+          throws SQLException {
+    ps.setString(1, synonym.getName().trim());
+    ps.setString(2, synonym.getFamilyName().trim());
+    ps.setString(3, synonym.getScheme().toString().trim());
+    ps.setString(4, synonym.getFamilyNumber().trim());
+    ps.setString(5, synonym.getGenusNumber().trim());
+    ps.setBoolean(6, synonym.isAccepted());
+    ps.setBoolean(7, synonym.isBasionym());
+    ps.setString(8, synonym.getNote().trim());
   }
 
   /**
@@ -59,8 +86,8 @@ public class DatabaseHandler {
     ArrayList<Synonym> synonyms = new ArrayList<>(); 
 
     String query = "SELECT "
-      + " (species_name, family_name, index_scheme, family_number, "
-      + " genus_number, is_accepted, is_basionym, note)"
+      + " species_name, family_name, index_scheme, family_number, "
+      + " genus_number, is_accepted, is_basionym, note"
       + " FROM synonyms" 
       + " WHERE species_name = ?";
     
@@ -99,7 +126,7 @@ public class DatabaseHandler {
    */
   public Synonym getFirstSynonymByName(String name) {
     ArrayList<Synonym> synonyms = getAllSynonymsByName(name);
-    return (synonyms != null) ? synonyms.get(0) : null;
+    return (synonyms.size() > 0) ? synonyms.get(0) : null;
   }
 
   /**
@@ -115,7 +142,7 @@ public class DatabaseHandler {
     Location location = null;
 
     String query = "SELECT "
-      + " (code, code_definition)"
+      + " code, code_definition"
       + " FROM locations" 
       + " WHERE code = ?";
     
@@ -183,7 +210,7 @@ public class DatabaseHandler {
     else return null;
 
     String query = "SELECT "
-      + " (family_name, family_number)"
+      + " family_name, family_number"
       + " FROM " + tableName 
       + " WHERE family_name = ?";
 
@@ -237,7 +264,7 @@ public class DatabaseHandler {
    * @param name name of the genus
    * @param scheme the indexing scheme under which the genus number is needed
    * @return the list of {@link Genus} records containing genus numbers. 
-   * Returns null for the {@link IndexScheme#OTHER} scheme which is reserverd
+   * Returns null for the {@link IndexScheme#OTHER} scheme which is reserved
    * for the `synonyms` table.
    */
   private ArrayList<Genus> getGeneraByScheme(String name,
@@ -251,7 +278,7 @@ public class DatabaseHandler {
     else return null;
 
     String query = "SELECT "
-      + " (genus_name, family_number, genus_number)"
+      + " genus_name, family_number, genus_number"
       + " FROM " + tableName 
       + " WHERE genus_name = ?";
 
@@ -349,7 +376,7 @@ public class DatabaseHandler {
 
     String regex = name.split(" ")[0] + "%";
     String query = "SELECT "
-      + " (locations.code, locations.code_definition)"
+      + " locations.code, locations.code_definition"
       + " FROM genera_locations, locations"
       + " WHERE genera_locations.genus_name LIKE ?"
       + " AND genera_locations.location_code = locations.code";
@@ -389,6 +416,11 @@ public class DatabaseHandler {
       return IndexScheme.BENTHAM_HOOKER;
     else 
       return IndexScheme.OTHER;
+  }
+
+  /** Closes the handler resources. */
+  public void close() {
+    ConnectionHandler.getConnectionHandler().close();
   }
 
 }

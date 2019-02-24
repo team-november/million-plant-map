@@ -2,6 +2,7 @@
 config.properties
 resources/FloraEuopeaFamilyIndex_lc.csv
 resources/FloraEuropaea_lc.csv
+resources/config.properties
 
 *.xml
 # Created by https://www.gitignore.io/api/java,macos,intellij
