@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.Controller">
+    <children>
+        <MenuBar VBox.vgrow="NEVER">
+            <menus>
+                <Menu fx:id="recentMenu" mnemonicParsing="false" text="Recent Searches" />
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#csvClick" text="Export as CSV...." />
+                        <MenuItem mnemonicParsing="false" text="Export Multiple as CSV..." />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#aboutClick" text="About Million Plant Map" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <VBox prefHeight="707.0" prefWidth="900.0">
+            <children>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <JFXTextField fx:id="searchBar" alignment="CENTER" focusColor="#24cc64" maxWidth="10000.0" prefHeight="41.0" prefWidth="5000.0" promptText="Search for a plant species here..." style="-fx-background-color: #eeeeee;" unFocusColor="#aba9a9">
+                            <font>
+                                <Font name="Trebuchet MS" size="18.0" />
+                            </font>
+                        </JFXTextField>
+                        <JFXButton fx:id="searchButton" defaultButton="true" minHeight="-Infinity" minWidth="100.0" onAction="#searchClick" onKeyPressed="#keyPress" prefHeight="42.0" prefWidth="100.0" style="-fx-background-color: #24cc64;" text="Search" textFill="WHITE">
+                            <font>
+                                <Font name="Trebuchet MS Bold" size="18.0" />
+                            </font>
+                        </JFXButton>
+                    </children>
+                </HBox>
+                <JFXTreeTableView fx:id="treeView" maxHeight="5000.0" prefHeight="5000.0" prefWidth="5000.0" />
+            </children>
+        </VBox>
+    </children>
+</VBox>
