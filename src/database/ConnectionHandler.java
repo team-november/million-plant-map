@@ -8,11 +8,22 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/**
+ * The singleton class that creates the {@link Connection} with the 
+ * `herbarium_index` database and provides the means to execute queries on it.
+ */
 public final class ConnectionHandler {
   private static final ConnectionHandler INSTANCE = new ConnectionHandler();
   private static Properties connectionProperties = new Properties();
   private Connection connection;
 
+  /**
+   * Instantiates the connection with the database server.
+   * 
+   * Registers a new MySQL JDBC driver and logs into the database
+   * using the credentials provided in the config.properties file.
+   * The properties should be stored in the project root.
+   */
   private ConnectionHandler() {
     // Loads the connection authentication properties.
     try (InputStream input = new FileInputStream(
@@ -52,14 +63,28 @@ public final class ConnectionHandler {
     }
   }
 
+  /**
+   * Returns the static instance of the ConnectionHandler that is global
+   * across the application.
+   * 
+   * @return the singleton ConnectionHandler instance
+   */
   public static ConnectionHandler getConnectionHandler() {
     return INSTANCE;
   }
 
+  /**
+   * Returns the {@link Connection} to the `herbarium_index` database.
+   * 
+   * @return the singleton Connection instance
+   */
   public Connection getConnection() {
     return connection;
   }
 
+  /**
+   * Closes the {@link Connection} owned by this ConnectionHandler.
+   */
   public void close() {
     try {
       connection.close();
