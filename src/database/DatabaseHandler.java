@@ -274,7 +274,7 @@ public class DatabaseHandler {
   /**
    * Returns the list of {@link Location} records where the genus is located.
    * 
-   * The result corresponds to the records in the `synonyms_locations` table
+   * The result corresponds to the records in the `genera_locations` table
    * of `herbarium_index` that match the provided genus name.
    * 
    * @param genusName the genus name
@@ -287,7 +287,7 @@ public class DatabaseHandler {
   /**
    * Returns the list of {@link Location} records where the genus is located.
    * 
-   * The result corresponds to the records in the `synonyms_locations` table
+   * The result corresponds to the records in the `genera_locations` table
    * of `herbarium_index` that match the name of the genus provided.
    * 
    * @param genus the genus
@@ -300,7 +300,7 @@ public class DatabaseHandler {
   /**
    * Returns the list of {@link Location} records where the species is located.
    * 
-   * The result corresponds to the records in the `synonyms_locations` table
+   * The result corresponds to the records in the `genera_locations` table
    * of `herbarium_index` that match the genus name of the species provided. 
    * This means that the locations are returned for the entire genus of the
    * given species, and not the exact species.
@@ -315,7 +315,7 @@ public class DatabaseHandler {
   /**
    * Returns the list of {@link Location} records where the species is located.
    * 
-   * The result corresponds to the records in the `synonyms_locations` table
+   * The result corresponds to the records in the `genera_locations` table
    * of `herbarium_index` that match the genus name of the species provided. 
    * This means that the locations are returned for the entire genus of the
    * given species, and not the exact species.
@@ -330,7 +330,7 @@ public class DatabaseHandler {
   /**
    * Returns the list of {@link Location} records that match a given genus name.
    * 
-   * The result corresponds to the records in the `synonyms_locations` table
+   * The result corresponds to the records in the `genera_locations` table
    * of `herbarium_index`. The method takes in an arbitrary name (presumably 
    * genus) and finds all genus-location records that start with the name 
    * provided.
@@ -344,9 +344,9 @@ public class DatabaseHandler {
     String regex = name.split(" ")[0] + "%";
     String query = "SELECT "
       + " (locations.code, locations.code_definition)"
-      + " FROM synonyms_locations, locations"
-      + " WHERE synonyms_locations.species_name LIKE ?"
-      + " AND synonyms_locations.location_code = locations.code";
+      + " FROM genera_locations, locations"
+      + " WHERE genera_locations.genus_name LIKE ?"
+      + " AND genera_locations.location_code = locations.code";
 
     try (PreparedStatement ps = connection.prepareStatement(query)) {
       ps.setString(1, regex);
