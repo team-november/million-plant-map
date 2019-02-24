@@ -32,7 +32,7 @@ public class DatabaseHandler {
     }
   }
 
-  public ArrayList<Synonym> getSynonyms(String name) {
+  public ArrayList<Synonym> getSynonymsByName(String name) {
     ArrayList<Synonym> synonyms = new ArrayList<>(); 
 
     String query = "SELECT "
@@ -66,12 +66,12 @@ public class DatabaseHandler {
     return synonyms;
   }
 
-  public Synonym getFirstSynonym(String name) {
-    ArrayList<Synonym> synonyms = getSynonyms(name);
+  public Synonym getFirstSynonymByName(String name) {
+    ArrayList<Synonym> synonyms = getSynonymsByName(name);
     return (synonyms != null) ? synonyms.get(0) : null;
   }
 
-  public Location getLocation(String code) {
+  public Location getLocationByCode(String code) {
     Location location = null;
 
     String query = "SELECT "
@@ -97,17 +97,17 @@ public class DatabaseHandler {
     return location;
   }
 
-  public ArrayList<Family> getFamilies(String name) {
+  public ArrayList<Family> getFamiliesByFamilyName(String name) {
     ArrayList<Family> families = new ArrayList<>();
     
-    families.addAll(getFamiliesForScheme(name, IndexScheme.GB_AND_I));
-    families.addAll(getFamiliesForScheme(name, IndexScheme.FLORA_EUROPAEA));
-    families.addAll(getFamiliesForScheme(name, IndexScheme.BENTHAM_HOOKER));
+    families.addAll(getFamiliesByScheme(name, IndexScheme.GB_AND_I));
+    families.addAll(getFamiliesByScheme(name, IndexScheme.FLORA_EUROPAEA));
+    families.addAll(getFamiliesByScheme(name, IndexScheme.BENTHAM_HOOKER));
 
     return families;
   }
 
-  private ArrayList<Family> getFamiliesForScheme(String name, 
+  private ArrayList<Family> getFamiliesByScheme(String name, 
                                                  IndexScheme scheme) {
     ArrayList<Family> families = new ArrayList<>();
     
@@ -143,18 +143,18 @@ public class DatabaseHandler {
     return families;
   }
 
-  public ArrayList<Genus> getGenera(String name) {
+  public ArrayList<Genus> getGeneraByGenusName(String name) {
     ArrayList<Genus> genera = new ArrayList<>();
     
-    genera.addAll(getGeneraForScheme(name, IndexScheme.GB_AND_I));
-    genera.addAll(getGeneraForScheme(name, IndexScheme.FLORA_EUROPAEA));
-    genera.addAll(getGeneraForScheme(name, IndexScheme.BENTHAM_HOOKER));
+    genera.addAll(getGeneraByScheme(name, IndexScheme.GB_AND_I));
+    genera.addAll(getGeneraByScheme(name, IndexScheme.FLORA_EUROPAEA));
+    genera.addAll(getGeneraByScheme(name, IndexScheme.BENTHAM_HOOKER));
 
     return genera;
   }
 
-  private ArrayList<Genus> getGeneraForScheme(String name,
-                                              IndexScheme scheme) {
+  private ArrayList<Genus> getGeneraByScheme(String name,
+                                             IndexScheme scheme) {
     ArrayList<Genus> genera = new ArrayList<>();
 
     String tableName;
@@ -186,8 +186,54 @@ public class DatabaseHandler {
       System.err.println("Could not execute getGenera query.");
       e.printStackTrace();
     }
-    
+
     return genera;
+  }
+
+  public ArrayList<Location> getLocationsByGenusName(String genusName) {
+    return getLocationsByName(genusName.split(" ")[0]);
+  }
+
+  public ArrayList<Location> getLocationsByGenus(Genus genus) {
+    return getLocationsByName(genus.getGenusName().split(" ")[0]);
+  }
+
+  public ArrayList<Location> getLocationsBySynonymName(String speciesName) {
+    return getLocationsByName(speciesName.split(" ")[0]);
+  }
+
+  public ArrayList<Location> getLocationsBySynonym(Synonym synonym) {
+    return getLocationsByName(synonym.getName().split(" ")[0]);
+  }
+
+  private ArrayList<Location> getLocationsByName(String name) {
+    ArrayList<Location> locations = new ArrayList<>();
+
+    String regex = name.split(" ")[0] + "%";
+    String query = "SELECT "
+      + " (locations.code, locations.code_definition)"
+      + " FROM synonyms_locations, locations"
+      + " WHERE synonyms_locations.species_name LIKE ?"
+      + " AND synonyms_locations.location_code = locations.code";
+
+    try (PreparedStatement ps = connection.prepareStatement(query)) {
+      ps.setString(1, regex);
+
+      ResultSet resultSet = ps.executeQuery();
+
+      // Creates a Family object for each row in the ResultSet.
+      while (resultSet.next()) {
+        Location location = new Location(resultSet.getString(1),
+                                         resultSet.getString(2));
+        locations.add(location);
+      }
+
+    } catch (SQLException e) {
+      System.err.println("Could not execute getFamilies query.");
+      e.printStackTrace();
+    }
+
+    return locations;
   }
 
   private IndexScheme stringToIndexScheme(String scheme) {
