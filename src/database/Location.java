@@ -16,4 +16,9 @@ public class Location {
   public String getDefinition() {
     return definition;
   }
+
+  public boolean equals(Location other) {
+    return this.getCode().equalsIgnoreCase(other.getCode())
+            && this.getDefinition().equalsIgnoreCase(other.getDefinition());
+  }
 }

@@ -109,4 +109,17 @@ public class Synonym {
             && (this.isBasionym() == other.isBasionym())
             && (this.getNote().equalsIgnoreCase(other.getNote()));
   }
+
+  /**
+   * Checks the validity of a {@link Synonym} for insertion as a record.
+   * In particular, this checks if all non-null fields as defined in
+   * `herbarium_index` are present.
+   *
+   * @return true if non-null fields are all defined
+   */
+  public boolean isValid() {
+    return this.name != null
+            && this.familyName != null
+            && this.familyNumber != null;
+  }
 }

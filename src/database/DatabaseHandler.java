@@ -35,10 +35,12 @@ public final class DatabaseHandler {
    * `herbarium_index`.
    * 
    * @param synonym the Synonym to be inserted.
-   * @return true if operation successful (note this does not mean that
-   * the insertion occurred in case of already existing duplicate entries).
+   * @return true if insertion successful or there already exists a
+   * duplicate entry
    */
   public boolean insertSynonym(Synonym synonym) {
+    if (synonym == null || !synonym.isValid()) return false;
+
     // Check for existing duplicates.
     boolean duplicates = true;
     String query =  "SELECT COUNT(*) FROM synonyms"
@@ -234,8 +236,11 @@ public final class DatabaseHandler {
   public ArrayList<Family> getFamiliesByFamilyName(String name) {
     ArrayList<Family> families = new ArrayList<>();
     
-    for (IndexScheme scheme : IndexScheme.values())
-      families.addAll(getFamiliesByScheme(name, scheme));
+    for (IndexScheme scheme : IndexScheme.values()) {
+      if (scheme != IndexScheme.OTHER) {
+        families.addAll(getFamiliesByScheme(name, scheme));
+      }
+    }
 
     return families;
   }
@@ -257,11 +262,8 @@ public final class DatabaseHandler {
                                                 IndexScheme scheme) {
     ArrayList<Family> families = new ArrayList<>();
     
-    String tableName;
-    if (scheme == IndexScheme.GB_AND_I) tableName = "families_gbi";
-    else if (scheme == IndexScheme.BENTHAM_HOOKER) tableName = "families_bh";
-    else if (scheme == IndexScheme.FLORA_EUROPAEA) tableName = "families_fe";
-    else return null;
+    String tableName = Family.getFamilyTableForScheme(scheme);
+    if (tableName == null) return null;
 
     String query = "SELECT "
       + " family_name, family_number"
@@ -302,8 +304,11 @@ public final class DatabaseHandler {
   public ArrayList<Genus> getGeneraByGenusName(String name) {
     ArrayList<Genus> genera = new ArrayList<>();
     
-    for (IndexScheme scheme : IndexScheme.values())
-      genera.addAll(getGeneraByScheme(name, scheme));
+    for (IndexScheme scheme : IndexScheme.values()) {
+      if (scheme != IndexScheme.OTHER) {
+        genera.addAll(getGeneraByScheme(name, scheme));
+      }
+    }
 
     return genera;
   }
@@ -325,11 +330,8 @@ public final class DatabaseHandler {
                                              IndexScheme scheme) {
     ArrayList<Genus> genera = new ArrayList<>();
 
-    String tableName;
-    if (scheme == IndexScheme.GB_AND_I) tableName = "genera_gbi";
-    else if (scheme == IndexScheme.BENTHAM_HOOKER) tableName = "genera_bh";
-    else if (scheme == IndexScheme.FLORA_EUROPAEA) tableName = "genera_fe";
-    else return null;
+    String tableName = Genus.getGenusTableForScheme(scheme);
+    if (tableName == null) return null;
 
     String query = "SELECT "
       + " genus_name, family_number, genus_number"
