@@ -54,7 +54,7 @@ public class Controller implements Initializable {
         DataCollected collection = new DataCollected();
         ObservableList<SpeciesItem> items = FXCollections.observableArrayList();
 
-        List<Species> results = collection.DataToPrint(text);
+        List<Species> results = collection.dataToPrint(text);
 
         for(Species sp: results){
             items.add(new SpeciesItem(sp));

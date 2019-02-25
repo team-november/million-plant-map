@@ -61,7 +61,7 @@ public class APIServiceImpl implements APIService {
         return null;
     }
 
-    private Species getAcceptedSpecies(String name) {
+    private Species getAcceptedSpecies(String name) throws MalformedQueryException {
         String query = queryBuilder.searchForAcceptedName(getAcceptedKey(name));
         return gson.fromJson(submitQuery(query), Species.class);
     }
@@ -74,12 +74,17 @@ public class APIServiceImpl implements APIService {
 
     @Override
     public QueryResult getAcceptedNameAndSynonyms(String name) {
-        Species acceptedName = getAcceptedSpecies(name);
-        Species[] synonyms = getSynonyms(acceptedName.getKey());
-        return new QueryResult(acceptedName, synonyms);
+        Species acceptedName = null;
+        try {
+            acceptedName = getAcceptedSpecies(name);
+            Species[] synonyms = getSynonyms(acceptedName.getKey());
+            return new QueryResult(acceptedName, synonyms);
+        } catch (MalformedQueryException e) {
+            return new QueryResult();
+        }
     }
 
-    private String getAcceptedKey(String name) {
+    private String getAcceptedKey(String name) throws MalformedQueryException {
         String query = queryBuilder.searchForSpecies(name);
         String json = submitQuery(query);
         return deserializeMatchReturnObject(json).getAcceptedUsageKey();

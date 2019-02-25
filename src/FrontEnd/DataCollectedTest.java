@@ -2,7 +2,6 @@ package FrontEnd;
 
 import api.Species;
 
-import java.io.IOException;
 import java.util.List;
 
 public class DataCollectedTest {
@@ -33,10 +32,7 @@ public class DataCollectedTest {
         if(!synonims.get(5).getScientificName().equals("Trudelia cristata (Wall. ex Lindl.) Senghas ex Roeth")){
             return false;
         }
-        if(!synonims.get(6).getScientificName().equals("Vanda striata Rchb.f.")){
-            return false;
-        }
-        return true;
+        return synonims.get(6).getScientificName().equals("Vanda striata Rchb.f.");
     }
     private static boolean testAccepted(List<Species> synonims){
         boolean oneAccepted = false;
@@ -47,21 +43,18 @@ public class DataCollectedTest {
                 return false;
             }
         }
-        if(false){
-            return false;
-        }
         return true;
     }
 
 
     // Try to call function for vanda cristata and compare with expected output
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         DataCollected dc = new DataCollected();
-        List<Species> synonims = dc.DataToPrint("vanda cristata");
+        List<Species> synonims = dc.dataToPrint("vanda cristata");
         if(!testFamily(synonims) || !testSpecies(synonims) || !testAccepted(synonims)){
             System.out.println("The function is returning an error for the input vanda cristata");
         }else{
-            System.out.println("The function DataToPrint in DataCollected works as expected");
+            System.out.println("The function dataToPrint in DataCollected works as expected");
         }
     }
 }

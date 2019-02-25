@@ -6,18 +6,14 @@ public class QueryResult implements Iterable<Species> {
     private Species acceptedName;
     private Species[] synonyms;
 
+    public QueryResult() {
+        synonyms = new Species[0];
+    }
+
     public QueryResult(Species acceptedName, Species[] synonyms) {
         this.acceptedName = acceptedName;
         this.synonyms = synonyms;
         setBasionymFields();
-    }
-
-    public Species getAcceptedName() {
-        return acceptedName;
-    }
-
-    public Species[] getSynonyms() {
-        return synonyms;
     }
 
     private void setBasionymFields() {
@@ -47,7 +43,7 @@ public class QueryResult implements Iterable<Species> {
 
             @Override
             public boolean hasNext() {
-                return index < synonyms.length + 1;
+                return index < synonyms.length + ((acceptedName == null) ? 0 : 1);
             }
 
             @Override
