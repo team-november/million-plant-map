@@ -8,8 +8,10 @@ import org.junit.Test;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Random;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -27,7 +29,7 @@ public class DatabaseHandlerTest {
   @AfterClass
   /**
    * Closes the connection with the `herbarium_index` database.
-   * Deletes all potential records containing test data.
+   * Deletes all leftover records containing test data.
    */
   public static void tearDownTestClass() {
     // This handles the same connection as the DatabaseHandler but
@@ -57,7 +59,7 @@ public class DatabaseHandlerTest {
   }
 
   @Test
-  public void insertSynonym() {
+  public void insertSynonym_correctInsertedValue() {
     databaseHandler.insertSynonym(testSynonym);
 
     // Check if insertion is correct.
@@ -65,9 +67,22 @@ public class DatabaseHandlerTest {
             databaseHandler.getFirstSynonymByName(testSynonym.getName());
 
     assertTrue(testSynonym.equals(insertedSynonym));
+  }
 
-    // Tear down the added synonym.
-    databaseHandler.deleteSynonym(testSynonym);
+  @Test
+  public void insertSynonym_insertDuplicateEntry_onlyOneInserted() {
+    databaseHandler.insertSynonym(testSynonym);
+    databaseHandler.insertSynonym(testSynonym);
+
+    ArrayList<Synonym> insertedSynonyms =
+            databaseHandler.getAllSynonymsByName(testSynonym.getName());
+
+    assertEquals(1, insertedSynonyms.size());
+  }
+
+  @Test
+  public void insertSynonym_insertNullEntry_insertionDoesNotSucceed() {
+    // TODO implementation.
   }
 
   @Test
@@ -81,33 +96,78 @@ public class DatabaseHandlerTest {
     assertNull(databaseHandler.getFirstSynonymByName(testSynonym.getName()));
   }
 
-//  @Test
-//  public void getLocationByCode() {
-//  }
-//
-//  @Test
-//  public void getFamiliesByFamilyName() {
-//  }
-//
-//  @Test
-//  public void getGeneraByGenusName() {
-//  }
-//
-//  @Test
-//  public void getLocationsByGenusName() {
-//  }
-//
-//  @Test
-//  public void getLocationsByGenus() {
-//  }
-//
-//  @Test
-//  public void getLocationsBySynonymName() {
-//  }
-//
-//  @Test
-//  public void getLocationsBySynonym() {
-//  }
+  @Test
+  public void deleteSynonym_getAllSynonyms_returnsEmpty() {
+    databaseHandler.insertSynonym(testSynonym);
+
+    // Tear down the added synonym.
+    databaseHandler.deleteSynonym(testSynonym);
+
+    // Check if the synonym was deleted.
+    assertEquals(0, databaseHandler.getAllSynonymsByName(
+            testSynonym.getName()).size());
+  }
+
+  @Test
+  public void getLocationByCode_codeExists_correctLocationReturned() {
+    // TODO implementation.
+  }
+
+  @Test
+  public void getLocationByCode_codeDoesNotExist_noLocationReturned() {
+    // TODO implementation.
+  }
+
+  @Test
+  public void getFamiliesByFamilyName_familyNameExists_correctRecordReturned() {
+    // TODO implementation.
+  }
+
+  @Test
+  public void getFamiliesByFamilyName_familyNameDoesNotExist_noFamiliesReturned() {
+    // TODO implementation.
+  }
+
+  @Test
+  public void getGeneraByGenusName_genusNameExists_correctRecordsReturned() {
+    // TODO implementation.
+  }
+
+  @Test
+  public void getGeneraByGenusName_genusNameDoesNotExist_noRecordsReturned() {
+    // TODO implementation.
+  }
+
+
+  @Test
+  public void getLocationsByGenusName_genusNameAndLocationExist_correctLocationsReturned() {
+    // TODO implementation.
+  }
+
+  @Test
+  public void getLocationsByGenusName_locationDoesNotExist_noRecordsReturned() {
+    // TODO implementation.
+  }
+
+  @Test
+  public void getLocationsByGenusName_genusDoesNotExist_noRecordsReturned() {
+    // TODO implementation.
+  }
+
+  @Test
+  public void getLocationsBySynonymName_synonymNameAndLocationExist_correctLocationsReturned() {
+    // TODO implementation.
+  }
+
+  @Test
+  public void getLocationsBySynonymName_synonymNameDoesNotExist_noRecordsReturned() {
+    // TODO implementation.
+  }
+
+  @Test
+  public void getLocationsBySynonymName_LocationDoesNotExist_noRecordsReturned() {
+    // TODO implementation.
+  }
 
   private Synonym generateTestSynonym() {
     // Use a set of random test values.

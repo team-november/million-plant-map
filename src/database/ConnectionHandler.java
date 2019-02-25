@@ -22,7 +22,8 @@ public final class ConnectionHandler {
    * 
    * Registers a new MySQL JDBC driver and logs into the database
    * using the credentials provided in the config.properties file.
-   * The properties should be stored in the project root directory.
+   * The properties should be stored in the project resource root
+   * directory.
    */
   private ConnectionHandler() {
     // Loads the connection authentication properties.
@@ -56,10 +57,11 @@ public final class ConnectionHandler {
     try { 
       connection =
         DriverManager.getConnection(url,
-                                  connectionProperties.getProperty("user"), 
-                                  connectionProperties.getProperty("password"));
+                connectionProperties.getProperty("user"),
+                connectionProperties.getProperty("password"));
     } catch (SQLException e) {
-      System.err.println("Could not establish connection with MySQL database.");
+      System.err.println(
+              "Could not establish a connection with the MySQL database.");
       e.printStackTrace();
     }
   }

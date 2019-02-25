@@ -37,6 +37,7 @@ public final class DatabaseHandler {
    * @param synonym the Synonym to be inserted.
    */
   public void insertSynonym(Synonym synonym) {
+    // TODO support insertion of unique records only.
     String query = "INSERT INTO synonyms"
       + " (species_name, family_name, index_scheme, family_number, "
       + " genus_number, is_accepted, is_basionym, note)" 
@@ -150,6 +151,8 @@ public final class DatabaseHandler {
     ArrayList<Synonym> synonyms = getAllSynonymsByName(name);
     return (synonyms.size() > 0) ? synonyms.get(0) : null;
   }
+
+  // TODO location insertion support.
 
   /**
    * Retrieves the first location record matching the given geocode.
