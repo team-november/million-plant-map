@@ -167,52 +167,7 @@ public class DatabaseHandlerTest {
   }
 
   @Test
-  public void getLocationByCode_codeExists_correctLocationReturned() {
-    // Insert test code/definition) pair.
-    Location expectedLocation = generateTestLocation();
-
-    String query = "INSERT INTO locations"
-            + " (code, code_definition) "
-            + " VALUES (?, ?)";
-
-    try (PreparedStatement ps = connection.prepareStatement(query)) {
-      ps.setString(1, expectedLocation.getCode());
-      ps.setString(2, expectedLocation.getDefinition());
-      ps.executeUpdate();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-
-    // Execute DatabaseHandler query.
-    Location actualLocation =
-            databaseHandler.getLocationByCode(expectedLocation.getCode());
-    assertTrue(expectedLocation.equals(actualLocation));
-  }
-
-  @Test
-  public void getLocationByCode_codeDoesNotExist_noLocationReturned() {
-    // Delete test code/definition) pair to make sure it does not exist.
-    Location expectedLocation = generateTestLocation();
-
-    String query = "DELETE FROM locations"
-            + " WHERE code = ?";
-
-    try (PreparedStatement ps = connection.prepareStatement(query)) {
-      ps.setString(1, expectedLocation.getCode());
-      ps.executeUpdate();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-
-    // Execute DatabaseHandler query.
-    Location actualLocation =
-            databaseHandler.getLocationByCode(expectedLocation.getCode());
-    assertNull(actualLocation);
-  }
-
-  @Test
   public void getFamiliesByFamilyName_familyNameExists_correctRecordsReturned() {
-    // TODO implementation.
     Family expectedFamily = generateTestFamily();
 
     clearFamilyTables();
@@ -255,31 +210,6 @@ public class DatabaseHandlerTest {
 
   @Test
   public void getLocationsByGenusName_genusNameAndLocationExist_correctLocationsReturned() {
-    // TODO implementation.
-  }
-
-  @Test
-  public void getLocationsByGenusName_locationDoesNotExist_noRecordsReturned() {
-    // TODO implementation.
-  }
-
-  @Test
-  public void getLocationsByGenusName_genusDoesNotExist_noRecordsReturned() {
-    // TODO implementation.
-  }
-
-  @Test
-  public void getLocationsBySynonymName_synonymNameAndLocationExist_correctLocationsReturned() {
-    // TODO implementation.
-  }
-
-  @Test
-  public void getLocationsBySynonymName_synonymNameDoesNotExist_noRecordsReturned() {
-    // TODO implementation.
-  }
-
-  @Test
-  public void getLocationsBySynonymName_LocationDoesNotExist_noRecordsReturned() {
     // TODO implementation.
   }
 
@@ -336,13 +266,6 @@ public class DatabaseHandlerTest {
             testGenusName,
             testFamilyNumber,
             testGenusNumber);
-  }
-
-  private Location generateTestLocation() {
-    String testCode = "testGeographicCode_" + random.nextInt(65536);
-    String testDefinition = "testCodeDefinition_" + random.nextInt(65536);
-
-    return new Location(testCode, testDefinition);
   }
 
   private static void clearFamilyTables() {
