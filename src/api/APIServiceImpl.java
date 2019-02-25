@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 
 import static java.net.HttpURLConnection.HTTP_OK;
 
@@ -41,8 +40,19 @@ public class APIServiceImpl {
         }
     }
 
-    public ArrayList<String> autocomplete(String name) {
-        ArrayList<String> scientificNames = new ArrayList<>();
+    public String[] autocomplete(String name) {
+        String query = queryBuilder.autocomplete(name);
+        String json = submitQuery(query);
+        if (json.equals("[]")) {
+            return new String[0];
+        }
+        Species[] species = gson.fromJson(json, Species[].class);
+        String[] scientificNames = new String[species.length];
+
+        for (int i = 0; i < species.length; i++) {
+            scientificNames[i] = species[i].getScientificName();
+        }
+
         return scientificNames;
     }
 

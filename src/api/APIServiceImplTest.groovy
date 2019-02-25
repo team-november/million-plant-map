@@ -335,4 +335,28 @@ class APIServiceImplTest extends Specification {
         name << ["Trudelia cristata"]
     }
 
+    def "can use autocomplete to finish search queries"() {
+        given: "An API Service"
+        APIServiceImpl service = APIServiceImpl.getInstance()
+
+        when: "We try to autocomplete for a particular search"
+        String[] result = service.autocomplete(name)
+
+        then: "The autocomplete returns the appropriate results"
+        for (String s : result) {
+            match.contains(s)
+        }
+        for (String s : match) {
+            result.contains(s)
+        }
+
+        where:
+        name << ["Trudelia", "Vanda Cristata", "asoflaksfloais"]
+        match << [
+                ["Trudelia Garay", "Trudelia jainii (A.S.Chauhan) S.Misra", "Trudelia chlorosantha Garay", "Trudelia griffithii (Lindl.) Garay", "Trudelia alpina (Lindl.) Garay", "Trudelia cristata (Wall. ex Lindl.) Senghas ex Roeth", "Trudelia cristata (Lindl.) Senghas", "Trudelia pumila (Hook.f.) Senghas", "Trudelianda Garay"],
+                ["Vanda cristata Lindl."],
+                []
+        ]
+    }
+
 }
