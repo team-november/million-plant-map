@@ -1,7 +1,8 @@
 package database;
 
-import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.Random;
@@ -11,24 +12,26 @@ import static org.junit.Assert.assertTrue;
 
 public class DatabaseHandlerTest {
   private Random random = new Random();
-  private DatabaseHandler databaseHandler;
+  private static DatabaseHandler databaseHandler;
   private Synonym testSynonym;
 
-  @Before
-  /**
-   * Sets up the connection with the `herbarium_index` database and creates
-   * pseudo-random test values for testing records.
-   */
-  public void setUp() {
-    databaseHandler = new DatabaseHandler();
-
-    // Use a set of random test values.
-    testSynonym = generateTestSynonym();
+  @BeforeClass
+  /** Sets up the connection with the `herbarium_index` database. */
+  public static void setUpClass() {
+    databaseHandler = DatabaseHandler.getInstance();
   }
 
-  @After
-  public void tearDown() {
-    databaseHandler.close();
+  @AfterClass
+  /** Closes the connection with the `herbarium_index` database. */
+  public static void tearDownClass() {
+     databaseHandler.close();
+  }
+
+  @Before
+  /** Creates pseudo-random test values for testing records. */
+  public void setUp() {
+    // Use a set of random test values.
+    testSynonym = generateTestSynonym();
   }
 
   @Test

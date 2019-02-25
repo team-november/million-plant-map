@@ -11,10 +11,22 @@ import java.util.ArrayList;
  * 
  * Includes queries to insert and retrieve {@link Synonym} records as well as
  * retrieving the family/genus numbers and location information.
+ * 
+ * Implements the Singleton pattern, meaning that only one instance can exist
+ * in the application.
  */
-public class DatabaseHandler {
-  private Connection  connection = ConnectionHandler.getConnectionHandler()
-                                                    .getConnection();
+public final class DatabaseHandler {
+  private static final DatabaseHandler INSTANCE = new DatabaseHandler();
+  private static Connection connection = 
+    ConnectionHandler.getConnectionHandler().getConnection();
+
+  /** Private constructor for Singleton pattern implementation */
+  private DatabaseHandler() {}
+
+  /** Public access method to the Singleton DatabaseHandler instance. */
+  public static DatabaseHandler getInstance() {
+    return INSTANCE;
+  }
 
   /**
    * Inserts the prepared Synonym as a record in the herbarium database.
@@ -39,6 +51,10 @@ public class DatabaseHandler {
     }
   }
 
+  /**
+   * Deletes the records matching given Synonym from `herbarium_index`.
+   * @param synonym the Synonym to be deleted.
+   */
   public void deleteSynonym(Synonym synonym) {
     String query = "DELETE FROM synonyms"
             + " WHERE species_name = ? "
@@ -59,7 +75,13 @@ public class DatabaseHandler {
     }
   }
 
-  /** Prepares the parameters for the Synonym queries. */
+  /** 
+   * Prepares the parameters for the `synonym` table queries in
+   * `herbarium_index`.
+   * 
+   * @param ps the statement to be prepared with {@link Synonym} data
+   * @param synonym the {@link Synonym} data
+   */
   private void prepareSynonymStatement(PreparedStatement ps, Synonym synonym)
           throws SQLException {
     ps.setString(1, synonym.getName().trim());
