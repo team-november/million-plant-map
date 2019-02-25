@@ -2,7 +2,10 @@ package FrontEnd;
 
 import api.Species;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,7 +20,7 @@ public class CSVConverter {
 
         try (PrintWriter writer = new PrintWriter(new FileWriter(path, true))) {
             DataCollected dataCollected = new DataCollected();
-            List<Species> toPrint = dataCollected.DataToPrint(plantName);
+            List<Species> toPrint = dataCollected.dataToPrint(plantName);
 
             writer.printf(columnNumber(8),
                     "Scientific Name", "Species", "Genus", "Family", "BHcode", "FEcode", "Accepted?", "Basionym?");
