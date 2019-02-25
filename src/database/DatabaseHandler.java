@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Provides the methods for interacting with the `herbarium_index` database.
  * 
  * Includes queries to insert and retrieve {@link Synonym} records as well as
- * retrieving the family/genus numbers and location information.
+ * retrieving the family/genus numbers information.
  * 
  * Implements the Singleton pattern, meaning that only one instance can exist
  * in the application.

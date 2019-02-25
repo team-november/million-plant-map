@@ -47,18 +47,7 @@ public class DatabaseHandlerTest {
       System.err.println("Could not execute the cleanup query.");
       e.printStackTrace();
     }
-
-    // Delete code/definition pairs from locations.
-    query = "DELETE FROM locations"
-            + " WHERE code REGEXP ? ";
-
-    try (PreparedStatement ps = connection.prepareStatement(query)) {
-      ps.setString(1, "^testGeographicCode_[0-9]+$");
-      ps.executeUpdate();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-
+    
     clearFamilyTables();
 
     databaseHandler.close(); // simultaneously closes the connection.
@@ -204,12 +193,6 @@ public class DatabaseHandlerTest {
 
   @Test
   public void getGeneraByGenusName_genusNameDoesNotExist_noRecordsReturned() {
-    // TODO implementation.
-  }
-
-
-  @Test
-  public void getLocationsByGenusName_genusNameAndLocationExist_correctLocationsReturned() {
     // TODO implementation.
   }
 
