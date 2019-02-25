@@ -184,7 +184,8 @@ public final class DatabaseHandler {
   }
 
   /**
-   * Returns the family numbers for given family name.
+   * Returns the family numbers for given family name, and an empty list
+   * when there are no matching records.
    * 
    * This queries the `families_*` tables in `herbarium_index`
    * for every indexing scheme and returns the correspoding family
