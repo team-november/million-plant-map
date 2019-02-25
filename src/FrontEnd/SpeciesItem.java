@@ -2,8 +2,6 @@ package FrontEnd;
 
 import api.Species;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.ReadOnlyBooleanWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.StringProperty;
 
@@ -35,12 +33,8 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
         return new ReadOnlyStringWrapper(species.getFamily());
     }
 
-    public StringProperty getBHCode(){
-        return new ReadOnlyStringWrapper(species.getBHcode());
-    }
-
-    public StringProperty getFECode(){
-        return new ReadOnlyStringWrapper(species.getFEcode());
+    public StringProperty getCodes() {
+        return new ReadOnlyStringWrapper(species.getCodes());
     }
 
     public StringProperty getAuthor(){
