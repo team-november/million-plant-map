@@ -35,21 +35,50 @@ public final class DatabaseHandler {
    * `herbarium_index`.
    * 
    * @param synonym the Synonym to be inserted.
+   * @return true if operation successful (note this does not mean that
+   * the insertion occurred in case of already existing duplicate entries).
    */
-  public void insertSynonym(Synonym synonym) {
-    // TODO support insertion of unique records only.
-    String query = "INSERT INTO synonyms"
-      + " (species_name, family_name, index_scheme, family_number, "
-      + " genus_number, is_accepted, is_basionym, note)" 
-      + " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    
-    try (PreparedStatement ps = connection.prepareStatement(query)) {
+  public boolean insertSynonym(Synonym synonym) {
+    // Check for existing duplicates.
+    boolean duplicates = true;
+    String query =  "SELECT COUNT(*) FROM synonyms"
+            + " WHERE species_name = ? "
+            + " AND family_name = ?"
+            + " AND index_scheme = ?"
+            + " AND family_number = ?"
+            + " AND genus_number = ?"
+            + " AND is_accepted = ?"
+            + " AND is_basionym = ?"
+            + " AND note = ?";
+
+    try(PreparedStatement ps = connection.prepareStatement(query)) {
       prepareSynonymStatement(ps, synonym);
-      ps.executeUpdate();
+      ResultSet resultSet = ps.executeQuery();
+      if (resultSet.next())
+        duplicates = (resultSet.getInt(1) >= 1);
     } catch (SQLException e) {
       System.err.println("Could not execute insertSynonym query.");
       e.printStackTrace();
+      return false;
     }
+
+    if (!duplicates) {
+      query = "INSERT INTO synonyms"
+              + " (species_name, family_name, index_scheme, family_number, "
+              + " genus_number, is_accepted, is_basionym, note)"
+              + " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+      try (PreparedStatement ps = connection.prepareStatement(query)) {
+        prepareSynonymStatement(ps, synonym);
+        ps.executeUpdate();
+      } catch (SQLException e) {
+        System.err.println("Could not execute insertSynonym query.");
+        e.printStackTrace();
+        return false;
+      }
+    }
+
+    return true;
   }
 
   /**
