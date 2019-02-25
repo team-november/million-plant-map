@@ -5,6 +5,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Random;
 
 import static org.junit.Assert.assertNull;
@@ -17,14 +20,33 @@ public class DatabaseHandlerTest {
 
   @BeforeClass
   /** Sets up the connection with the `herbarium_index` database. */
-  public static void setUpClass() {
+  public static void setUpTestClass() {
     databaseHandler = DatabaseHandler.getInstance();
   }
 
   @AfterClass
-  /** Closes the connection with the `herbarium_index` database. */
-  public static void tearDownClass() {
-     databaseHandler.close();
+  /**
+   * Closes the connection with the `herbarium_index` database.
+   * Deletes all potential records containing test data.
+   */
+  public static void tearDownTestClass() {
+    // This handles the same connection as the DatabaseHandler but
+    // allows custom queries for test purposes.
+    Connection connection =
+            ConnectionHandler.getConnectionHandler().getConnection();
+
+    String deleteQuery = "DELETE FROM synonyms"
+            + " WHERE species_name REGEXP ? ";
+
+    try (PreparedStatement ps = connection.prepareStatement(deleteQuery)) {
+      ps.setString(1, "^testName_[0-9]+$");
+      ps.executeUpdate();
+    } catch (SQLException e) {
+      System.err.println("Could not execute the cleanup query.");
+      e.printStackTrace();
+    }
+
+    databaseHandler.close(); // simultaneously closes the connection.
   }
 
   @Before
