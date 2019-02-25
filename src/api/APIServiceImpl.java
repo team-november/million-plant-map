@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 import static java.net.HttpURLConnection.HTTP_OK;
 
@@ -15,7 +16,7 @@ import static java.net.HttpURLConnection.HTTP_OK;
  * Implemented as a singleton so that API calls are
  * made from a single source
  */
-public class APIServiceImpl implements APIService {
+public class APIServiceImpl {
 
     private static APIServiceImpl instance = new APIServiceImpl();
     private QueryBuilder queryBuilder = new QueryBuilder();
@@ -29,6 +30,29 @@ public class APIServiceImpl implements APIService {
         return instance;
     }
 
+    public QueryResult getAcceptedNameAndSynonyms(String name) {
+        Species acceptedName = null;
+        try {
+            acceptedName = getAcceptedSpecies(name);
+            Species[] synonyms = getSynonyms(acceptedName.getKey());
+            return new QueryResult(acceptedName, synonyms);
+        } catch (MalformedQueryException e) {
+            return new QueryResult();
+        }
+    }
+
+    public ArrayList<String> autocomplete(String name) {
+        ArrayList<String> scientificNames = new ArrayList<>();
+        return scientificNames;
+    }
+
+    private GBIFSynonymSearchReturnObject deserializeSynonymReturnObject(String json) {
+        return gson.fromJson(json, GBIFSynonymSearchReturnObject.class);
+    }
+
+    private GBIFMatchReturnObject deserializeMatchReturnObject(String json) {
+        return gson.fromJson(json, GBIFMatchReturnObject.class);
+    }
 
     private String submitQuery(String query) {
         HttpURLConnection connection = openConnection(query);
@@ -72,29 +96,10 @@ public class APIServiceImpl implements APIService {
         return deserializeSynonymReturnObject(json).getResults();
     }
 
-    @Override
-    public QueryResult getAcceptedNameAndSynonyms(String name) {
-        Species acceptedName = null;
-        try {
-            acceptedName = getAcceptedSpecies(name);
-            Species[] synonyms = getSynonyms(acceptedName.getKey());
-            return new QueryResult(acceptedName, synonyms);
-        } catch (MalformedQueryException e) {
-            return new QueryResult();
-        }
-    }
-
     private String getAcceptedKey(String name) throws MalformedQueryException {
         String query = queryBuilder.searchForSpecies(name);
         String json = submitQuery(query);
         return deserializeMatchReturnObject(json).getAcceptedUsageKey();
     }
 
-    public GBIFSynonymSearchReturnObject deserializeSynonymReturnObject(String json) {
-        return gson.fromJson(json, GBIFSynonymSearchReturnObject.class);
-    }
-
-    public GBIFMatchReturnObject deserializeMatchReturnObject(String json) {
-        return gson.fromJson(json, GBIFMatchReturnObject.class);
-    }
 }

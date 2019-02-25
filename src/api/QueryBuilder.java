@@ -18,6 +18,10 @@ public class QueryBuilder {
         return String.format("%s/species/%s", GBIF_API_URL, encode(acceptedKey));
     }
 
+    public String autocomplete(String name) {
+        return String.format("%s/species/suggest?q=%s", GBIF_API_URL, encode(name));
+    }
+
     public String getAPIUrl() {
         return GBIF_API_URL;
     }

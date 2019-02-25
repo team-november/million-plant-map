@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="07147442-f47f-402b-9b51-39acf3ff4e12" name="Default Changelist" comment="implemented basionym finding">
-      <change afterPath="$PROJECT_DIR$/src/api/MalformedQueryException.java" afterDir="false" />
+    <list default="true" id="07147442-f47f-402b-9b51-39acf3ff4e12" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/million-plant-map/FrontEnd/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/million-plant-map/FrontEnd/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/million-plant-map/FrontEnd/MainPage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/million-plant-map/FrontEnd/MainPage.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/million-plant-map/FrontEnd/sample.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FrontEnd/DataCollected.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontEnd/DataCollected.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/million-plant-map/api/APIServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/million-plant-map/api/APIServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/million-plant-map/api/GBIFMatchReturnObject$Alternative.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/million-plant-map/api/GBIFMatchReturnObject$Alternative.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/million-plant-map/api/GBIFMatchReturnObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/million-plant-map/api/GBIFMatchReturnObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/million-plant-map/api/QueryResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/million-plant-map/api/QueryResult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/APIService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/APIServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/APIServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/GBIFMatchReturnObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/GBIFMatchReturnObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/QueryResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/QueryResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/QueryBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/QueryBuilder.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,72 +22,90 @@
     <session id="1304401480">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.20" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="csv" value="1" />
           <entry key="fxml" value="1" />
-          <entry key="java" value="6" />
+          <entry key="groovy" value="1" />
+          <entry key="java" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="6" />
+          <entry key="Groovy" value="1" />
+          <entry key="JAVA" value="9" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="612" />
+          <entry key="java" value="1144" />
+          <entry key="txt" value="60" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="612" />
+          <entry key="JAVA" value="1144" />
+          <entry key="PLAIN_TEXT" value="60" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/api/APIServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1440">
-              <caret line="82" column="35" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
+            <state relative-caret-position="180">
+              <caret line="20" column="35" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="method#APIServiceImpl#0;class#APIServiceImpl#0" />
+                <element signature="method#getAcceptedNameAndSynonyms#0;class#APIServiceImpl#0" />
+                <element signature="method#deserializeSynonymReturnObject#0;class#APIServiceImpl#0" />
+                <element signature="method#submitQuery#0;class#APIServiceImpl#0" />
+                <element signature="method#openConnection#0;class#APIServiceImpl#0" />
+                <element signature="method#getAcceptedSpecies#0;class#APIServiceImpl#0" />
+                <element signature="method#getSynonyms#0;class#APIServiceImpl#0" />
+                <element signature="method#getAcceptedKey#0;class#APIServiceImpl#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/FrontEnd/DataCollected.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/api/APIServiceImplTest.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="482">
-              <caret line="30" column="23" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="162">
+              <caret line="129" column="65" lean-forward="true" selection-start-line="129" selection-start-column="65" selection-end-line="129" selection-end-column="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/api/QueryBuilder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="21" column="80" selection-start-line="21" selection-start-column="80" selection-end-line="21" selection-end-column="80" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FrontEnd/main_scene.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-247">
+            <state relative-caret-position="180">
               <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -113,8 +129,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FrontEnd/DataCollectedTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
+            <state relative-caret-position="108">
+              <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -123,20 +139,7 @@
         <entry file="file://$PROJECT_DIR$/src/api/GBIFMatchReturnObject.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="216">
-              <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-              <folding>
-                <element signature="e#503#504#0" expanded="true" />
-                <element signature="e#533#534#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/indexesAndCodes/CSVReader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="84" selection-start-line="84" selection-end-line="84" />
+              <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -144,14 +147,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/api/QueryResult.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
+            <state relative-caret-position="288">
               <caret line="18" selection-start-line="18" selection-end-line="18" />
-              <folding>
-                <element signature="e#189#190#0" expanded="true" />
-                <element signature="e#230#231#0" expanded="true" />
-                <element signature="e#1249#1250#0" expanded="true" />
-                <element signature="e#1346#1347#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -159,7 +156,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FrontEnd/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
+            <state relative-caret-position="558">
               <caret line="58" selection-start-line="58" selection-end-line="58" />
             </state>
           </provider>
@@ -226,7 +223,6 @@
         <option value="$PROJECT_DIR$/src/api/GBIFNameSearchReturnObject.java" />
         <option value="$PROJECT_DIR$/src/api/GBIFSynonymSearchReturnObject.java" />
         <option value="$PROJECT_DIR$/src/api/APIMatchReturnObject.java" />
-        <option value="$PROJECT_DIR$/src/api/QueryBuilder.java" />
         <option value="$PROJECT_DIR$/src/api/QueryBuilderTest.groovy" />
         <option value="$PROJECT_DIR$/src/api/README.md" />
         <option value="$PROJECT_DIR$/src/FrontEnd/MainPage.java" />
@@ -245,14 +241,15 @@
         <option value="$PROJECT_DIR$/src/FrontEnd/Controller.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/api/MalformedQueryException.java" />
-        <option value="$PROJECT_DIR$/src/api/APIServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/api/GBIFMatchReturnObject.java" />
         <option value="$PROJECT_DIR$/src/api/QueryResult.java" />
         <option value="$PROJECT_DIR$/src/FrontEnd/DataCollected.java" />
+        <option value="$PROJECT_DIR$/src/api/QueryBuilder.java" />
+        <option value="$PROJECT_DIR$/src/api/APIServiceImpl.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="960" />
     <option name="y" value="26" />
     <option name="width" value="960" />
@@ -264,6 +261,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -302,7 +300,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -347,7 +344,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.APIServiceImplTest">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -488,8 +485,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.APIServiceImplTest" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.APIServiceImplTest.update the basionym field properly" />
         <item itemvalue="JUnit.APIServiceImplTest.can get a list of all synonyms" />
         <item itemvalue="JUnit.QueryBuilderTest.can generate query to search for species" />
@@ -516,7 +513,8 @@
       <workItem from="1550744094691" duration="4406000" />
       <workItem from="1550775335651" duration="1938000" />
       <workItem from="1551025656657" duration="254000" />
-      <workItem from="1551086212425" duration="996000" />
+      <workItem from="1551086212425" duration="1480000" />
+      <workItem from="1551111938606" duration="519000" />
     </task>
     <task id="LOCAL-00001" summary="Starting working on API calls">
       <created>1549537648750</created>
@@ -560,7 +558,14 @@
       <option name="project" value="LOCAL" />
       <updated>1549980035657</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fixed NullPointerException issues">
+      <created>1551087452564</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1551087452565</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -596,13 +601,12 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50948000" />
+    <option name="totallyTimeSpent" value="51951000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="25" width="1922" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="960" y="26" width="960" height="1054" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16061899" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33333334" />
       <window_info id="Structure" order="1" weight="0.24890351" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -610,8 +614,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3283582" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25241676" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3265306" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.25188375" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39942804" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -676,7 +680,8 @@
     <MESSAGE value="finished with testing api querying" />
     <MESSAGE value="finished test coverage" />
     <MESSAGE value="implemented basionym finding" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented basionym finding" />
+    <MESSAGE value="fixed NullPointerException issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed NullPointerException issues" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -692,19 +697,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/api/APIServiceImpl.java</url>
-          <line>33</line>
+          <line>57</line>
           <properties />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/api/APIServiceImpl.java</url>
-          <line>64</line>
+          <line>88</line>
           <properties />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/api/APIServiceImpl.java</url>
-          <line>68</line>
+          <line>92</line>
           <properties />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
@@ -758,13 +763,6 @@
     <entry file="file://$PROJECT_DIR$/Olea Europaea.csv" />
     <entry file="file://$PROJECT_DIR$/Bellis Perennis.csv" />
     <entry file="file://$PROJECT_DIR$/Vanda Cristata.csv" />
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/CSVConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-40">
-          <caret line="19" column="68" lean-forward="true" selection-start-line="19" selection-start-column="68" selection-end-line="19" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -779,20 +777,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="4" selection-start-column="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/QueryBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/APIService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -827,13 +811,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/APIServiceImplTest.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/indexesAndCodes/CSVReader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -841,13 +818,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/main_scene.fxml">
+    <entry file="file://$PROJECT_DIR$/trudelia cristata.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FrontEnd/DataCollected.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-247">
+        <state relative-caret-position="432">
+          <caret line="32" column="21" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FrontEnd/CSVConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FrontEnd/main_scene.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FrontEnd/SpeciesItem.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -855,9 +852,6 @@
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trudelia cristata.csv">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FrontEnd/Main.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -868,58 +862,66 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FrontEnd/DataCollectedTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
+        <state relative-caret-position="108">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/api/GBIFMatchReturnObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
-          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-          <folding>
-            <element signature="e#503#504#0" expanded="true" />
-            <element signature="e#533#534#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/APIServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1440">
-          <caret line="82" column="35" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
+          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/api/QueryResult.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
+        <state relative-caret-position="288">
           <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#189#190#0" expanded="true" />
-            <element signature="e#230#231#0" expanded="true" />
-            <element signature="e#1249#1250#0" expanded="true" />
-            <element signature="e#1346#1347#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/DataCollected.java">
+    <entry file="file://$PROJECT_DIR$/src/FrontEnd/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="30" column="23" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
+        <state relative-caret-position="558">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/APIService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/QueryBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="21" column="80" selection-start-line="21" selection-start-column="80" selection-end-line="21" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/APIServiceImplTest.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="129" column="65" lean-forward="true" selection-start-line="129" selection-start-column="65" selection-end-line="129" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/APIServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="20" column="35" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#APIServiceImpl#0;class#APIServiceImpl#0" />
+            <element signature="method#getAcceptedNameAndSynonyms#0;class#APIServiceImpl#0" />
+            <element signature="method#deserializeSynonymReturnObject#0;class#APIServiceImpl#0" />
+            <element signature="method#submitQuery#0;class#APIServiceImpl#0" />
+            <element signature="method#openConnection#0;class#APIServiceImpl#0" />
+            <element signature="method#getAcceptedSpecies#0;class#APIServiceImpl#0" />
+            <element signature="method#getSynonyms#0;class#APIServiceImpl#0" />
+            <element signature="method#getAcceptedKey#0;class#APIServiceImpl#0" />
           </folding>
         </state>
       </provider>
