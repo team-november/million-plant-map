@@ -51,10 +51,12 @@ public class Controller implements Initializable {
     void search(String text){
         searchBar.setText(text);
 
-        DataCollected collection = new DataCollected();
+        QueryHandler collection = new QueryHandler();
         ObservableList<SpeciesItem> items = FXCollections.observableArrayList();
 
-        List<Species> results = collection.dataToPrint(text);
+        QueryHandlerResult result = collection.query(text);
+        List<Species> results = result.getSpeciesList();
+        String[][] geoCodes = result.getGeoCodes();
 
         for(Species sp: results){
             items.add(new SpeciesItem(sp));
@@ -98,13 +100,9 @@ public class Controller implements Initializable {
         family.setPrefWidth(100);
         family.setCellValueFactory(param -> param.getValue().getValue().getFamily());
 
-        JFXTreeTableColumn<SpeciesItem, String> BHCode = new JFXTreeTableColumn<>("BH Code");
-        BHCode.setPrefWidth(100);
-        BHCode.setCellValueFactory(param -> param.getValue().getValue().getBHCode());
-
-        JFXTreeTableColumn<SpeciesItem, String> FECode = new JFXTreeTableColumn<>("FE Code");
-        FECode.setPrefWidth(100);
-        FECode.setCellValueFactory(param -> param.getValue().getValue().getFECode());
+        JFXTreeTableColumn<SpeciesItem, String> codes = new JFXTreeTableColumn<>("Codes");
+        codes.setPrefWidth(300);
+        codes.setCellValueFactory(param -> param.getValue().getValue().getCodes());
         
         JFXTreeTableColumn<SpeciesItem, String> isAccepted = new JFXTreeTableColumn<>("Accepted?");
         isAccepted.setPrefWidth(100);
@@ -114,7 +112,7 @@ public class Controller implements Initializable {
         isBasionym.setPrefWidth(100);
         isBasionym.setCellValueFactory(param -> param.getValue().getValue().isBasionym() ? new ReadOnlyStringWrapper("X") : new ReadOnlyStringWrapper("     "));
 
-        treeView.getColumns().setAll(canonicalName, species, genus, family, BHCode, FECode, isAccepted, isBasionym);
+        treeView.getColumns().setAll(canonicalName, species, genus, family, codes, isAccepted, isBasionym);
     }
 
     public void keyPress(KeyEvent keyEvent) {

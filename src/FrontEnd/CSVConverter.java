@@ -19,16 +19,15 @@ public class CSVConverter {
     private static void writeToCSV(String plantName, File path) {
 
         try (PrintWriter writer = new PrintWriter(new FileWriter(path, true))) {
-            DataCollected dataCollected = new DataCollected();
-            List<Species> toPrint = dataCollected.dataToPrint(plantName);
+            QueryHandler dataCollected = new QueryHandler();
+            List<Species> toPrint = dataCollected.query(plantName).getSpeciesList();
 
-            writer.printf(columnNumber(8),
-                    "Scientific Name", "Species", "Genus", "Family", "BHcode", "FEcode", "Accepted?", "Basionym?");
+            writer.printf(columnNumber(7),
+                    "Scientific Name", "Species", "Genus", "Family", "Codes", "Accepted?", "Basionym?");
 
             for (Species sp : toPrint) {
-                writer.printf(columnNumber(8),
-                        sp.getCanonicalName(), sp.getSpecies(), sp.getGenus(), sp.getFamily(), sp.getBHcode(),
-                        sp.getFEcode(), sp.isSynonym() ? " " : "X", sp.isBasionym() ? "X" : " ");
+                writer.printf(columnNumber(7),
+                        sp.getCanonicalName(), sp.getSpecies(), sp.getGenus(), sp.getFamily(), sp.getCodes(), sp.isSynonym() ? " " : "X", sp.isBasionym() ? "X" : " ");
             }
 
         } catch (IOException e) {
