@@ -16,6 +16,10 @@ public class QueryResult implements Iterable<Species> {
         setBasionymFields();
     }
 
+    public Species getAcceptedName() {
+        return acceptedName;
+    }
+
     private void setBasionymFields() {
         String basionymKey = getBasionymKey();
         for (Species s : this) {

@@ -11,8 +11,7 @@ public class Species {
     private String authorship;
     private String scientificName;
     private boolean isInHerbarium;
-    private String BHcode;
-    private String FEcode;
+    private String codes;
     private boolean basionym;
     private String basionymKey;
 
@@ -62,11 +61,13 @@ public class Species {
         return scientificName;
     }
 
-    public String getBHcode() { return BHcode; }
-    public void setBHcode(String newBHcode) { BHcode=newBHcode; }
+    public String getCodes() {
+        return codes;
+    }
 
-    public String getFEcode() { return FEcode; }
-    public void setFEcode(String newFEcode) { FEcode=newFEcode; }
+    public void setCodes(String newCodes) {
+        codes = newCodes;
+    }
 
     public boolean isInHerbarium() {
         return isInHerbarium;
