@@ -3,6 +3,7 @@ package frontend;
 import api.Species;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,7 +27,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -35,48 +35,56 @@ public class Controller implements Initializable {
 
     @FXML
     private JFXTreeTableView<SpeciesItem> treeView;
-
     @FXML
     private JFXTextField searchBar;
-
     @FXML
     private Menu recentMenu;
-
     @FXML
     private JFXTextArea codesLabel;
 
     private Stage mainStage;
-
     private LinkedList<String> recentSearches = new LinkedList<>();
 
 
-    private String formatCodes(String name, String[][] codes){
-        StringBuilder result = new StringBuilder();
-        result.append(String.format("%s\n-----------------------\n", name));
-        for(String[] code : codes){
-            result.append(String.format("%s : %s    ", code[0], code[1]));
-        }
-        result.append("\n\n");
-        return result.toString();
+    @FXML
+    void searchClick() {
+        String query = searchBar.getText();
+
+        recentSearches.addFirst(query);
+
+        MenuItem item = new MenuItem(query);
+        item.setOnAction(t -> search(query));
+        recentMenu.getItems().add(0, item);
+
+        search(searchBar.getText());
     }
 
-    private void search(String text){
-        searchBar.setText(text);
-        searchBar.positionCaret(searchBar.getText().length());
-
+    private void search(String queries) {
         codesLabel.setText("");
 
-        Label noResults = new Label("No results have been found");
-        noResults.setFont(new Font("Trebuchet MS", 18));
-        treeView.setPlaceholder(noResults);
+        searchBar.setText(queries);
+        searchBar.positionCaret(searchBar.getText().length());
 
-        String[] queries = text.split(",");
+        JFXSpinner spinner = new JFXSpinner();
+        spinner.setRadius(20.0);
+        spinner.applyCss();
+        treeView.setPlaceholder(spinner);
 
-        QueryHandler collection = new QueryHandler();
         ObservableList<SpeciesItem> items = FXCollections.observableArrayList();
 
-        for(String query : queries) {
-            try{
+        Thread thread = new Thread(() -> runQuery(queries, items));
+        thread.start();
+
+        final TreeItem<SpeciesItem> root = new RecursiveTreeItem<>(items, RecursiveTreeObject::getChildren);
+
+        treeView.setRoot(root);
+        treeView.setShowRoot(false);
+    }
+
+    private void runQuery(String queries, ObservableList<SpeciesItem> items) {
+        for (String query : queries.split(",")) {
+            try {
+                QueryHandler collection = new QueryHandler();
                 QueryHandlerResult result = collection.query(query);
 
                 List<Species> results = result.getSpeciesList();
@@ -86,39 +94,44 @@ public class Controller implements Initializable {
                     items.add(new SpeciesItem(sp));
                 }
 
-                codesLabel.setText(codesLabel.getText() + formatCodes(query.trim(), geoCodes));
-            }catch (Exception ignored){}
+                Platform.runLater(() -> codesLabel.setText(codesLabel.getText() + formatCodes(query.trim(), geoCodes)));
+            } catch (NullPointerException ignored) {}
         }
-        final TreeItem<SpeciesItem> root = new RecursiveTreeItem<>(items, RecursiveTreeObject::getChildren);
+        if (items.size() == 0) {
+            Label noResults = new Label("No results have been found");
+            noResults.setFont(new Font("Trebuchet MS", 18));
+            Platform.runLater(() -> treeView.setPlaceholder(noResults));
+        }
+    }
 
-        treeView.setRoot(root);
-        treeView.setShowRoot(false);
+    private String formatCodes(String name, String[][] codes) {
+        StringBuilder result = new StringBuilder();
+        result.append(String.format("%s\n-----------------------\n", name));
+        for (String[] code : codes) {
+            result.append(String.format("%s : %s    ", code[0], code[1]));
+        }
+        result.append("\n\n");
+        return result.toString();
     }
 
     @FXML
-    void searchClick() {
-        String query = searchBar.getText();
-        recentSearches.add(query);
-
-        MenuItem item = new MenuItem(query);
-        item.setOnAction(t -> search(query));
-
-        recentMenu.getItems().add(0, item);
-        Collections.reverse(recentSearches);
-
-        search(searchBar.getText());
+    public void keyPress(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            searchClick();
+        }
     }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         JFXTreeTableColumn<SpeciesItem, String> canonicalName = new JFXTreeTableColumn<>("Canonical Name");
         canonicalName.setPrefWidth(200);
         canonicalName.setCellValueFactory(param -> param.getValue().getValue().getCanonicalName());
-        
+
         JFXTreeTableColumn<SpeciesItem, String> species = new JFXTreeTableColumn<>("Species");
         species.setPrefWidth(150);
         species.setCellValueFactory(param -> param.getValue().getValue().getSpecies());
-        
+
         JFXTreeTableColumn<SpeciesItem, String> genus = new JFXTreeTableColumn<>("Genus");
         genus.setPrefWidth(100);
         genus.setCellValueFactory(param -> param.getValue().getValue().getGenus());
@@ -126,7 +139,7 @@ public class Controller implements Initializable {
         JFXTreeTableColumn<SpeciesItem, String> family = new JFXTreeTableColumn<>("Family");
         family.setPrefWidth(100);
         family.setCellValueFactory(param -> param.getValue().getValue().getFamily());
-        
+
         JFXTreeTableColumn<SpeciesItem, String> codes = new JFXTreeTableColumn<>("Codes");
         codes.setPrefWidth(200);
         codes.setCellValueFactory(param -> param.getValue().getValue().getCodes());
@@ -134,7 +147,7 @@ public class Controller implements Initializable {
         JFXTreeTableColumn<SpeciesItem, String> author = new JFXTreeTableColumn<>("Author");
         author.setPrefWidth(200);
         author.setCellValueFactory(param -> param.getValue().getValue().getAuthor());
-        
+
         JFXTreeTableColumn<SpeciesItem, String> isAccepted = new JFXTreeTableColumn<>("Accepted?");
         isAccepted.setPrefWidth(100);
         isAccepted.setCellValueFactory(param -> param.getValue().getValue().isSynonym() ? new ReadOnlyStringWrapper(" ") : new ReadOnlyStringWrapper("X"));
@@ -150,13 +163,17 @@ public class Controller implements Initializable {
         treeView.setPlaceholder(imageView);
     }
 
-    public void keyPress(KeyEvent keyEvent) {
-        if(keyEvent.getCode().equals(KeyCode.ENTER)){
-            searchClick();
+
+    @FXML
+    public void csvClick() {
+        File dest = fileChooser();
+
+        if (dest != null) {
+            CSVConverter.exportCSV(searchBar.getText(), dest);
         }
     }
 
-    private File fileChooser(){
+    private File fileChooser() {
         mainStage = (Stage) searchBar.getScene().getWindow();
 
         FileChooser fileChooser = new FileChooser();
@@ -169,16 +186,9 @@ public class Controller implements Initializable {
         return fileChooser.showSaveDialog(mainStage);
     }
 
-    public void csvClick(ActionEvent actionEvent) {
-        File dest = fileChooser();
 
-        if(dest != null) {
-            CSVConverter.exportCSV(searchBar.getText(), dest);
-        }
-    }
-
-
-    public void aboutClick(ActionEvent actionEvent) {
+    @FXML
+    public void aboutClick() {
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initOwner(mainStage);
