@@ -307,8 +307,7 @@ public class DatabaseHandlerTest {
   }
 
   private Family generateTestFamily() {
-    IndexScheme testIndexScheme = IndexScheme
-            .values()[random.nextInt(IndexScheme.values().length)];
+    IndexScheme testIndexScheme = generateNonOtherIndexScheme();
     String testFamilyName = "testFamilyName_" + random.nextInt(65536);
     String testFamilyNumber = "testFamilyNumber_" + random.nextInt(65536);
 
@@ -335,8 +334,7 @@ public class DatabaseHandlerTest {
   }
 
   private Genus generateTestGenus() {
-    IndexScheme testIndexScheme = IndexScheme
-            .values()[random.nextInt(IndexScheme.values().length)];
+    IndexScheme testIndexScheme = generateNonOtherIndexScheme();
     String testGenusName = "testGenusName_" + random.nextInt(65536);
     String testFamilyNumber = "testFamilyNumber_" + random.nextInt(65536);
     String testGenusNumber = "testGenusNumber_" + random.nextInt(65536);
@@ -371,6 +369,16 @@ public class DatabaseHandlerTest {
     }
 
     return testGenera;
+  }
+
+  private IndexScheme generateNonOtherIndexScheme() {
+    IndexScheme scheme;
+    do {
+      scheme = IndexScheme
+              .values()[random.nextInt(IndexScheme.values().length)];
+    } while ((scheme == IndexScheme.OTHER));
+
+    return scheme;
   }
 
   private boolean containsFamily(Family[] expecteds, Family actual) {
