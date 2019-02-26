@@ -1,6 +1,5 @@
 package FrontEnd;
 
-import api.APIService;
 import api.APIServiceImpl;
 import api.QueryResult;
 import api.Species;
@@ -15,7 +14,7 @@ public class QueryHandler {
 
     public QueryHandlerResult query(String name) {
         //TODO: Add interaction with database
-        APIService api = APIServiceImpl.getInstance();
+        APIServiceImpl api = APIServiceImpl.getInstance();
         QueryResult qr = api.getAcceptedNameAndSynonyms(name);
         String[][] geoCodes = PlantGeoCodeFetcher.fetchCodes(qr.getAcceptedName().getCanonicalName());
         List<Species> toReturn = new ArrayList<>();

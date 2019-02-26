@@ -224,7 +224,7 @@ public class DatabaseHandlerTest {
     Genus expectedGenus = generateTestGenus();
 
     String query = "INSERT INTO "
-            + Family.getFamilyTableForScheme(expectedGenus.getScheme())
+            + Genus.getGenusTableForScheme(expectedGenus.getScheme())
             + " (genus_name, family_number, genus_number) "
             + " VALUES (?, ?, ?)";
 
@@ -251,7 +251,7 @@ public class DatabaseHandlerTest {
     // Insert test families into the database
     for (Genus genus : testGenera) {
       String query = "INSERT INTO "
-        + Family.getFamilyTableForScheme(genus.getScheme())
+        + Genus.getGenusTableForScheme(genus.getScheme())
         + " (genus_name, family_number, genus_number) "
         + " VALUES (?, ?, ?)";
 
@@ -308,7 +308,7 @@ public class DatabaseHandlerTest {
 
   private Family generateTestFamily() {
     IndexScheme testIndexScheme = IndexScheme
-            .values()[random.nextInt(IndexScheme.values().length)-1];
+            .values()[random.nextInt(IndexScheme.values().length)];
     String testFamilyName = "testFamilyName_" + random.nextInt(65536);
     String testFamilyNumber = "testFamilyNumber_" + random.nextInt(65536);
 
@@ -336,7 +336,7 @@ public class DatabaseHandlerTest {
 
   private Genus generateTestGenus() {
     IndexScheme testIndexScheme = IndexScheme
-            .values()[random.nextInt(IndexScheme.values().length)-1];
+            .values()[random.nextInt(IndexScheme.values().length)];
     String testGenusName = "testGenusName_" + random.nextInt(65536);
     String testFamilyNumber = "testFamilyNumber_" + random.nextInt(65536);
     String testGenusNumber = "testGenusNumber_" + random.nextInt(65536);
