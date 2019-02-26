@@ -1,4 +1,4 @@
-package indexesAndCodes;
+package indexes;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

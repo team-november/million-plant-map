@@ -1,4 +1,4 @@
-package FrontEnd;
+package frontend;
 
 import com.jfoenix.controls.JFXTextField;
 import javafx.application.Application;
