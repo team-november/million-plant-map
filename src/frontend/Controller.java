@@ -106,8 +106,13 @@ public class Controller implements Initializable {
     private String formatCodes(String name, String[][] codes) {
         StringBuilder result = new StringBuilder();
         result.append(String.format("%s\n-----------------------\n", name));
-        for (String[] code : codes) {
-            result.append(String.format("%s : %s    ", code[0], code[1]));
+        if(codes[0][0].equals("unknown")){
+            result.append("The World Checklist of Selected Plant Families does not contain the distribution for this plant.");
+        }
+        else {
+            for (String[] code : codes) {
+                result.append(String.format("%s : %s    ", code[0], code[1]));
+            }
         }
         result.append("\n\n");
         return result.toString();
