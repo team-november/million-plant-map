@@ -1,4 +1,4 @@
-package FrontEnd;
+package frontend;
 
 import api.Species;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -14,7 +14,7 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
     }
 
     public StringProperty getScientificName(){
-        return new ReadOnlyStringWrapper(species.getSpecies());
+        return new ReadOnlyStringWrapper(species.getScientificName());
     }
 
     public StringProperty getCanonicalName(){

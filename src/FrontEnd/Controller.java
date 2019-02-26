@@ -1,4 +1,4 @@
-package FrontEnd;
+package frontend;
 
 import api.Species;
 import com.jfoenix.controls.*;
@@ -103,7 +103,11 @@ public class Controller implements Initializable {
         JFXTreeTableColumn<SpeciesItem, String> codes = new JFXTreeTableColumn<>("Codes");
         codes.setPrefWidth(300);
         codes.setCellValueFactory(param -> param.getValue().getValue().getCodes());
-        
+
+        JFXTreeTableColumn<SpeciesItem, String> author = new JFXTreeTableColumn<>("Author");
+        author.setPrefWidth(100);
+        author.setCellValueFactory(param -> param.getValue().getValue().getAuthor());
+
         JFXTreeTableColumn<SpeciesItem, String> isAccepted = new JFXTreeTableColumn<>("Accepted?");
         isAccepted.setPrefWidth(100);
         isAccepted.setCellValueFactory(param -> param.getValue().getValue().isSynonym() ? new ReadOnlyStringWrapper(" ") : new ReadOnlyStringWrapper("X"));
@@ -112,7 +116,11 @@ public class Controller implements Initializable {
         isBasionym.setPrefWidth(100);
         isBasionym.setCellValueFactory(param -> param.getValue().getValue().isBasionym() ? new ReadOnlyStringWrapper("X") : new ReadOnlyStringWrapper("     "));
 
-        treeView.getColumns().setAll(canonicalName, species, genus, family, codes, isAccepted, isBasionym);
+        treeView.getColumns().setAll(canonicalName, species, genus, family, codes, author, isAccepted, isBasionym);
+
+        ImageView imageView = new ImageView("file:resources/about_m.jpg");
+        imageView.setOpacity(0.8);
+        treeView.setPlaceholder(imageView);
     }
 
     public void keyPress(KeyEvent keyEvent) {

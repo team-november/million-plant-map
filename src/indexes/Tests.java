@@ -1,4 +1,4 @@
-package indexesAndCodes;
+package indexes;
 
 import java.io.File;
 import java.io.IOException;
