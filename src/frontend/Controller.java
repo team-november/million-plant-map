@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TreeItem;
@@ -18,6 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -32,9 +34,6 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     @FXML
-    private JFXButton searchButton;
-
-    @FXML
     private JFXTreeTableView<SpeciesItem> treeView;
 
     @FXML
@@ -43,25 +42,53 @@ public class Controller implements Initializable {
     @FXML
     private Menu recentMenu;
 
+    @FXML
+    private JFXTextArea codesLabel;
+
     private Stage mainStage;
 
     private LinkedList<String> recentSearches = new LinkedList<>();
 
 
-    void search(String text){
+    private String formatCodes(String name, String[][] codes){
+        StringBuilder result = new StringBuilder();
+        result.append(String.format("%s\n-----------------------\n", name));
+        for(String[] code : codes){
+            result.append(String.format("%s : %s    ", code[0], code[1]));
+        }
+        result.append("\n\n");
+        return result.toString();
+    }
+
+    private void search(String text){
         searchBar.setText(text);
+        searchBar.positionCaret(searchBar.getText().length());
+
+        codesLabel.setText("");
+
+        Label noResults = new Label("No results have been found");
+        noResults.setFont(new Font("Trebuchet MS", 18));
+        treeView.setPlaceholder(noResults);
+
+        String[] queries = text.split(",");
 
         QueryHandler collection = new QueryHandler();
         ObservableList<SpeciesItem> items = FXCollections.observableArrayList();
 
-        QueryHandlerResult result = collection.query(text);
-        List<Species> results = result.getSpeciesList();
-        String[][] geoCodes = result.getGeoCodes();
+        for(String query : queries) {
+            try{
+                QueryHandlerResult result = collection.query(query);
 
-        for(Species sp: results){
-            items.add(new SpeciesItem(sp));
+                List<Species> results = result.getSpeciesList();
+                String[][] geoCodes = result.getGeoCodes();
+
+                for (Species sp : results) {
+                    items.add(new SpeciesItem(sp));
+                }
+
+                codesLabel.setText(codesLabel.getText() + formatCodes(query.trim(), geoCodes));
+            }catch (Exception ignored){}
         }
-
         final TreeItem<SpeciesItem> root = new RecursiveTreeItem<>(items, RecursiveTreeObject::getChildren);
 
         treeView.setRoot(root);
@@ -99,13 +126,13 @@ public class Controller implements Initializable {
         JFXTreeTableColumn<SpeciesItem, String> family = new JFXTreeTableColumn<>("Family");
         family.setPrefWidth(100);
         family.setCellValueFactory(param -> param.getValue().getValue().getFamily());
-
+        
         JFXTreeTableColumn<SpeciesItem, String> codes = new JFXTreeTableColumn<>("Codes");
-        codes.setPrefWidth(300);
+        codes.setPrefWidth(200);
         codes.setCellValueFactory(param -> param.getValue().getValue().getCodes());
 
         JFXTreeTableColumn<SpeciesItem, String> author = new JFXTreeTableColumn<>("Author");
-        author.setPrefWidth(300);
+        author.setPrefWidth(200);
         author.setCellValueFactory(param -> param.getValue().getValue().getAuthor());
         
         JFXTreeTableColumn<SpeciesItem, String> isAccepted = new JFXTreeTableColumn<>("Accepted?");
@@ -116,7 +143,7 @@ public class Controller implements Initializable {
         isBasionym.setPrefWidth(100);
         isBasionym.setCellValueFactory(param -> param.getValue().getValue().isBasionym() ? new ReadOnlyStringWrapper("X") : new ReadOnlyStringWrapper("     "));
 
-        treeView.getColumns().setAll(canonicalName, species, genus, family, codes, isAccepted, isBasionym);
+        treeView.getColumns().setAll(canonicalName, species, genus, family, codes, isAccepted, isBasionym, author);
 
         ImageView imageView = new ImageView("file:resources/about_m.jpg");
         imageView.setOpacity(0.8);
@@ -139,7 +166,6 @@ public class Controller implements Initializable {
         FileChooser.ExtensionFilter other = new FileChooser.ExtensionFilter("All files (*.*)", "*.*");
 
         fileChooser.getExtensionFilters().setAll(csv, other);
-
         return fileChooser.showSaveDialog(mainStage);
     }
 

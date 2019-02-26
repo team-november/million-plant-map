@@ -49,5 +49,4 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
         return species.isBasionym();
     }
 
-
 }

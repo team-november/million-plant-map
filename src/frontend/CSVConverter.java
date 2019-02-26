@@ -38,7 +38,7 @@ public class CSVConverter {
 
 
     public static void exportCSV(String query, File path){
-        exportCSVMultiple(Arrays.asList(query), path);
+        exportCSVMultiple(Arrays.asList(query.split(",")), path);
     }
 
     public static void exportCSVMultiple(List<String> queries, File path){
