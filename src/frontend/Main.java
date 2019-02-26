@@ -11,9 +11,6 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    @FXML
-    private JFXTextField searchBar;
-
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("main_scene.fxml"));

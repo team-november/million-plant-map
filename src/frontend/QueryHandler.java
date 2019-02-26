@@ -15,17 +15,20 @@ public class QueryHandler {
     public QueryHandlerResult query(String name) {
         //TODO: Add interaction with database
         APIServiceImpl api = APIServiceImpl.getInstance();
-        QueryResult qr = api.getAcceptedNameAndSynonyms(name);
-        String[][] geoCodes = PlantGeoCodeFetcher.fetchCodes(qr.getAcceptedName().getCanonicalName());
-        List<Species> toReturn = new ArrayList<>();
-        IndexFetcher iF = new IndexFetcher();
-        for (Species s : qr) {
-            String codes = iF.fetchIndexes(s.getFamily(), s.getGenus());
-            s.setCodes(codes);
-            s.setIsInHerbarium(false);
-            toReturn.add(s);
+        QueryResult queryResult = api.getAcceptedNameAndSynonyms(name);
+        if(!queryResult.iterator().hasNext()){
+            return null;
         }
-        QueryHandlerResult qHR = new QueryHandlerResult(toReturn, geoCodes);
-        return qHR;
+        String[][] geoCodes = PlantGeoCodeFetcher.fetchCodes(queryResult.getAcceptedName().getCanonicalName());
+        List<Species> toReturn = new ArrayList<>();
+        IndexFetcher indexFetcher = new IndexFetcher();
+        for (Species species : queryResult) {
+            String codes = indexFetcher.fetchIndexes(species.getFamily(), species.getGenus());
+            species.setCodes(codes);
+            species.setIsInHerbarium(false);
+            toReturn.add(species);
+        }
+        return new QueryHandlerResult(toReturn, geoCodes);
     }
+
 }

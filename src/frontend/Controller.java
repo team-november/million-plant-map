@@ -83,10 +83,10 @@ public class Controller implements Initializable {
 
     private void runQuery(String queries, ObservableList<SpeciesItem> items) {
         for (String query : queries.split(",")) {
-            try {
-                QueryHandler collection = new QueryHandler();
-                QueryHandlerResult result = collection.query(query);
+            QueryHandler collection = new QueryHandler();
+            QueryHandlerResult result = collection.query(query);
 
+            if(result != null) {
                 List<Species> results = result.getSpeciesList();
                 String[][] geoCodes = result.getGeoCodes();
 
@@ -95,7 +95,7 @@ public class Controller implements Initializable {
                 }
 
                 Platform.runLater(() -> codesLabel.setText(codesLabel.getText() + formatCodes(query.trim(), geoCodes)));
-            } catch (NullPointerException ignored) {}
+            }
         }
         if (items.size() == 0) {
             Label noResults = new Label("No results have been found");
