@@ -1,4 +1,4 @@
-package indexes;
+package indexesAndCodes;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

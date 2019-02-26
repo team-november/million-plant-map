@@ -1,4 +1,4 @@
-package frontend;
+package FrontEnd;
 
 import api.Species;
 
@@ -22,14 +22,12 @@ public class CSVConverter {
             QueryHandler dataCollected = new QueryHandler();
             List<Species> toPrint = dataCollected.query(plantName).getSpeciesList();
 
-
-            writer.printf(columnNumber(8),
-                    "Canonical Name", "Species", "Genus", "Family", "Codes", "Author", "Accepted?", "Basionym?");
+            writer.printf(columnNumber(7),
+                    "Scientific Name", "Species", "Genus", "Family", "Codes", "Accepted?", "Basionym?");
 
             for (Species sp : toPrint) {
-                writer.printf(columnNumber(8),
-                        sp.getCanonicalName(), sp.getSpecies(), sp.getGenus(), sp.getFamily(),
-                        sp.getCodes(), sp.getAuthorship(), sp.isSynonym() ? " " : "X", sp.isBasionym() ? "X" : " ");
+                writer.printf(columnNumber(7),
+                        sp.getCanonicalName(), sp.getSpecies(), sp.getGenus(), sp.getFamily(), sp.getCodes(), sp.isSynonym() ? " " : "X", sp.isBasionym() ? "X" : " ");
             }
 
         } catch (IOException e) {

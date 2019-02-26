@@ -1,4 +1,4 @@
-package indexes;
+package indexesAndCodes;
 
 public class PlantGeoCodeFetcher {
     private static final String csvName = "plantsGeoCodes";

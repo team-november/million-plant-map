@@ -1,4 +1,4 @@
-package indexes;
+package indexesAndCodes;
 
 public class GeoCodeFetcher {
 
