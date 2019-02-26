@@ -7,7 +7,6 @@ import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -158,7 +157,7 @@ public class Controller implements Initializable {
 
         treeView.getColumns().setAll(canonicalName, species, genus, family, codes, isAccepted, isBasionym, author);
 
-        ImageView imageView = new ImageView("file:resources/about_m.jpg");
+        ImageView imageView = new ImageView("file:resources/about_m.png");
         imageView.setOpacity(0.8);
         treeView.setPlaceholder(imageView);
     }

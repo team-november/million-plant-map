@@ -1,8 +1,6 @@
 package frontend;
 
-import com.jfoenix.controls.JFXTextField;
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,7 +11,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("main_scene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/main_scene.fxml"));
         primaryStage.setTitle("Million Plant Map");
         primaryStage.getIcons().add(new Image("file:resources/icon.png"));
         Scene scene = new Scene(root, 950, 750);
