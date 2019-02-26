@@ -3,6 +3,7 @@ package frontend;
 import api.Species;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TreeItem;
@@ -18,13 +20,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -32,35 +34,46 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     @FXML
-    private JFXButton searchButton;
-
-    @FXML
     private JFXTreeTableView<SpeciesItem> treeView;
-
     @FXML
     private JFXTextField searchBar;
-
     @FXML
     private Menu recentMenu;
+    @FXML
+    private JFXTextArea codesLabel;
 
     private Stage mainStage;
-
     private LinkedList<String> recentSearches = new LinkedList<>();
 
 
-    void search(String text){
-        searchBar.setText(text);
+    @FXML
+    void searchClick() {
+        String query = searchBar.getText();
 
-        QueryHandler collection = new QueryHandler();
+        recentSearches.addFirst(query);
+
+        MenuItem item = new MenuItem(query);
+        item.setOnAction(t -> search(query));
+        recentMenu.getItems().add(0, item);
+
+        search(searchBar.getText());
+    }
+
+    private void search(String queries) {
+        codesLabel.setText("");
+
+        searchBar.setText(queries);
+        searchBar.positionCaret(searchBar.getText().length());
+
+        JFXSpinner spinner = new JFXSpinner();
+        spinner.setRadius(20.0);
+        spinner.applyCss();
+        treeView.setPlaceholder(spinner);
+
         ObservableList<SpeciesItem> items = FXCollections.observableArrayList();
 
-        QueryHandlerResult result = collection.query(text);
-        List<Species> results = result.getSpeciesList();
-        String[][] geoCodes = result.getGeoCodes();
-
-        for(Species sp: results){
-            items.add(new SpeciesItem(sp));
-        }
+        Thread thread = new Thread(() -> runQuery(queries, items));
+        thread.start();
 
         final TreeItem<SpeciesItem> root = new RecursiveTreeItem<>(items, RecursiveTreeObject::getChildren);
 
@@ -68,30 +81,57 @@ public class Controller implements Initializable {
         treeView.setShowRoot(false);
     }
 
-    @FXML
-    void searchClick() {
-        String query = searchBar.getText();
-        recentSearches.add(query);
+    private void runQuery(String queries, ObservableList<SpeciesItem> items) {
+        for (String query : queries.split(",")) {
+            QueryHandler collection = new QueryHandler();
+            QueryHandlerResult result = collection.query(query);
 
-        MenuItem item = new MenuItem(query);
-        item.setOnAction(t -> search(query));
+            if(result != null) {
+                List<Species> results = result.getSpeciesList();
+                String[][] geoCodes = result.getGeoCodes();
 
-        recentMenu.getItems().add(0, item);
-        Collections.reverse(recentSearches);
+                for (Species sp : results) {
+                    items.add(new SpeciesItem(sp));
+                }
 
-        search(searchBar.getText());
+                Platform.runLater(() -> codesLabel.setText(codesLabel.getText() + formatCodes(query.trim(), geoCodes)));
+            }
+        }
+        if (items.size() == 0) {
+            Label noResults = new Label("No results have been found");
+            noResults.setFont(new Font("Trebuchet MS", 18));
+            Platform.runLater(() -> treeView.setPlaceholder(noResults));
+        }
     }
+
+    private String formatCodes(String name, String[][] codes) {
+        StringBuilder result = new StringBuilder();
+        result.append(String.format("%s\n-----------------------\n", name));
+        for (String[] code : codes) {
+            result.append(String.format("%s : %s    ", code[0], code[1]));
+        }
+        result.append("\n\n");
+        return result.toString();
+    }
+
+    @FXML
+    public void keyPress(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            searchClick();
+        }
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         JFXTreeTableColumn<SpeciesItem, String> canonicalName = new JFXTreeTableColumn<>("Canonical Name");
         canonicalName.setPrefWidth(200);
         canonicalName.setCellValueFactory(param -> param.getValue().getValue().getCanonicalName());
-        
+
         JFXTreeTableColumn<SpeciesItem, String> species = new JFXTreeTableColumn<>("Species");
         species.setPrefWidth(150);
         species.setCellValueFactory(param -> param.getValue().getValue().getSpecies());
-        
+
         JFXTreeTableColumn<SpeciesItem, String> genus = new JFXTreeTableColumn<>("Genus");
         genus.setPrefWidth(100);
         genus.setCellValueFactory(param -> param.getValue().getValue().getGenus());
@@ -101,13 +141,13 @@ public class Controller implements Initializable {
         family.setCellValueFactory(param -> param.getValue().getValue().getFamily());
 
         JFXTreeTableColumn<SpeciesItem, String> codes = new JFXTreeTableColumn<>("Codes");
-        codes.setPrefWidth(300);
+        codes.setPrefWidth(200);
         codes.setCellValueFactory(param -> param.getValue().getValue().getCodes());
 
         JFXTreeTableColumn<SpeciesItem, String> author = new JFXTreeTableColumn<>("Author");
-        author.setPrefWidth(300);
+        author.setPrefWidth(200);
         author.setCellValueFactory(param -> param.getValue().getValue().getAuthor());
-        
+
         JFXTreeTableColumn<SpeciesItem, String> isAccepted = new JFXTreeTableColumn<>("Accepted?");
         isAccepted.setPrefWidth(100);
         isAccepted.setCellValueFactory(param -> param.getValue().getValue().isSynonym() ? new ReadOnlyStringWrapper(" ") : new ReadOnlyStringWrapper("X"));
@@ -116,20 +156,24 @@ public class Controller implements Initializable {
         isBasionym.setPrefWidth(100);
         isBasionym.setCellValueFactory(param -> param.getValue().getValue().isBasionym() ? new ReadOnlyStringWrapper("X") : new ReadOnlyStringWrapper("     "));
 
-        treeView.getColumns().setAll(canonicalName, species, genus, family, codes, isAccepted, isBasionym);
+        treeView.getColumns().setAll(canonicalName, species, genus, family, codes, isAccepted, isBasionym, author);
 
         ImageView imageView = new ImageView("file:resources/about_m.jpg");
         imageView.setOpacity(0.8);
         treeView.setPlaceholder(imageView);
     }
 
-    public void keyPress(KeyEvent keyEvent) {
-        if(keyEvent.getCode().equals(KeyCode.ENTER)){
-            searchClick();
+
+    @FXML
+    public void csvClick() {
+        File dest = fileChooser();
+
+        if (dest != null) {
+            CSVConverter.exportCSV(searchBar.getText(), dest);
         }
     }
 
-    private File fileChooser(){
+    private File fileChooser() {
         mainStage = (Stage) searchBar.getScene().getWindow();
 
         FileChooser fileChooser = new FileChooser();
@@ -139,20 +183,12 @@ public class Controller implements Initializable {
         FileChooser.ExtensionFilter other = new FileChooser.ExtensionFilter("All files (*.*)", "*.*");
 
         fileChooser.getExtensionFilters().setAll(csv, other);
-
         return fileChooser.showSaveDialog(mainStage);
     }
 
-    public void csvClick(ActionEvent actionEvent) {
-        File dest = fileChooser();
 
-        if(dest != null) {
-            CSVConverter.exportCSV(searchBar.getText(), dest);
-        }
-    }
-
-
-    public void aboutClick(ActionEvent actionEvent) {
+    @FXML
+    public void aboutClick() {
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initOwner(mainStage);
