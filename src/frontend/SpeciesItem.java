@@ -3,7 +3,11 @@ package frontend;
 import api.Species;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import database.DatabaseHandler;
+import database.IndexScheme;
+import database.Synonym;
 import javafx.beans.property.*;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
 public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
@@ -16,6 +20,21 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
 
     public ObjectProperty<JFXCheckBox> getCheckbox(){
         JFXCheckBox checkBox =  new JFXCheckBox();
+
+//        Synonym synonym = new Synonym(getCanonicalName().toString(),
+//                getFamily().toString(),null,null,null,
+//                !isSynonym(), isBasionym(), "Testing");
+//
+//        DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
+//
+//        checkBox.selectedProperty().addListener((observable, oldValue, newValue) ->{
+//            if(newValue){
+//                databaseHandler.insertSynonym(synonym);
+//            }else{
+//                databaseHandler.deleteSynonym(synonym);
+//            }
+//        });
+
         return new ReadOnlyObjectWrapper<>(checkBox);
     }
 

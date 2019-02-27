@@ -83,8 +83,7 @@ public class Controller implements Initializable {
 
     private void runQuery(String queries, ObservableList<SpeciesItem> items) {
         for (String query : queries.split(",")) {
-            QueryHandler collection = new QueryHandler();
-            QueryHandlerResult result = collection.query(query);
+            QueryHandlerResult result = QueryHandler.query(query);
 
             if(result != null) {
                 List<Species> results = result.getSpeciesList();
@@ -104,7 +103,7 @@ public class Controller implements Initializable {
         }
     }
 
-    private String formatCodes(String name, String[][] codes) {
+    static String formatCodes(String name, String[][] codes) {
         StringBuilder result = new StringBuilder();
         result.append(String.format("%s\n-----------------------\n", name));
         if(codes[0][0].equals("unknown")){

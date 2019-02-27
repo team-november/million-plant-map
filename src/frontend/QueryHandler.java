@@ -12,8 +12,7 @@ import java.util.List;
 
 public class QueryHandler {
 
-
-    public QueryHandlerResult query(String name) {
+    public static QueryHandlerResult query(String name) {
         //Code for whe database connection is working:
         //DatabaseHandler dBH = DatabaseHandler.getInstance();
         APIServiceImpl api = APIServiceImpl.getInstance();

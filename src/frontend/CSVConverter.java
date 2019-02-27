@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.locks.Condition;
 
 
 public class CSVConverter {
@@ -19,18 +20,23 @@ public class CSVConverter {
     private static void writeToCSV(String plantName, File path) {
 
         try (PrintWriter writer = new PrintWriter(new FileWriter(path, true))) {
-            QueryHandler dataCollected = new QueryHandler();
-            List<Species> toPrint = dataCollected.query(plantName).getSpeciesList();
+            QueryHandlerResult result = QueryHandler.query(plantName);
+            if(result != null) {
 
-            writer.printf(columnNumber(8),
-                    "Scientific Name", "Species", "Genus", "Family", "Codes", "Author", "Accepted?", "Basionym?");
+                List<Species> speciesList = result.getSpeciesList();
+                String[][] geoCodes = result.getGeoCodes();
 
-            for (Species sp : toPrint) {
                 writer.printf(columnNumber(8),
-                        sp.getCanonicalName(), sp.getSpecies(), sp.getGenus(), sp.getFamily(), sp.getCodes(),
-                        sp.getAuthorship(), sp.isSynonym() ? " " : "X", sp.isBasionym() ? "X" : " ");
-            }
+                        "Canonical Name", "Species", "Genus", "Family", "Codes", "Author", "Accepted?", "Basionym?");
 
+                for (Species sp : speciesList) {
+                    writer.printf(columnNumber(8),
+                            sp.getCanonicalName(), sp.getSpecies(), sp.getGenus(), sp.getFamily(), sp.getCodes(),
+                            sp.getAuthorship().replaceAll(",", ""), sp.isSynonym() ? " " : "X", sp.isBasionym() ? "X" : " ");
+                }
+
+                writer.print(Controller.formatCodes(plantName, geoCodes) + "\n");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
