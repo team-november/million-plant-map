@@ -3,16 +3,12 @@ package frontend;
 import api.APIServiceImpl;
 import api.QueryResult;
 import api.Species;
-import database.DatabaseHandler;
 import indexes.IndexFetcher;
 import indexes.PlantGeoCodeFetcher;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class QueryHandler {
 
-    public static QueryHandlerResult query(String name) {
+    public static QueryResult query(String name) {
         //Code for whe database connection is working:
         //DatabaseHandler dBH = DatabaseHandler.getInstance();
         APIServiceImpl api = APIServiceImpl.getInstance();
@@ -20,8 +16,10 @@ public class QueryHandler {
         if(!queryResult.iterator().hasNext()){
             return null;
         }
+
         String[][] geoCodes = PlantGeoCodeFetcher.fetchCodes(queryResult.getAcceptedName().getCanonicalName());
-        List<Species> toReturn = new ArrayList<>();
+        queryResult.setGeoCodes(geoCodes);
+
         IndexFetcher indexFetcher = new IndexFetcher();
         for (Species species : queryResult) {
             String codes = indexFetcher.fetchIndexes(species.getFamily(), species.getGenus());
@@ -35,9 +33,8 @@ public class QueryHandler {
             }*/
             //Instead of this line:
             species.setIsInHerbarium(false);
-            toReturn.add(species);
         }
-        return new QueryHandlerResult(toReturn, geoCodes);
+        return queryResult;
     }
 
 }

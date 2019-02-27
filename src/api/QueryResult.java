@@ -6,6 +6,8 @@ public class QueryResult implements Iterable<Species> {
     private Species acceptedName;
     private Species[] synonyms;
 
+    private String[][] geoCodes;
+
     public QueryResult() {
         synonyms = new Species[0];
     }
@@ -38,6 +40,14 @@ public class QueryResult implements Iterable<Species> {
             }
         }
         return basionymKey;
+    }
+
+    public String[][] getGeoCodes() {
+        return geoCodes;
+    }
+
+    public void setGeoCodes(String[][] geoCodes) {
+        this.geoCodes = geoCodes;
     }
 
     @Override
