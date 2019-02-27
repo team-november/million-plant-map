@@ -197,7 +197,7 @@ public class Controller implements Initializable {
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initOwner(mainStage);
 
-        Image image = new Image("file:resources/about.jpg");
+        Image image = new Image("file:resources/credits.jpg");
         ImageView imageView = new ImageView(image);
 
         GridPane gridPane = new GridPane();
