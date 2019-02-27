@@ -1,10 +1,10 @@
 package frontend;
 
+import api.QueryResult;
 import api.Species;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.application.Platform;
-import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,6 +43,9 @@ public class Controller implements Initializable {
     private JFXTextArea codesLabel;
 
     private Stage mainStage;
+    
+    private List<QueryResult> currentResults;
+    
     private LinkedList<String> recentSearches = new LinkedList<>();
 
 
@@ -82,18 +85,21 @@ public class Controller implements Initializable {
     }
 
     private void runQuery(String queries, ObservableList<SpeciesItem> items) {
+        currentResults = new LinkedList<>();
+
         for (String query : queries.split(",")) {
-            QueryHandlerResult result = QueryHandler.query(query);
+            QueryResult result = QueryHandler.query(query);
+            currentResults.add(result);
 
             if(result != null) {
-                List<Species> results = result.getSpeciesList();
                 String[][] geoCodes = result.getGeoCodes();
 
-                for (Species sp : results) {
+                for (Species sp : result) {
                     items.add(new SpeciesItem(sp));
                 }
 
-                Platform.runLater(() -> codesLabel.setText(codesLabel.getText() + formatCodes(query.trim(), geoCodes)));
+                Platform.runLater(() -> codesLabel.setText(codesLabel.getText() 
+                        + formatCodes(result.getAcceptedName().getCanonicalName(), geoCodes)));
             }
         }
         if (items.size() == 0) {
@@ -176,7 +182,7 @@ public class Controller implements Initializable {
         File dest = fileChooser();
 
         if (dest != null) {
-            CSVConverter.exportCSV(searchBar.getText(), dest);
+            CSVConverter.exportCSV(currentResults, dest);
         }
     }
 
