@@ -35,8 +35,10 @@ dependencies {
     testImplementation 'org.codehaus.groovy:groovy-all:2.5.4'
 
     // Use the awesome Spock testing and specification framework even with Java
-    testImplementation 'org.spockframework:spock-core:1.2-groovy-2.5'
+    testCompile 'org.spockframework:spock-core:1.2-groovy-2.5'
     compile 'junit:junit:4.12'
+
+    testRuntime 'com.athaydes:spock-reports:1.2.7'
     
     
 }
@@ -44,6 +46,8 @@ dependencies {
 sourceSets{
     main.java.srcDirs = ['src/']
     main.resources.srcDirs = ['resources/']
+    test.java.srcDirs =  ['test/java/']
+    test.groovy.srcDirs = ['test/groovy']
 }
 
 // Define the main class for the application
