@@ -1,0 +1,925 @@
+<!DOCTYPE html><html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8'></meta>
+<style>body {
+  font-family: Helvetica;
+}
+
+table {
+  margin: 5px;
+}
+
+div.date-test-ran {
+  font-size: small;
+  font-style: italic;
+}
+
+table.features-table {
+  width: 800px;
+}
+
+table.summary-table {
+  width: 800px;
+  text-align: left;
+  font-weight: bold;
+  font-size: small;
+}
+
+table.summary-table th {
+  background: lightblue;
+  padding: 6px;
+}
+
+table.summary-table td {
+  background: #E0E0E0;
+  padding: 6px;
+}
+
+pre.narrative {
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: -1px;
+  color: #444;
+}
+
+.feature-description {
+  font-size: large;
+  background: lightblue;
+  padding: 4px;
+}
+
+.feature-toc-error {
+	color: #F89A4F;
+}
+
+.feature-toc-failure {
+	color: #FF8080;
+}
+
+.feature-toc-ignored {
+	color: lightgray;
+}
+
+.feature-toc-pass {
+	color: green;
+}
+
+.feature-description.error {
+  background: #F89A4F;
+}
+
+.feature-description.failure {
+  background: #FF8080;
+}
+
+.feature-description.ignored {
+  background: lightgray;
+}
+
+.feature-description.ignored .reason {
+  color: black;
+  font-style: italic;
+  font-size: small;
+}
+
+div.issues {
+  color: black;
+  font-weight: bold;
+  font-size: small;
+}
+
+div.problem-description {
+  padding: 10px;
+  background: pink;
+  border-radius: 10px;
+}
+
+div.problem-header {
+  font-weight: bold;
+  color: red;
+}
+
+div.problem-list {
+  
+}
+
+table.ex-table th {
+  background: lightblue;
+  padding: 0px 5px 0px 5px;
+}
+
+table.ex-table td {
+  background: #E0E0E0;
+  padding: 0px 5px 0px 5px;
+}
+
+table td {
+  min-width: 50px;
+}
+
+col.block-kind-col {
+  width: 70px;
+}
+
+span.spec-header {
+  font-weight: bold;
+}
+
+div.spec-text {
+  /*color: green;*/
+}
+
+div.spec-status {
+  font-style: italic;
+}
+
+.ignored {
+  color: gray;
+}
+
+td.ex-result {
+  text-align: center;
+  background: white !important;
+}
+
+.ex-pass {
+  color: darkgreen;
+}
+
+.ex-fail {
+  color: red;
+  font-weight: bold;
+}
+
+div.block-kind {
+  margin: 2px;
+  font-style: italic;
+}
+
+div.block-text {
+
+}
+
+div.footer {
+  text-align: center;
+  font-size: small;
+}
+</style>
+</head>
+<body>
+<h2>Report for api.APIServiceImplTest</h2>
+<hr></hr>
+<div class='summary-report'>
+<h3>Summary:</h3>
+<div class='date-test-ran'>Created on Wed Feb 27 11:20:16 GMT 2019 by yousuf</div>
+<table class='summary-table'>
+<thead>
+<th>Executed features</th>
+<th>Failures</th>
+<th>Errors</th>
+<th>Skipped</th>
+<th>Success rate</th>
+<th>Time</th>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100.0%</td>
+<td>1.533 seconds</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3>Features:</h3>
+<table class='features-table'>
+<colgroup>
+<col class='block-kind-col'></col>
+<col class='block-text-col'></col>
+</colgroup>
+<tbody>
+<ul id='toc'>
+<li>
+<a href='#-1181962944' class='feature-toc-pass'>can get the accepted name from a general query</a>
+</li>
+<li>
+<a href='#441117783' class='feature-toc-pass'>can get a list of all synonyms</a>
+</li>
+<li>
+<a href='#621261262' class='feature-toc-pass'>can deserialize a synonym query response</a>
+</li>
+<li>
+<a href='#709583556' class='feature-toc-pass'>can deserialize a match query response</a>
+</li>
+<li>
+<a href='#-1409774251' class='feature-toc-pass'>update the basionym field properly</a>
+</li>
+<li>
+<a href='#624105797' class='feature-toc-pass'>can use autocomplete to finish search queries</a>
+</li>
+</ul>
+<tr>
+<td colspan='10'>
+<div class='feature-description' id='-1181962944'>
+<span>can get the accepted name from a general query</span>
+<span style='float: right; font-size: 60%;'>
+<a href='#toc'>Return</a>
+</span>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Given:</div>
+</td>
+<td>
+<div class='block-text'>An API Service</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>When:</div>
+</td>
+<td>
+<div class='block-text'>we search for the accepted name</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Then:</div>
+</td>
+<td>
+<div class='block-text'>the accepted name is returned</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Where:</div>
+</td>
+<td>
+<div class='block-text'>----</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Examples:</div>
+</td>
+<td>
+<div class='spec-examples'>
+<table class='ex-table'>
+<thead>
+<th class='ex-header'>name</th>
+<th class='ex-header'>acceptedName</th>
+</thead>
+<tbody>
+<tr class='ex-pass'>
+<td class='ex-value'>Vanda Cristata</td>
+<td class='ex-value'>Vanda Cristata</td>
+<td class='ex-result'>OK</td>
+</tr>
+<tr class='ex-pass'>
+<td class='ex-value'>vanda cristata</td>
+<td class='ex-value'>Vanda Cristata</td>
+<td class='ex-result'>OK</td>
+</tr>
+<tr class='ex-pass'>
+<td class='ex-value'>Trudelia Cristata</td>
+<td class='ex-value'>Vanda Cristata</td>
+<td class='ex-result'>OK</td>
+</tr>
+<tr class='ex-pass'>
+<td class='ex-value'>trudelia cristata</td>
+<td class='ex-value'>Vanda Cristata</td>
+<td class='ex-result'>OK</td>
+</tr>
+<tr class='ex-pass'>
+<td class='ex-value'>Alnus vulgaris</td>
+<td class='ex-value'>Alnus glutinosa</td>
+<td class='ex-result'>OK</td>
+</tr>
+<tr class='ex-pass'>
+<td class='ex-value'>Betula glutinosa</td>
+<td class='ex-value'>Alnus glutinosa</td>
+<td class='ex-result'>OK</td>
+</tr>
+<tr class='ex-pass'>
+<td class='ex-value'>Vanda striata</td>
+<td class='ex-value'>Vanda cristata</td>
+<td class='ex-result'>OK</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+<td>
+<div class='spec-status'>7/7 passed</div>
+</td>
+</tr>
+<tr>
+<td colspan='10'>
+<div class='feature-description' id='441117783'>
+<span>can get a list of all synonyms</span>
+<span style='float: right; font-size: 60%;'>
+<a href='#toc'>Return</a>
+</span>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Given:</div>
+</td>
+<td>
+<div class='block-text'>An API service</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>And:</div>
+</td>
+<td>
+<div class='block-text'>An accepted key</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>When:</div>
+</td>
+<td>
+<div class='block-text'>We search for synonyms</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>And:</div>
+</td>
+<td>
+<div class='block-text'>convert it to a list of canonical names</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>And:</div>
+</td>
+<td>
+<div class='block-text'>sort the expected and actual lists alphabetically</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Then:</div>
+</td>
+<td>
+<div class='block-text'>the list of synonyms returned should match</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Where:</div>
+</td>
+<td>
+<div class='block-text'>----</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Examples:</div>
+</td>
+<td>
+<div class='spec-examples'>
+<table class='ex-table'>
+<thead>
+<th class='ex-header'>name</th>
+<th class='ex-header'>synonyms</th>
+</thead>
+<tbody>
+<tr class='ex-pass'>
+<td class='ex-value'>Vanda Cristata</td>
+<td class='ex-value'>[Aerides cristata, Luisia striata, Trudelia cristata, Vanda striata]</td>
+<td class='ex-result'>OK</td>
+</tr>
+<tr class='ex-pass'>
+<td class='ex-value'>vanda cristata</td>
+<td class='ex-value'>[Aerides cristata, Luisia striata, Trudelia cristata, Vanda striata]</td>
+<td class='ex-result'>OK</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+<td>
+<div class='spec-status'>2/2 passed</div>
+</td>
+</tr>
+<tr>
+<td colspan='10'>
+<div class='feature-description' id='621261262'>
+<span>can deserialize a synonym query response</span>
+<span style='float: right; font-size: 60%;'>
+<a href='#toc'>Return</a>
+</span>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Given:</div>
+</td>
+<td>
+<div class='block-text'>An API service</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>When:</div>
+</td>
+<td>
+<div class='block-text'>We try to deserialize a json response</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Then:</div>
+</td>
+<td>
+<div class='block-text'>All fields match</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Where:</div>
+</td>
+<td>
+<div class='block-text'>----</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Examples:</div>
+</td>
+<td>
+<div class='spec-examples'>
+<table class='ex-table'>
+<thead>
+<th class='ex-header'>json</th>
+</thead>
+<tbody>
+<tr class='ex-pass'>
+<td class='ex-value'>
+            {
+            "offset": 0,
+            "limit": 20,
+            "endOfRecords": true,
+            "results": [
+                    {
+                        "key": 2876271,
+                        "nubKey": 2876271,
+                        "nameKey": 455495,
+                        "taxonID": "gbif:2876271",
+                        "sourceTaxonKey": 118319287,
+                        "kingdom": "Plantae",
+                        "phylum": "Tracheophyta",
+                        "order": "Fagales",
+                        "family": "Betulaceae",
+                        "genus": "Alnus",
+                        "species": "Alnus glutinosa",
+                        "kingdomKey": 6,
+                        "phylumKey": 7707728,
+                        "classKey": 220,
+                        "orderKey": 1354,
+                        "familyKey": 4688,
+                        "genusKey": 2876099,
+                        "speciesKey": 2876213,
+                        "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+                        "constituentKey": "d9a4eedb-e985-4456-ad46-3df8472e00e8",
+                        "parentKey": 2876099,
+                        "parent": "Alnus",
+                        "acceptedKey": 2876213,
+                        "accepted": "Alnus glutinosa (L.) Gaertn.",
+                        "scientificName": "Alnus aurea K.Koch",
+                        "canonicalName": "Alnus aurea",
+                        "authorship": "K.Koch",
+                        "nameType": "SCIENTIFIC",
+                        "rank": "SPECIES",
+                        "origin": "SOURCE",
+                        "taxonomicStatus": "SYNONYM",
+                        "nomenclaturalStatus": [],
+                        "remarks": "",
+                        "numDescendants": 0,
+                        "lastCrawled": "2018-06-20T14:41:51.801+0000",
+                        "lastInterpreted": "2018-06-20T14:36:21.699+0000",
+                        "issues": [],
+                        "synonym": true,
+                        "class": "Magnoliopsida"
+                    }
+                    ]}</td>
+<td class='ex-result'>OK</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+<td>
+<div class='spec-status'>1/1 passed</div>
+</td>
+</tr>
+<tr>
+<td colspan='10'>
+<div class='feature-description' id='709583556'>
+<span>can deserialize a match query response</span>
+<span style='float: right; font-size: 60%;'>
+<a href='#toc'>Return</a>
+</span>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Given:</div>
+</td>
+<td>
+<div class='block-text'>An API service</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>When:</div>
+</td>
+<td>
+<div class='block-text'>we try to deserialize a response from a match query</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Then:</div>
+</td>
+<td>
+<div class='block-text'>all fields match</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Where:</div>
+</td>
+<td>
+<div class='block-text'>----</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Examples:</div>
+</td>
+<td>
+<div class='spec-examples'>
+<table class='ex-table'>
+<thead>
+<th class='ex-header'>json</th>
+<th class='ex-header'>acceptedUsageKey</th>
+<th class='ex-header'>synonym</th>
+</thead>
+<tbody>
+<tr class='ex-pass'>
+<td class='ex-value'>{
+              "usageKey": 2783166,
+              "scientificName": "Vanda cristata Lindl.",
+              "canonicalName": "Vanda cristata",
+              "rank": "SPECIES",
+              "status": "ACCEPTED",
+              "confidence": 99,
+              "note": "Similarity: name=110; authorship=0; kingdom=0; rank=5; status=1; singleMatch=5",
+              "matchType": "EXACT",
+              "kingdom": "Plantae",
+              "phylum": "Tracheophyta",
+              "order": "Asparagales",
+              "family": "Orchidaceae",
+              "genus": "Vanda",
+              "species": "Vanda cristata",
+              "kingdomKey": 6,
+              "phylumKey": 7707728,
+              "classKey": 196,
+              "orderKey": 1169,
+              "familyKey": 7689,
+              "genusKey": 2783121,
+              "speciesKey": 2783166,
+              "synonym": false,
+              "class": "Liliopsida"
+            }</td>
+<td class='ex-value'>2783166</td>
+<td class='ex-value'>false</td>
+<td class='ex-result'>OK</td>
+</tr>
+<tr class='ex-pass'>
+<td class='ex-value'>
+            {
+              "usageKey": 2783170,
+              "acceptedUsageKey": 2783166,
+              "scientificName": "Trudelia cristata (Wall. ex Lindl.) Senghas ex Roeth",
+              "canonicalName": "Trudelia cristata",
+              "rank": "SPECIES",
+              "status": "SYNONYM",
+              "confidence": 97,
+              "note": "Similarity: name=110; authorship=0; kingdom=0; rank=5; status=0; 2 synonym homonyms; nextMatch=0",
+              "matchType": "EXACT",
+              "alternatives": [
+                {
+                  "usageKey": 7859517,
+                  "acceptedUsageKey": 2783166,
+                  "scientificName": "Trudelia cristata (Lindl.) Senghas",
+                  "canonicalName": "Trudelia cristata",
+                  "rank": "SPECIES",
+                  "status": "SYNONYM",
+                  "confidence": 97,
+                  "note": "Similarity: name=110; authorship=0; kingdom=0; rank=5; status=0",
+                  "matchType": "EXACT",
+                  "kingdom": "Plantae",
+                  "phylum": "Tracheophyta",
+                  "order": "Asparagales",
+                  "family": "Orchidaceae",
+                  "genus": "Vanda",
+                  "species": "Vanda cristata",
+                  "kingdomKey": 6,
+                  "phylumKey": 7707728,
+                  "classKey": 196,
+                  "orderKey": 1169,
+                  "familyKey": 7689,
+                  "genusKey": 2783121,
+                  "speciesKey": 2783166,
+                  "synonym": true,
+                  "class": "Liliopsida"
+                }
+              ],
+              "kingdom": "Plantae",
+              "phylum": "Tracheophyta",
+              "order": "Asparagales",
+              "family": "Orchidaceae",
+              "genus": "Vanda",
+              "species": "Vanda cristata",
+              "kingdomKey": 6,
+              "phylumKey": 7707728,
+              "classKey": 196,
+              "orderKey": 1169,
+              "familyKey": 7689,
+              "genusKey": 2783121,
+              "speciesKey": 2783166,
+              "synonym": true,
+              "class": "Liliopsida"
+            }
+            </td>
+<td class='ex-value'>2783166</td>
+<td class='ex-value'>true</td>
+<td class='ex-result'>OK</td>
+</tr>
+<tr class='ex-pass'>
+<td class='ex-value'>
+                {
+                      "confidence": 99,
+                      "note": "Multiple equal matches for Betula glutinosa",
+                      "matchType": "NONE",
+                      "alternatives": [
+                        {
+                          "usageKey": 5331738,
+                          "acceptedUsageKey": 2876213,
+                          "scientificName": "Betula glutinosa (L.) Lam.",
+                          "canonicalName": "Betula glutinosa",
+                          "rank": "SPECIES",
+                          "status": "SYNONYM",
+                          "confidence": 115,
+                          "note": "Similarity: name=110; authorship=0; kingdom=0; rank=5; status=0",
+                          "matchType": "EXACT",
+                          "kingdom": "Plantae",
+                          "phylum": "Tracheophyta",
+                          "order": "Fagales",
+                          "family": "Betulaceae",
+                          "genus": "Alnus",
+                          "species": "Alnus glutinosa",
+                          "kingdomKey": 6,
+                          "phylumKey": 7707728,
+                          "classKey": 220,
+                          "orderKey": 1354,
+                          "familyKey": 4688,
+                          "genusKey": 2876099,
+                          "speciesKey": 2876213,
+                          "synonym": true,
+                          "class": "Magnoliopsida"
+                        },
+                        {
+                          "usageKey": 8056419,
+                          "acceptedUsageKey": 2876213,
+                          "scientificName": "Betula glutinosa L.",
+                          "canonicalName": "Betula glutinosa",
+                          "rank": "SPECIES",
+                          "status": "SYNONYM",
+                          "confidence": 115,
+                          "note": "Similarity: name=110; authorship=0; kingdom=0; rank=5; status=0",
+                          "matchType": "EXACT",
+                          "kingdom": "Plantae",
+                          "phylum": "Tracheophyta",
+                          "order": "Fagales",
+                          "family": "Betulaceae",
+                          "genus": "Alnus",
+                          "species": "Alnus glutinosa",
+                          "kingdomKey": 6,
+                          "phylumKey": 7707728,
+                          "classKey": 220,
+                          "orderKey": 1354,
+                          "familyKey": 4688,
+                          "genusKey": 2876099,
+                          "speciesKey": 2876213,
+                          "synonym": true,
+                          "class": "Magnoliopsida"
+                        },
+                        {
+                          "usageKey": 7472168,
+                          "acceptedUsageKey": 7226602,
+                          "scientificName": "Betula glutinosa Wallr.",
+                          "canonicalName": "Betula glutinosa",
+                          "rank": "SPECIES",
+                          "status": "SYNONYM",
+                          "confidence": 115,
+                          "note": "Similarity: name=110; authorship=0; kingdom=0; rank=5; status=0",
+                          "matchType": "EXACT",
+                          "kingdom": "Plantae",
+                          "phylum": "Tracheophyta",
+                          "order": "Fagales",
+                          "family": "Betulaceae",
+                          "genus": "Betula",
+                          "species": "Betula pubescens",
+                          "kingdomKey": 6,
+                          "phylumKey": 7707728,
+                          "classKey": 220,
+                          "orderKey": 1354,
+                          "familyKey": 4688,
+                          "genusKey": 2875008,
+                          "speciesKey": 9118014,
+                          "synonym": true,
+                          "class": "Magnoliopsida"
+                        }
+                      ],
+                      "synonym": false
+                    }
+            </td>
+<td class='ex-value'>2876213</td>
+<td class='ex-value'>false</td>
+<td class='ex-result'>OK</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+<td>
+<div class='spec-status'>3/3 passed</div>
+</td>
+</tr>
+<tr>
+<td colspan='10'>
+<div class='feature-description' id='-1409774251'>
+<span>update the basionym field properly</span>
+<span style='float: right; font-size: 60%;'>
+<a href='#toc'>Return</a>
+</span>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Given:</div>
+</td>
+<td>
+<div class='block-text'>An API Service</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>When:</div>
+</td>
+<td>
+<div class='block-text'>We search for a particular plant</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Then:</div>
+</td>
+<td>
+<div class='block-text'>All the basionym is set appropriately for all values that are returned</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Where:</div>
+</td>
+<td>
+<div class='block-text'>----</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Examples:</div>
+</td>
+<td>
+<div class='spec-examples'>
+<table class='ex-table'>
+<thead>
+<th class='ex-header'>basionym</th>
+<th class='ex-header'>name</th>
+</thead>
+<tbody>
+<tr class='ex-pass'>
+<td class='ex-value'>Vanda cristata Lindl.</td>
+<td class='ex-value'>Trudelia cristata</td>
+<td class='ex-result'>OK</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+<td>
+<div class='spec-status'>1/1 passed</div>
+</td>
+</tr>
+<tr>
+<td colspan='10'>
+<div class='feature-description' id='624105797'>
+<span>can use autocomplete to finish search queries</span>
+<span style='float: right; font-size: 60%;'>
+<a href='#toc'>Return</a>
+</span>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Given:</div>
+</td>
+<td>
+<div class='block-text'>An API Service</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>When:</div>
+</td>
+<td>
+<div class='block-text'>We try to autocomplete for a particular search</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Then:</div>
+</td>
+<td>
+<div class='block-text'>The autocomplete returns the appropriate results</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Where:</div>
+</td>
+<td>
+<div class='block-text'>----</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Examples:</div>
+</td>
+<td>
+<div class='spec-examples'>
+<table class='ex-table'>
+<thead>
+<th class='ex-header'>name</th>
+<th class='ex-header'>match</th>
+</thead>
+<tbody>
+<tr class='ex-pass'>
+<td class='ex-value'>Trudelia</td>
+<td class='ex-value'>[Trudelia Garay, Trudelia jainii (A.S.Chauhan) S.Misra, Trudelia chlorosantha Garay, Trudelia griffithii (Lindl.) Garay, Trudelia alpina (Lindl.) Garay, Trudelia cristata (Wall. ex Lindl.) Senghas ex Roeth, Trudelia cristata (Lindl.) Senghas, Trudelia pumila (Hook.f.) Senghas, Trudelianda Garay]</td>
+<td class='ex-result'>OK</td>
+</tr>
+<tr class='ex-pass'>
+<td class='ex-value'>Vanda Cristata</td>
+<td class='ex-value'>[Vanda cristata Lindl.]</td>
+<td class='ex-result'>OK</td>
+</tr>
+<tr class='ex-pass'>
+<td class='ex-value'>asoflaksfloais</td>
+<td class='ex-value'>[]</td>
+<td class='ex-result'>OK</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+<td>
+<div class='spec-status'>3/3 passed</div>
+</td>
+</tr>
+</tbody>
+</table>
+<hr></hr>
+<div class='footer'>Generated by <a href='https://github.com/renatoathaydes/spock-reports'>Athaydes Spock Reports</a></div>
+</body>
+</html>
