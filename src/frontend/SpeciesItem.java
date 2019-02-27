@@ -1,9 +1,10 @@
 package frontend;
 
 import api.Species;
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+import javafx.beans.value.ObservableValue;
 
 public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
 
@@ -11,6 +12,11 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
 
     public SpeciesItem(Species species) {
         this.species = species;
+    }
+
+    public ObjectProperty<JFXCheckBox> getCheckbox(){
+        JFXCheckBox checkBox =  new JFXCheckBox();
+        return new ReadOnlyObjectWrapper<>(checkBox);
     }
 
     public StringProperty getScientificName(){

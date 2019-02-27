@@ -4,6 +4,7 @@ import api.Species;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.application.Platform;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -128,6 +129,10 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        JFXTreeTableColumn<SpeciesItem, JFXCheckBox> checkbox = new JFXTreeTableColumn<>("");
+        checkbox.setPrefWidth(50);
+        checkbox.setCellValueFactory(param -> param.getValue().getValue().getCheckbox());
+        
         JFXTreeTableColumn<SpeciesItem, String> canonicalName = new JFXTreeTableColumn<>("Canonical Name");
         canonicalName.setPrefWidth(200);
         canonicalName.setCellValueFactory(param -> param.getValue().getValue().getCanonicalName());
@@ -160,13 +165,12 @@ public class Controller implements Initializable {
         isBasionym.setPrefWidth(100);
         isBasionym.setCellValueFactory(param -> param.getValue().getValue().isBasionym() ? new ReadOnlyStringWrapper("X") : new ReadOnlyStringWrapper("     "));
 
-        treeView.getColumns().setAll(canonicalName, species, genus, family, codes, isAccepted, isBasionym, author);
+        treeView.getColumns().setAll(checkbox, canonicalName, species, genus, family, codes, isAccepted, isBasionym, author);
 
         ImageView imageView = new ImageView("file:resources/about_m.png");
         imageView.setOpacity(0.8);
         treeView.setPlaceholder(imageView);
     }
-
 
     @FXML
     public void csvClick() {
