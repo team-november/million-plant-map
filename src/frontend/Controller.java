@@ -10,7 +10,9 @@ import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -27,8 +29,10 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
@@ -259,18 +263,15 @@ public class Controller implements Initializable {
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initOwner(mainStage);
-
-        Image image = new Image("file:resources/credits.jpg");
-        ImageView imageView = new ImageView(image);
-
-        GridPane gridPane = new GridPane();
-        gridPane.getChildren().add(imageView);
-
-        Scene scene = new Scene(gridPane);
-
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/credits_scene.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            dialog.setScene(new Scene(root1));
+            dialog.show();
+        }catch (IOException e){
+        }
         dialog.setTitle("About Million Plant Map");
         dialog.getIcons().add(new Image("file:resources/icon.png"));
-        dialog.setScene(scene);
         dialog.setResizable(false);
         dialog.sizeToScene();
         dialog.showAndWait();
