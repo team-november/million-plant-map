@@ -11,7 +11,7 @@ public class PlantGeoCodeFetcher {
         arr[0] = pN;
         String geoCodes = reader.extractValues(arr, searchIndex, csvName)[0];
         String[] geoCodesSplit = geoCodes.split("\\s+");
-        String[] geoCodesInput = geoCodes.replaceAll("[^a-zA-Z0-9 ]", "").split("\\s+");
+        String[] geoCodesInput = geoCodes.replaceAll("[^a-zA-Z0-9 ]", "").toUpperCase().split("\\s+");
         GeoCodeFetcher gCF = new GeoCodeFetcher();
         String[] geoCodesInterpretation = gCF.fetchCodesList(geoCodesInput);
         String[][] toReturn = new String[geoCodesInterpretation.length][2];

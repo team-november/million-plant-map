@@ -55,18 +55,6 @@ CREATE TABLE `genera_gbi` (
   KEY `genus_name_idx` (`genus_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
-CREATE TABLE `genera_locations` (
-  `genus_name` varchar(45) NOT NULL,
-  `location_code` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-
-CREATE TABLE `locations` (
-  `code` varchar(45) NOT NULL,
-  `code_definition` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`code`),
-  UNIQUE KEY `code_UNIQUE` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-
 CREATE TABLE `synonyms` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `species_name` varchar(45) NOT NULL,

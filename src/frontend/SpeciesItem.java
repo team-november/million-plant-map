@@ -1,9 +1,14 @@
 package frontend;
 
 import api.Species;
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.beans.property.StringProperty;
+import database.DatabaseHandler;
+import database.IndexScheme;
+import database.Synonym;
+import javafx.beans.property.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
 
@@ -11,6 +16,26 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
 
     public SpeciesItem(Species species) {
         this.species = species;
+    }
+
+    public ObjectProperty<JFXCheckBox> getCheckbox(){
+        JFXCheckBox checkBox =  new JFXCheckBox();
+
+//        Synonym synonym = new Synonym(getCanonicalName().toString(),
+//                getFamily().toString(),null,null,null,
+//                !isSynonym(), isBasionym(), "Testing");
+//
+//        DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
+//
+//        checkBox.selectedProperty().addListener((observable, oldValue, newValue) ->{
+//            if(newValue){
+//                databaseHandler.insertSynonym(synonym);
+//            }else{
+//                databaseHandler.deleteSynonym(synonym);
+//            }
+//        });
+
+        return new ReadOnlyObjectWrapper<>(checkBox);
     }
 
     public StringProperty getScientificName(){
@@ -48,6 +73,5 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
     public boolean isBasionym(){
         return species.isBasionym();
     }
-
 
 }

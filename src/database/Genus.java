@@ -32,6 +32,13 @@ public class Genus {
     return genusNumber;
   }
 
+  public boolean equals(Genus other) {
+    return this.getScheme().equals(other.getScheme())
+            && this.getGenusName().equalsIgnoreCase(other.getGenusName())
+            && this.getFamilyNumber().equalsIgnoreCase(other.getFamilyNumber())
+            && this.getGenusNumber().equalsIgnoreCase(other.getGenusNumber());
+  }
+
   public static String getGenusTableForScheme(IndexScheme scheme) {
     if (scheme == IndexScheme.GB_AND_I) return "genera_gbi";
     else if (scheme == IndexScheme.BENTHAM_HOOKER) return "genera_bh";

@@ -8,7 +8,9 @@ public class GBIFMatchReturnObject {
     private Alternative[] alternatives;
 
     public String getAcceptedUsageKey() throws MalformedQueryException {
-        if (acceptedUsageKey == null & usageKey != null) {
+        if (acceptedUsageKey != null) {
+            return acceptedUsageKey;
+        } else if (usageKey != null) {
             return usageKey;
         } else if (alternatives != null) {
             return alternatives[0].acceptedUsageKey;

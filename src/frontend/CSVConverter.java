@@ -1,12 +1,12 @@
 package frontend;
 
+import api.QueryResult;
 import api.Species;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -16,36 +16,39 @@ public class CSVConverter {
         return new String(new char[n-1]).replace("\0", "%s,") + "%s\n";
     }
 
-    private static void writeToCSV(String plantName, File path) {
+    private static boolean writeToCSV(QueryResult result, File path) {
 
         try (PrintWriter writer = new PrintWriter(new FileWriter(path, true))) {
-            QueryHandler dataCollected = new QueryHandler();
-            List<Species> toPrint = dataCollected.query(plantName).getSpeciesList();
+            if(result != null) {
 
-            writer.printf(columnNumber(8),
-                    "Scientific Name", "Species", "Genus", "Family", "Codes", "Author", "Accepted?", "Basionym?");
+                String[][] geoCodes = result.getGeoCodes();
 
-            for (Species sp : toPrint) {
                 writer.printf(columnNumber(8),
-                        sp.getCanonicalName(), sp.getSpecies(), sp.getGenus(), sp.getFamily(), sp.getCodes(),
-                        sp.getAuthorship(), sp.isSynonym() ? " " : "X", sp.isBasionym() ? "X" : " ");
+                        "Canonical Name", "Species", "Genus", "Family", "Codes", "Author", "Accepted?", "Basionym?");
+
+                for (Species sp : result) {
+                    writer.printf(columnNumber(8),
+                            sp.getCanonicalName(), sp.getSpecies(), sp.getGenus(), sp.getFamily(), sp.getCodes(),
+                            sp.getAuthorship().replaceAll(",", ""), sp.isSynonym() ? " " : "X", sp.isBasionym() ? "X" : " ");
+                }
+
+                writer.print(Controller.formatCodes("", geoCodes) + "\n");
             }
-
         } catch (IOException e) {
-            e.printStackTrace();
+            return false;
         }
+        return true;
     }
 
-
-    public static void exportCSV(String query, File path){
-        exportCSVMultiple(Arrays.asList(query), path);
-    }
-
-    public static void exportCSVMultiple(List<String> queries, File path){
+    public static boolean exportCSV(List<QueryResult> results, File path){
         path.delete();
-        for(String query : queries){
-            writeToCSV(query, path);
+        for(QueryResult query : results){
+            boolean success = writeToCSV(query, path);
+            if(!success){
+                return false;
+            }
         }
+        return true;
     }
 
 }
