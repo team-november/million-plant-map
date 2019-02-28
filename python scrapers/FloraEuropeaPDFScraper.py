@@ -8,11 +8,11 @@ From this I will get the family and genus codes for the index.
 """
 
 # Check that the text file is in the resources folder.
-print(os.listdir("resources"))
-assert 'floraEuropaeaConsolidatedIndex_OCRr.txt' in os.listdir("resources")
+print(os.listdir("../resources"))
+assert 'floraEuropaeaConsolidatedIndex_OCRr.txt' in os.listdir("../resources")
 
 # Open the file and read in the lines
-f = open('resources/floraEuropaeaConsolidatedIndex_OCRr.txt', 'r')
+f = open('../resources/floraEuropaeaConsolidatedIndex_OCRr.txt', 'r')
 lines = f.readlines()
 
 # Check that the first line is "Abelmoschus Medicus, 2:256 (106-13)"
@@ -24,8 +24,15 @@ x = "ZANNICHELLIACEAE, 5:12 (181)"
 y = "Caralluma R. Br., 3:73 (143-8)"
 
 """REGEXs for different forms in the document, the regexes they are describing are seen as examples above in x, y"""
-regex_family = "[A-Z]+, [0-5]\:[0-9]+ \([0-9]+\)"
+regex_family = "[A-Z1]+, [0-5]\:[0-9]+ *\([0-9]+\)"
 regex_fam_genus = "([A-Z][a-z]*( [A-Z][a-z]*.)*, [0-5]\:[0-9]+ \([0-9]+-[0-9]+\))"
+
+for line in lines:
+    if("AIZOACEAE") in line:
+        print("FOUND IT")
+        print(line)
+
+#AMARANTHACEAE, 1:108 (49)
 
 pattern_family = re.compile(regex_family)
 pattern_fam_genus = re.compile(regex_fam_genus)
@@ -44,11 +51,17 @@ def extract_family(text):
     name = ''
     index = ''
     flag = False
+    flag_end_name = False
 
     for c in text:
         if c.isalpha():
-            name += c
+            name += c.lower()
 
+        elif c == '1' and not flag_end_name:
+            name += 'i'
+
+        elif c == ',':
+            flag_end_name = True
         elif c == '(':
             flag = True
         elif c == ')':
@@ -68,7 +81,7 @@ def extract_fam_genus(text):
 
     for c in text:
         if c.isalpha() or ((c == ' ' or c == '.') and flag_name):
-            name += c
+            name += c.lower()
 
         elif c == ',':
             flag_name = False
@@ -112,11 +125,11 @@ for text_line in lines:
 
 
 # File for family indexes only
-family_file = open("resources/FloraEuopeaFamilyIndex.csv", 'w')
+family_file = open("../resources/FloraEuopeaFamilyIndex2.csv", 'w')
 writer_fam = csv.writer(family_file)
 
 # File for family and genus indexes, not species
-family_genus_file = open("resources/FloraEuopeaGenusIndex.csv", 'w')
+family_genus_file = open("../resources/FloraEuopeaGenusIndex2.csv", 'w')
 writer_fam_genus = csv.writer(family_genus_file)
 
 
