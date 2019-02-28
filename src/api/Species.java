@@ -15,6 +15,9 @@ public class Species {
     private boolean basionym;
     private String basionymKey;
 
+
+    private String rank;
+
     public boolean isBasionym() {
         return basionym;
     }
@@ -51,6 +54,10 @@ public class Species {
 
     public String getAcceptedKey() {
         return acceptedKey;
+    }
+
+    public String getRank() {
+        return rank;
     }
 
     public boolean isSynonym() {
