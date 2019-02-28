@@ -14,7 +14,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/main_scene.fxml"));
         primaryStage.setTitle("Million Plant Map");
         primaryStage.getIcons().add(new Image("file:resources/icon.png"));
-        Scene scene = new Scene(root, 1200, 750);
+        Scene scene = new Scene(root, 1150, 750);
         scene.getStylesheets().add("file:resources/style.css");
 
         primaryStage.setScene(scene);
