@@ -50,5 +50,16 @@ sourceSets{
     test.groovy.srcDirs = ['test/groovy']
 }
 
+jar {
+    baseName = 'million-plant-map'
+    version = '1.0'
+    manifest {
+        attributes 'Main-Class': 'frontend.Main'
+    }
+    from {
+	configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }	
+}
+
 // Define the main class for the application
 mainClassName = 'frontend.Main'
