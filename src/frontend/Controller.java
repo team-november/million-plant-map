@@ -180,6 +180,10 @@ public class Controller implements Initializable {
         canonicalName.setPrefWidth(200);
         canonicalName.setCellValueFactory(param -> param.getValue().getValue().getCanonicalName());
 
+        JFXTreeTableColumn<SpeciesItem, String> author = new JFXTreeTableColumn<>("Author");
+        author.setPrefWidth(150);
+        author.setCellValueFactory(param -> param.getValue().getValue().getAuthor());
+
         JFXTreeTableColumn<SpeciesItem, String> species = new JFXTreeTableColumn<>("Species");
         species.setPrefWidth(150);
         species.setCellValueFactory(param -> param.getValue().getValue().getSpecies());
@@ -196,10 +200,6 @@ public class Controller implements Initializable {
         codes.setPrefWidth(200);
         codes.setCellValueFactory(param -> param.getValue().getValue().getCodes());
 
-        JFXTreeTableColumn<SpeciesItem, String> author = new JFXTreeTableColumn<>("Author");
-        author.setPrefWidth(200);
-        author.setCellValueFactory(param -> param.getValue().getValue().getAuthor());
-
         JFXTreeTableColumn<SpeciesItem, String> isAccepted = new JFXTreeTableColumn<>("Accepted?");
         isAccepted.setPrefWidth(100);
         isAccepted.setCellValueFactory(param -> param.getValue().getValue().isSynonym() ? new ReadOnlyStringWrapper(" ") : new ReadOnlyStringWrapper("X"));
@@ -208,7 +208,7 @@ public class Controller implements Initializable {
         isBasionym.setPrefWidth(100);
         isBasionym.setCellValueFactory(param -> param.getValue().getValue().isBasionym() ? new ReadOnlyStringWrapper("X") : new ReadOnlyStringWrapper("     "));
 
-        treeView.getColumns().setAll(checkbox, canonicalName, species, genus, family, codes, isAccepted, isBasionym, author);
+        treeView.getColumns().setAll(checkbox, canonicalName, author, species, genus, family, codes, isAccepted, isBasionym);
 
         ImageView imageView = new ImageView("file:resources/about_m.png");
         imageView.setOpacity(0.8);
@@ -222,18 +222,22 @@ public class Controller implements Initializable {
         if (dest != null) {
             boolean success = CSVConverter.exportCSV(currentResults, dest);
             if (!success) {
-                JFXDialogLayout content = new JFXDialogLayout();
-                content.setHeading(new Text("Error, could not write to file"));
-                content.setBody(new Text("Please ensure that the file is closed and try again"));
-                JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.CENTER);
-                JFXButton button = new JFXButton("Okay");
-                button.setOnAction(event -> dialog.close());
-                button.setStyle("-jfx-button-type: RAISED;");
-                button.setPrefSize(70, 30);
-                content.setActions(button);
-                dialog.show();
+                showErrorDialog();
             }
         }
+    }
+
+    private void showErrorDialog() {
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Text("Error, could not write to file"));
+        content.setBody(new Text("Please ensure that the file is closed and try again"));
+        JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.CENTER);
+        JFXButton button = new JFXButton("Okay");
+        button.setOnAction(event -> dialog.close());
+        button.setStyle("-jfx-button-type: RAISED;");
+        button.setPrefSize(70, 30);
+        content.setActions(button);
+        dialog.show();
     }
 
     private File fileChooser() {
