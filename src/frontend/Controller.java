@@ -1,5 +1,6 @@
 package frontend;
 
+import api.APIServiceImpl;
 import api.QueryResult;
 import api.Species;
 import com.jfoenix.controls.*;
@@ -8,8 +9,6 @@ import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -49,11 +48,28 @@ public class Controller implements Initializable {
     private JFXTextArea codesLabel;
 
     private Stage mainStage;
-    
+
     private List<QueryResult> currentResults;
-    
+
     private LinkedList<String> recentSearches = new LinkedList<>();
 
+    private String[] autocompleteResults = null;
+    private String autocompleteSearch;
+    private int autocompleteIndex = 0;
+
+    static String formatCodes(String name, String[][] codes) {
+        StringBuilder result = new StringBuilder();
+        result.append(String.format("%s\n-----------------------\n", name));
+        if (codes[0][0].equals("unknown")) {
+            result.append("The World Checklist of Selected Plant Families does not contain the distribution for this plant.");
+        } else {
+            for (String[] code : codes) {
+                result.append(String.format("%s : %s    ", code[0], code[1]));
+            }
+        }
+        result.append("\n\n");
+        return result.toString();
+    }
 
     @FXML
     void searchClick() {
@@ -97,14 +113,13 @@ public class Controller implements Initializable {
             QueryResult result = QueryHandler.query(query);
             currentResults.add(result);
 
-            if(result != null) {
+            if (result != null) {
                 String[][] geoCodes = result.getGeoCodes();
 
                 for (Species sp : result) {
                     items.add(new SpeciesItem(sp));
                 }
-
-                Platform.runLater(() -> codesLabel.setText(codesLabel.getText() 
+                Platform.runLater(() -> codesLabel.setText(codesLabel.getText()
                         + formatCodes(result.getAcceptedName().getCanonicalName(), geoCodes)));
             }
         }
@@ -115,35 +130,42 @@ public class Controller implements Initializable {
         }
     }
 
-    static String formatCodes(String name, String[][] codes) {
-        StringBuilder result = new StringBuilder();
-        result.append(String.format("%s\n-----------------------\n", name));
-        if(codes[0][0].equals("unknown")){
-            result.append("The World Checklist of Selected Plant Families does not contain the distribution for this plant.");
-        }
-        else {
-            for (String[] code : codes) {
-                result.append(String.format("%s : %s    ", code[0], code[1]));
-            }
-        }
-        result.append("\n\n");
-        return result.toString();
-    }
-
     @FXML
     public void keyPress(KeyEvent keyEvent) {
-        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER) && keyEvent.getEventType() == KeyEvent.KEY_RELEASED) {
             searchClick();
         }
     }
 
+    @FXML
+    public void arrowPress(KeyEvent event) {
+        if (event.getCode().equals(KeyCode.DOWN)) {
+            if (autocompleteResults == null) {
+                autocompleteSearch = searchBar.getText();
+                autocompleteResults = APIServiceImpl.getInstance().autocomplete(autocompleteSearch);
+            }
+            if (autocompleteResults.length > autocompleteIndex) {
+                searchBar.setText(autocompleteResults[autocompleteIndex]);
+                autocompleteIndex++;
+                System.out.println(autocompleteIndex);
+            }
+        } else if(event.getCode().equals(KeyCode.UP)) {
+            if(autocompleteResults!=null) {
+                searchBar.setText(autocompleteSearch);
+                autocompleteIndex = 0;
+            }
+        } else if (event.getCode().isLetterKey() || event.getCode().equals(KeyCode.BACK_SPACE)){
+            autocompleteResults = null;
+            autocompleteIndex = 0;
+        }
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         JFXTreeTableColumn<SpeciesItem, JFXCheckBox> checkbox = new JFXTreeTableColumn<>("");
         checkbox.setPrefWidth(50);
         checkbox.setCellValueFactory(param -> param.getValue().getValue().getCheckbox());
-        
+
         JFXTreeTableColumn<SpeciesItem, String> canonicalName = new JFXTreeTableColumn<>("Canonical Name");
         canonicalName.setPrefWidth(200);
         canonicalName.setCellValueFactory(param -> param.getValue().getValue().getCanonicalName());
@@ -189,7 +211,7 @@ public class Controller implements Initializable {
 
         if (dest != null) {
             boolean success = CSVConverter.exportCSV(currentResults, dest);
-            if(!success){
+            if (!success) {
                 JFXDialogLayout content = new JFXDialogLayout();
                 content.setHeading(new Text("Error, could not write to file"));
                 content.setBody(new Text("Please ensure that the file is closed and try again"));
@@ -239,4 +261,5 @@ public class Controller implements Initializable {
         dialog.sizeToScene();
         dialog.showAndWait();
     }
+
 }
