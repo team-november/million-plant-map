@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -52,6 +53,7 @@ public class APIServiceImpl {
         for (int i = 0; i < species.length; i++) {
             canonicalNames[i] = species[i].getCanonicalName();
         }
+	Arrays.sort(canonicalNames);
 
         return canonicalNames;
     }
