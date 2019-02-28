@@ -145,17 +145,23 @@ public class Controller implements Initializable {
                 autocompleteResults = APIServiceImpl.getInstance().autocomplete(autocompleteSearch);
             }
             if (autocompleteResults.length > autocompleteIndex) {
-                searchBar.setText(autocompleteResults[autocompleteIndex]);
-                searchBar.positionCaret(searchBar.getText().length());
-
                 autocompleteIndex++;
-                System.out.println(autocompleteIndex);
+
+                searchBar.setText(autocompleteResults[autocompleteIndex - 1]);
+                searchBar.positionCaret(searchBar.getText().length());
             }
-        } else if(event.getCode().equals(KeyCode.UP)) {
+        }else if(event.getCode().equals(KeyCode.UP)) {
+            if (autocompleteIndex > 1) {
+                autocompleteIndex--;
+
+                searchBar.setText(autocompleteResults[autocompleteIndex - 1]);
+                searchBar.positionCaret(searchBar.getText().length());
+            }
+        }else if(event.getCode().equals(KeyCode.LEFT)) {
             if(autocompleteResults!=null) {
                 searchBar.setText(autocompleteSearch);
                 searchBar.positionCaret(searchBar.getText().length());
-                
+
                 autocompleteIndex = 0;
             }
         } else if (event.getCode().isLetterKey() || event.getCode().equals(KeyCode.BACK_SPACE)){
