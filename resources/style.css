@@ -182,3 +182,11 @@
 .jfx-text-area {
     -fx-background-color: #eeeeee;
 }
+
+.accepted-row{
+    -fx-text-fill: -fx-main-color;
+}
+
+.basionym-row{
+    -fx-font-weight: bold;
+}

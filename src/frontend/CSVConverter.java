@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -17,7 +16,7 @@ public class CSVConverter {
         return new String(new char[n-1]).replace("\0", "%s,") + "%s\n";
     }
 
-    private static void writeToCSV(QueryResult result, File path) {
+    private static boolean writeToCSV(QueryResult result, File path) {
 
         try (PrintWriter writer = new PrintWriter(new FileWriter(path, true))) {
             if(result != null) {
@@ -36,15 +35,20 @@ public class CSVConverter {
                 writer.print(Controller.formatCodes("", geoCodes) + "\n");
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            return false;
         }
+        return true;
     }
 
-    public static void exportCSV(List<QueryResult> results, File path){
+    public static boolean exportCSV(List<QueryResult> results, File path){
         path.delete();
         for(QueryResult query : results){
-            writeToCSV(query, path);
+            boolean success = writeToCSV(query, path);
+            if(!success){
+                return false;
+            }
         }
+        return true;
     }
 
 }

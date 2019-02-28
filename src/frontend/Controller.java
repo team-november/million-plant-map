@@ -8,6 +8,8 @@ import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -20,7 +22,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -33,6 +37,8 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
+    @FXML
+    public StackPane stackPane;
     @FXML
     private JFXTreeTableView<SpeciesItem> treeView;
     @FXML
@@ -182,7 +188,19 @@ public class Controller implements Initializable {
         File dest = fileChooser();
 
         if (dest != null) {
-            CSVConverter.exportCSV(currentResults, dest);
+            boolean success = CSVConverter.exportCSV(currentResults, dest);
+            if(!success){
+                JFXDialogLayout content = new JFXDialogLayout();
+                content.setHeading(new Text("Error, could not write to file"));
+                content.setBody(new Text("Please ensure that the file is closed and try again"));
+                JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.CENTER);
+                JFXButton button = new JFXButton("Okay");
+                button.setOnAction(event -> dialog.close());
+                button.setStyle("-jfx-button-type: RAISED;");
+                button.setPrefSize(70, 30);
+                content.setActions(button);
+                dialog.show();
+            }
         }
     }
 

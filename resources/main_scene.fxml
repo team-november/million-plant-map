@@ -12,6 +12,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.layout.StackPane?>
 <VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.Controller">
     <children>
         <MenuBar VBox.vgrow="NEVER">
@@ -29,6 +30,7 @@
                 </Menu>
             </menus>
         </MenuBar>
+        <StackPane fx:id="stackPane">
         <VBox prefHeight="707.0" prefWidth="900.0">
             <children>
                 <HBox prefHeight="100.0" prefWidth="200.0">
@@ -53,5 +55,6 @@
             </JFXTextArea>
             </children>
         </VBox>
+        </StackPane>
     </children>
 </VBox>
