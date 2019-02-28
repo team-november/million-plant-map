@@ -47,13 +47,13 @@ public class APIServiceImpl {
             return new String[0];
         }
         Species[] species = gson.fromJson(json, Species[].class);
-        String[] scientificNames = new String[species.length];
+        String[] canonicalNames = new String[species.length];
 
         for (int i = 0; i < species.length; i++) {
-            scientificNames[i] = species[i].getScientificName();
+            canonicalNames[i] = species[i].getCanonicalName();
         }
 
-        return scientificNames;
+        return canonicalNames;
     }
 
     private GBIFSynonymSearchReturnObject deserializeSynonymReturnObject(String json) {
