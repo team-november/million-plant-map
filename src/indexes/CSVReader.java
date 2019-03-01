@@ -1,8 +1,6 @@
 package indexes;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class CSVReader {
@@ -13,12 +11,10 @@ public class CSVReader {
 
     // constants for reading and splitting csv files
     private final String csvSplitBy = ",";
-    private final String filehandle = "resources/"; // may need to change this to "/resources/" on the final version for it to work
     private final String extn = ".csv";
 
     private BufferedReader openCSV(String csvName) throws IOException {
-        BufferedReader buf = new BufferedReader(new FileReader(filehandle+csvName+extn));
-
+        BufferedReader buf = new BufferedReader(new InputStreamReader(CSVReader.class.getResourceAsStream("/"+csvName+extn)));
         return buf;
     }
 

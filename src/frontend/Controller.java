@@ -271,7 +271,8 @@ public class Controller implements Initializable {
         }catch (IOException e){
         }
         dialog.setTitle("About Million Plant Map");
-        dialog.getIcons().add(new Image("file:resources/icon.png"));
+        String IconPath = getClass().getResource("/icon.png").toString();
+        dialog.getIcons().add(new Image(IconPath));
         dialog.setResizable(false);
         dialog.sizeToScene();
         dialog.showAndWait();
