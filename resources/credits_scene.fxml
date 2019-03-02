@@ -14,7 +14,7 @@
             <Image url="@about_m.png" />
          </image>
       </ImageView>
-      <Text layoutX="220.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Created by  &#10;&#10;Andrew Coalter&#10;Antonis Fourfaro&#10;Ben PhilpsKamilė &#10;Stankevičiūtė&#10;Matilde Padovano&#10;Yousuf Mohamed-Ahmed" textAlignment="CENTER" wrappingWidth="161.0">
+      <Text layoutX="220.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Created by  &#10;&#10;Andrew Coalter&#10;Antonis Fourfaro&#10;Ben Philps &#10;Kamilė Stankevičiūtė&#10;Matilde Padovano&#10;Yousuf Mohamed-Ahmed" textAlignment="CENTER" wrappingWidth="161.0">
          <font>
             <Font name="Trebuchet MS" size="14.0" />
          </font>
@@ -24,7 +24,7 @@
             <Font name="Trebuchet MS" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="226.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Icons by https://icons8.com">
+      <Text layoutX="238.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Icons by https://icons8.com">
          <font>
             <Font size="10.0" />
          </font>

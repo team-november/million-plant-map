@@ -8,20 +8,19 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/main_scene.fxml"));
         primaryStage.setTitle("Million Plant Map");
         String IconPath = getClass().getResource("/icon.png").toString();
-        System.out.println("directory for icon is:"+IconPath);
         primaryStage.getIcons().add(new Image(IconPath));
         Scene scene = new Scene(root, 1150, 750);
         String StyleSheetsPath = getClass().getResource("/style.css").toString();
-        System.out.println("directory for stylesheet is:"+StyleSheetsPath);
         scene.getStylesheets().add(StyleSheetsPath);
 
         primaryStage.setScene(scene);

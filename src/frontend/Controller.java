@@ -259,20 +259,14 @@ public class Controller implements Initializable {
 
 
     @FXML
-    public void aboutClick() {
+    public void aboutClick() throws IOException{
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initOwner(mainStage);
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/credits_scene.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            dialog.setScene(new Scene(root1));
-            dialog.show();
-        }catch (IOException e){
-        }
+        Parent root = FXMLLoader.load(getClass().getResource("/credits_scene.fxml"));
+        dialog.setScene(new Scene(root));
         dialog.setTitle("About Million Plant Map");
-        String IconPath = getClass().getResource("/icon.png").toString();
-        dialog.getIcons().add(new Image(IconPath));
+        dialog.getIcons().add(new Image(getClass().getResource("/icon.png").toString()));
         dialog.setResizable(false);
         dialog.sizeToScene();
         dialog.showAndWait();
