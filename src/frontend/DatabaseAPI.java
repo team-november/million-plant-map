@@ -16,6 +16,8 @@ public class DatabaseAPI {
     }
 
     public void updateEntry(SpeciesItem speciesItem){
+        System.out.println("I got called");
+
         String codes = speciesItem.getCodes().get().getText();
 
         Synonym synonym = new Synonym(speciesItem.getScientificString(),
@@ -39,11 +41,13 @@ public class DatabaseAPI {
         boolean success = databaseHandler.insertSynonym(synonym);
     }
 
-    public void deleteEntry(SpeciesItem speciesItem){
+    public void deleteEntry(SpeciesItem speciesItem, String oldCode, String oldNote){
         //delete entry based on species if it exists
 
         // get the species from the database
         Species species = speciesItem.getSpeciesObject();
+        species.setNote(oldNote);
+        species.setCodes(oldCode);
 
         // get the name from the species object
         String name = species.getScientificName();
