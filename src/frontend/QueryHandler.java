@@ -25,13 +25,19 @@ public class QueryHandler {
             String codes = indexFetcher.fetchIndexes(species.getFamily(), species.getGenus());
             species.setCodes(codes);
 
-            //If something is in the database:
-            Species inDatabase = databaseAPI.getEntry(species.getCanonicalName());
+            //If something is in the database, get the code from the database and
+            // also set the isinHerbarium field.
+            Species inDatabase = databaseAPI.getEntry(species.getScientificName());
+            if("Vanda cristata Lindl.".equals(species.getScientificName())){
+                System.out.println("FOUND MATCH!!!");
+            }
 
             if(inDatabase != null){
+                System.out.println("it was not null");
                 species.setIsInHerbarium(true);
                 species.setCodes(inDatabase.getCodes());
             }
+            System.out.println("it was null");
 
         }
         return queryResult;
