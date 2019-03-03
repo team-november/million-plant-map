@@ -7,6 +7,8 @@ import database.Synonym;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.StringProperty;
 
+import java.util.concurrent.ExecutionException;
+
 public class DatabaseAPI {
 
     private static DatabaseHandler databaseHandler;
@@ -16,67 +18,75 @@ public class DatabaseAPI {
     }
 
     public void updateEntry(SpeciesItem speciesItem){
+        try{
+            String codes = speciesItem.getCodes().get().getText();
 
-        String codes = speciesItem.getCodes().get().getText();
+            Synonym synonym = new Synonym(speciesItem.getScientificString(),
+                    speciesItem.getFamily().toString(), parseScheme(codes), parseFamily(codes), parseGenus(codes),
+                    !speciesItem.isSynonym(), speciesItem.isBasionym(), speciesItem.getNotes().toString());
 
-        Synonym synonym = new Synonym(speciesItem.getScientificString(),
-                speciesItem.getFamily().toString(), parseScheme(codes), parseFamily(codes), parseGenus(codes),
-                !speciesItem.isSynonym(), speciesItem.isBasionym(), speciesItem.getNotes().toString());
+            String newCode = speciesItem.getCode();
+            synonym.setScheme(parseScheme(newCode));
+            synonym.setFamilyNumber(parseFamily(newCode));
+            synonym.setGenusNumber(parseGenus(codes));
 
+            synonym.setNote(speciesItem.getNote());
 
-        String newCode = speciesItem.getCode();
-        synonym.setScheme(parseScheme(newCode));
-        synonym.setFamilyNumber(parseFamily(newCode));
-        synonym.setGenusNumber(parseGenus(codes));
-        
-        synonym.setNote(speciesItem.getNote());
+            //update entry based on species if it exists, otherwise create it
+            // The database handler already checks for duplicates, so just pass straight to
+            // insert synonym function
+            boolean success = databaseHandler.insertSynonym(synonym);
+        } catch (Exception e){
 
+        }
 
-        //update entry based on species if it exists, otherwise create it
-        // The database handler already checks for duplicates, so just pass straight to
-        // insert synonym function
-        boolean success = databaseHandler.insertSynonym(synonym);
     }
 
 
     public void deleteEntry(SpeciesItem speciesItem, String oldCode, String oldNote){
-        //delete entry based on species if it exists
+        try{
+            //delete entry based on species if it exists
 
-        // get the species from the database
-        Species species = speciesItem.getSpeciesObject();
-        species.setNote(oldNote);
-        species.setCodes(oldCode);
+            // get the species from the database
+            Species species = speciesItem.getSpeciesObject();
+            species.setNote(oldNote);
+            species.setCodes(oldCode);
 
-        // get the name from the species object
-        String name = species.getScientificName();
+            // get the name from the species object
+            String name = species.getScientificName();
 
-        // get database synonym that matches that name
-        Synonym synonym = databaseHandler.getFirstSynonymByName(name);
+            // get database synonym that matches that name
+            Synonym synonym = databaseHandler.getFirstSynonymByName(name);
 
-        // delete the synonym, if it existed
-        if(synonym != null){
-            databaseHandler.deleteSynonym(synonym);
+            // delete the synonym, if it existed
+            if(synonym != null){
+                databaseHandler.deleteSynonym(synonym);
+            }
+        } catch (Exception e){
+
         }
 
     }
 
     public Species getEntry(String scientificName){
-        //get Synonym from database and convert to species object
+        try{
+            //get Synonym from database and convert to species object
 
-        Species speciesResult;
+            Species speciesResult;
 
-        // Fetch the first synonym name from the table
-        Synonym synonym = databaseHandler.getFirstSynonymByName(scientificName);
+            // Fetch the first synonym name from the table
+            Synonym synonym = databaseHandler.getFirstSynonymByName(scientificName);
 
-        // If the synonym is not a null object create the Species object from its fields
-        if(synonym != null){
-            speciesResult = Species.convertSynonymToSpecies(synonym);
-            return speciesResult;
-        } else {
-
+            // If the synonym is not a null object create the Species object from its fields
+            if(synonym != null){
+                speciesResult = Species.convertSynonymToSpecies(synonym);
+                return speciesResult;
+            } else {
+                return null;
+            }
+        } catch (Exception e){
             return null;
         }
-
     }
 
     private static Synonym speciesToSynonym(SpeciesItem speciesItem) {

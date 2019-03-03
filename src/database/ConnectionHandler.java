@@ -39,12 +39,18 @@ public final class ConnectionHandler {
    */
   private ConnectionHandler() {
     // Loads the connection authentication properties.
-    try (InputStream input = getClass().getResourceAsStream("/config.properties")) {
+    try {
+      InputStream input = getClass().getResourceAsStream("/config.properties");
+      if(input == null){
+        System.out.println("no credentials founded");
+        return;
+      }
       connectionProperties = new Properties();
       connectionProperties.load(input);
-    } catch (IOException e) {
+    } catch (Exception e ) {
       System.err.println("Could not load the properties file.");
       e.printStackTrace();
+      return;
     }
 
     // Sets up SSH tunnelling.
@@ -138,7 +144,9 @@ public final class ConnectionHandler {
         session.delPortForwardingL(LOCAL_PORT);
         session.disconnect();
       }
-      connection.close();
+      if(connection != null){
+        connection.close();
+      }
     } catch (SQLException e) {
       System.err.println("Error when closing database connection.");
       e.printStackTrace();
