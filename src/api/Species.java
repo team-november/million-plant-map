@@ -1,5 +1,7 @@
 package api;
 
+import database.Synonym;
+
 public class Species {
     private String key;
     private String canonicalName;
@@ -93,5 +95,26 @@ public class Species {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public static Species convertSynonymToSpecies(Synonym synonym){
+    // Given a Synonym object, create a species object and return it
+
+
+        // copy over the fields
+        Species speciesResult = new Species();
+        speciesResult.family = synonym.getFamilyName();
+        speciesResult.genus = synonym.getName();
+        speciesResult.note = synonym.getNote();
+        speciesResult.basionym = synonym.isBasionym();
+        speciesResult.isInHerbarium = true;
+        speciesResult.authorship = ""; // author not stored in the databse
+
+        // create the code using the index information from the synonym class
+        String indexCode = synonym.getScheme().toString() + synonym.getFamilyNumber() +
+                "/" + synonym.getGenusNumber();
+
+
+        return speciesResult;
     }
 }
