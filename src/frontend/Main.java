@@ -19,7 +19,7 @@ public class Main extends Application {
         primaryStage.setTitle("Million Plant Map");
         String IconPath = getClass().getResource("/icon.png").toString();
         primaryStage.getIcons().add(new Image(IconPath));
-        Scene scene = new Scene(root, 1150, 750);
+        Scene scene = new Scene(root, 1100, 750);
         String StyleSheetsPath = getClass().getResource("/style.css").toString();
         scene.getStylesheets().add(StyleSheetsPath);
 

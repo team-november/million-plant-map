@@ -14,26 +14,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TreeItem;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -204,19 +200,40 @@ public class Controller implements Initializable {
         codes.setPrefWidth(200);
         codes.setCellValueFactory(param -> param.getValue().getValue().getCodes());
 
-        JFXTreeTableColumn<SpeciesItem, String> isAccepted = new JFXTreeTableColumn<>("Accepted?");
-        isAccepted.setPrefWidth(100);
-        isAccepted.setCellValueFactory(param -> param.getValue().getValue().isSynonym() ? new ReadOnlyStringWrapper(" ") : new ReadOnlyStringWrapper("X"));
+        JFXTreeTableColumn<SpeciesItem, JFXTextField> notes = new JFXTreeTableColumn<>("Notes");
+        notes.setPrefWidth(150);
+        notes.setCellValueFactory(param -> param.getValue().getValue().getNotes());
 
-        JFXTreeTableColumn<SpeciesItem, String> isBasionym = new JFXTreeTableColumn<>("Basionym?");
-        isBasionym.setPrefWidth(100);
-        isBasionym.setCellValueFactory(param -> param.getValue().getValue().isBasionym() ? new ReadOnlyStringWrapper("X") : new ReadOnlyStringWrapper("     "));
 
-        treeView.getColumns().setAll(checkbox, canonicalName, author, species, genus, family, codes, isAccepted, isBasionym);
+        treeView.getColumns().setAll(checkbox, canonicalName, author, species, genus, family, codes, notes);
 
         ImageView imageView = new ImageView("file:resources/about_m.png");
         imageView.setOpacity(0.8);
         treeView.setPlaceholder(imageView);
+
+        treeView.setRowFactory(s -> {
+            final TreeTableRow<SpeciesItem> row = new TreeTableRow<SpeciesItem>() {
+                @Override
+                protected void updateItem(SpeciesItem speciesItem, boolean empty){
+                    super.updateItem(speciesItem, empty);
+                    if(speciesItem==null) {
+                        return;
+                    }
+                    if (speciesItem.isBasionym()) {
+                        getStyleClass().add("basionym-row");
+                    } else{
+                        getStyleClass().removeAll(Arrays.asList("basionym-row"));
+                    }if (!speciesItem.isSynonym()){
+                        getStyleClass().add("accepted-row");
+                    }else{
+                        getStyleClass().removeAll(Arrays.asList("accepted-row"));
+                    }
+                }
+            };
+            return row;
+        });
+
+        treeView.setSelectionModel(new NoSelectionModel<SpeciesItem>(treeView));
     }
 
     @FXML

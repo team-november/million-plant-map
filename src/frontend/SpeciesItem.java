@@ -4,9 +4,6 @@ import api.Species;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import database.DatabaseHandler;
-import database.IndexScheme;
-import database.Synonym;
 import javafx.beans.property.*;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.input.KeyCode;
@@ -14,20 +11,22 @@ import javafx.scene.input.KeyCode;
 public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
 
     private JFXCheckBox checkBox;
-    private JFXTextField textField, notesField;
+    private JFXTextField textField, noteField;
+
+    private DatabaseAPI databaseAPI;
 
     private Species species;
 
     public SpeciesItem(Species species) {
         this.species = species;
 
-        //databaseHandler = DatabaseHandler.getInstance();
+//        databaseAPI = new DatabaseAPI();
 
-        checkBox =  new JFXCheckBox();
+        checkBox = new JFXCheckBox();
         checkBox.selectedProperty().setValue(species.isInHerbarium());
         checkBox.selectedProperty().addListener(this::changed);
 
-        JFXTextField textField = new JFXTextField(species.getCodes());
+        textField = new JFXTextField(species.getCodes());
         textField.setOnKeyPressed(s->{
             if(s.getCode().equals(KeyCode.ENTER)){
                 textField.getParent().requestFocus();
@@ -35,21 +34,27 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
             }
         });
 
-        JFXTextField notesField = new JFXTextField(species.getCodes());
-        textField.setOnKeyPressed(s->{
+        noteField = new JFXTextField(species.getNote());
+        noteField.getStyleClass().add("row-field");
+        noteField.setOnKeyPressed(s->{
             if(s.getCode().equals(KeyCode.ENTER)){
-                notesField.getParent().requestFocus();
+                noteField.getParent().requestFocus();
                 changed(null, null, checkBox.selectedProperty().getValue());
             }
         });
+
+        if(!isSynonym()){
+            textField.getStyleClass().add("accepted-row-field");
+            noteField.getStyleClass().add("accepted-row-field");
+        }
     }
 
 
     private void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
 //        if (newValue) {
-//            databaseHandler.insertSynonym(synonym);
+//            databaseAPI.updateEntry(this);
 //        } else {
-//            databaseHandler.deleteSynonym(synonym);
+//            databaseAPI.deleteEntry(this);
 //        }
     }
 
@@ -95,7 +100,7 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
     }
 
     public ObjectPropertyBase<JFXTextField> getNotes() {
-        return new ReadOnlyObjectWrapper<>(notesField);
+        return new ReadOnlyObjectWrapper<>(noteField);
     }
 
 
