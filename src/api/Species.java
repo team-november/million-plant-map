@@ -104,7 +104,8 @@ public class Species {
         // copy over the fields
         Species speciesResult = new Species();
         speciesResult.family = synonym.getFamilyName();
-        speciesResult.genus = synonym.getName();
+        speciesResult.genus = synonym.getName().split(" ")[0];
+        speciesResult.scientificName = synonym.getName();
         speciesResult.note = synonym.getNote();
         speciesResult.basionym = synonym.isBasionym();
         speciesResult.isInHerbarium = true;
