@@ -16,7 +16,6 @@ public class DatabaseAPI {
     }
 
     public void updateEntry(SpeciesItem speciesItem){
-        System.out.println("I got called");
 
         String codes = speciesItem.getCodes().get().getText();
 
@@ -26,12 +25,10 @@ public class DatabaseAPI {
 
 
         String newCode = speciesItem.getCode();
-        System.out.println("new code is: " + newCode);
         synonym.setScheme(parseScheme(newCode));
         synonym.setFamilyNumber(parseFamily(newCode));
         synonym.setGenusNumber(parseGenus(codes));
-
-        System.out.println("NOTE: " + speciesItem.getNote());
+        
         synonym.setNote(speciesItem.getNote());
 
 
