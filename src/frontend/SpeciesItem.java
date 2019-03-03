@@ -20,7 +20,8 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
     public SpeciesItem(Species species) {
         this.species = species;
 
-//        databaseAPI = new DatabaseAPI();
+        // to access the database
+        databaseAPI = new DatabaseAPI();
 
         checkBox = new JFXCheckBox();
         checkBox.selectedProperty().setValue(species.isInHerbarium());
@@ -51,11 +52,11 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
 
 
     private void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-//        if (newValue) {
-//            databaseAPI.updateEntry(this);
-//        } else {
-//            databaseAPI.deleteEntry(this);
-//        }
+        if (newValue) {
+            databaseAPI.updateEntry(this);
+        } else {
+            databaseAPI.deleteEntry(this);
+        }
     }
 
 
@@ -105,5 +106,9 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
 
     Species getSpeciesObject(){
         return species;
+    }
+
+    String getScientificString(){
+        return species.getScientificName();
     }
 }
