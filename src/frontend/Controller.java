@@ -6,7 +6,6 @@ import api.Species;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.application.Platform;
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -29,10 +28,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class Controller implements Initializable {
 
@@ -51,11 +47,13 @@ public class Controller implements Initializable {
 
     private List<QueryResult> currentResults;
 
-    private LinkedList<String> recentSearches = new LinkedList<>();
-
     private String[] autocompleteResults = null;
     private String autocompleteSearch;
     private int autocompleteIndex = 0;
+
+
+    private LinkedList<String> queries = new LinkedList<>();
+    private static int maximumQueries = 15;
 
     static String formatCodes(String name, String[][] codes) {
         StringBuilder result = new StringBuilder();
@@ -72,14 +70,19 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void searchClick() {
+    void searchClick(){
         String query = searchBar.getText();
-
-        recentSearches.addFirst(query);
 
         MenuItem item = new MenuItem(query);
         item.setOnAction(t -> search(query));
         recentMenu.getItems().add(0, item);
+
+        queries.add(query);
+        if(queries.size() > maximumQueries){
+            queries.remove(0);
+            recentMenu.getItems().removeAll(recentMenu.getItems().get(maximumQueries));
+        }
+        PersistentList.updateFile(queries);
 
         search(searchBar.getText());
     }
@@ -172,6 +175,13 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        queries = PersistentList.retrieveFile();
+        for(String query : queries){
+            MenuItem item = new MenuItem(query);
+            item.setOnAction(t -> search(query));
+            recentMenu.getItems().add(item);
+        }
+
         JFXTreeTableColumn<SpeciesItem, JFXCheckBox> checkbox = new JFXTreeTableColumn<>("");
         checkbox.setPrefWidth(50);
         checkbox.setCellValueFactory(param -> param.getValue().getValue().getCheckbox());
@@ -288,5 +298,6 @@ public class Controller implements Initializable {
         dialog.sizeToScene();
         dialog.showAndWait();
     }
+
 
 }
