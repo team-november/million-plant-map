@@ -38,6 +38,7 @@ public class DatabaseAPI {
         boolean success = databaseHandler.insertSynonym(synonym);
     }
 
+
     public void deleteEntry(SpeciesItem speciesItem, String oldCode, String oldNote){
         //delete entry based on species if it exists
 
@@ -78,6 +79,13 @@ public class DatabaseAPI {
 
     }
 
+    private static Synonym speciesToSynonym(SpeciesItem speciesItem) {
+        String codes = speciesItem.getCodes().get().getText();
+
+        return new Synonym(speciesItem.getCanonicalName().toString(),
+                speciesItem.getFamily().toString(), parseScheme(codes), parseFamily(codes), parseGenus(codes),
+                !speciesItem.isSynonym(), speciesItem.isBasionym(), "Testing");
+    }
 
     private static IndexScheme parseScheme(String codes) {
         String[] split = codes.split(":");
