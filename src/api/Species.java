@@ -105,7 +105,7 @@ public class Species {
         Species speciesResult = new Species();
         speciesResult.family = synonym.getFamilyName();
         speciesResult.genus = synonym.getName().split(" ")[0];
-        speciesResult.scientificName = synonym.getName();
+        speciesResult.canonicalName = synonym.getName();
         speciesResult.note = synonym.getNote();
         speciesResult.basionym = synonym.isBasionym();
         speciesResult.isInHerbarium = true;

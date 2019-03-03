@@ -20,7 +20,10 @@ public class DatabaseAPI {
                 speciesItem.getFamily().toString(), parseScheme(codes), parseFamily(codes), parseGenus(codes),
                 !speciesItem.isSynonym(), speciesItem.isBasionym(), "Testing");
 
-        //TODO: update entry based on species if it exists, otherwise create it
+        //update entry based on species if it exists, otherwise create it
+        // The database handler already checks for duplicates, so just pass straight to
+        // insert synonym function
+        databaseHandler.insertSynonym(synonym);
     }
 
     public void deleteEntry(SpeciesItem speciesItem){
