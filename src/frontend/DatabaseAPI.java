@@ -25,11 +25,27 @@ public class DatabaseAPI {
 
     public void deleteEntry(SpeciesItem speciesItem){
         //TODO:  delete entry based on species if it exists
+
+
+
     }
 
     public Species getEntry(String query){
-        //TODO: get Synonym from database and convert to species object
+        //get Synonym from database and convert to species object
+
+        Species speciesResult;
+
+        // Fetch the first synonym name from the table
+        Synonym synonym = databaseHandler.getFirstSynonymByName(query);
+
+        // If the synonym is not a null object create the Species object from its fields
+        if(synonym != null){
+            speciesResult = Species.convertSynonymToSpecies(synonym);
+            return speciesResult;
+        }
+
         return null;
+
     }
 
 
