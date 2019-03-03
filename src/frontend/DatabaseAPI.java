@@ -24,9 +24,21 @@ public class DatabaseAPI {
     }
 
     public void deleteEntry(SpeciesItem speciesItem){
-        //TODO:  delete entry based on species if it exists
+        //delete entry based on species if it exists
 
+        // get the species from the database
+        Species species = speciesItem.getSpeciesObject();
 
+        // get the name from the species object
+        String name = species.getScientificName();
+
+        // get database synonym that matches that name
+        Synonym synonym = databaseHandler.getFirstSynonymByName(name);
+
+        // delete the synonym, if it existed
+        if(synonym != null){
+            databaseHandler.deleteSynonym(synonym);
+        }
 
     }
 
