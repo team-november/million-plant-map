@@ -14,7 +14,7 @@ public class Species {
     private String codes;
     private boolean basionym;
     private String basionymKey;
-
+    private String note;
 
     private String rank;
 
@@ -85,5 +85,13 @@ public class Species {
 
     String getBasionymKey() {
         return basionymKey;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 }

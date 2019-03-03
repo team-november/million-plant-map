@@ -200,7 +200,7 @@ public class Controller implements Initializable {
         family.setPrefWidth(100);
         family.setCellValueFactory(param -> param.getValue().getValue().getFamily());
 
-        JFXTreeTableColumn<SpeciesItem, String> codes = new JFXTreeTableColumn<>("Codes");
+        JFXTreeTableColumn<SpeciesItem, JFXTextField> codes = new JFXTreeTableColumn<>("Codes");
         codes.setPrefWidth(200);
         codes.setCellValueFactory(param -> param.getValue().getValue().getCodes());
 

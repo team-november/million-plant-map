@@ -2,39 +2,59 @@ package frontend;
 
 import api.Species;
 import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import database.DatabaseHandler;
 import database.IndexScheme;
 import database.Synonym;
 import javafx.beans.property.*;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.input.KeyCode;
 
 public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
+
+    private JFXCheckBox checkBox;
+    private JFXTextField textField, notesField;
 
     private Species species;
 
     public SpeciesItem(Species species) {
         this.species = species;
+
+        //databaseHandler = DatabaseHandler.getInstance();
+
+        checkBox =  new JFXCheckBox();
+        checkBox.selectedProperty().setValue(species.isInHerbarium());
+        checkBox.selectedProperty().addListener(this::changed);
+
+        JFXTextField textField = new JFXTextField(species.getCodes());
+        textField.setOnKeyPressed(s->{
+            if(s.getCode().equals(KeyCode.ENTER)){
+                textField.getParent().requestFocus();
+                changed(null, null, checkBox.selectedProperty().getValue());
+            }
+        });
+
+        JFXTextField notesField = new JFXTextField(species.getCodes());
+        textField.setOnKeyPressed(s->{
+            if(s.getCode().equals(KeyCode.ENTER)){
+                notesField.getParent().requestFocus();
+                changed(null, null, checkBox.selectedProperty().getValue());
+            }
+        });
     }
 
+
+    private void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+//        if (newValue) {
+//            databaseHandler.insertSynonym(synonym);
+//        } else {
+//            databaseHandler.deleteSynonym(synonym);
+//        }
+    }
+
+
     public ObjectProperty<JFXCheckBox> getCheckbox(){
-        JFXCheckBox checkBox =  new JFXCheckBox();
-
-//        Synonym synonym = new Synonym(getCanonicalName().toString(),
-//                getFamily().toString(),null,null,null,
-//                !isSynonym(), isBasionym(), "Testing");
-//
-//        DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
-//
-//        checkBox.selectedProperty().addListener((observable, oldValue, newValue) ->{
-//            if(newValue){
-//                databaseHandler.insertSynonym(synonym);
-//            }else{
-//                databaseHandler.deleteSynonym(synonym);
-//            }
-//        });
-
         return new ReadOnlyObjectWrapper<>(checkBox);
     }
 
@@ -58,8 +78,8 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
         return new ReadOnlyStringWrapper(species.getFamily());
     }
 
-    public StringProperty getCodes() {
-        return new ReadOnlyStringWrapper(species.getCodes());
+    public ObjectPropertyBase<JFXTextField> getCodes() {
+        return new ReadOnlyObjectWrapper<>(textField);
     }
 
     public StringProperty getAuthor(){
@@ -73,5 +93,10 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
     public boolean isBasionym(){
         return species.isBasionym();
     }
+
+    public ObjectPropertyBase<JFXTextField> getNotes() {
+        return new ReadOnlyObjectWrapper<>(notesField);
+    }
+
 
 }
