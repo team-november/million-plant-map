@@ -27,11 +27,15 @@ public final class ConnectionHandler {
 
   /**
    * Instantiates the connection with the database server.
+   *
+   * Sets up the SSH tunnel to access the remote database server,
+   * as specified in config.properties file, and configures port
+   * forwarding so that the application assumes that the database
+   * is hosted locally on the local MySQL port.
    * 
    * Registers a new MySQL JDBC driver and logs into the database
    * using the credentials provided in the config.properties file.
-   * The properties should be stored in the project resource root
-   * directory.
+   * The properties should be stored in the project root directory.
    */
   private ConnectionHandler() {
     // Loads the connection authentication properties.
