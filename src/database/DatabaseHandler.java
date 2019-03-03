@@ -50,8 +50,8 @@ public final class DatabaseHandler {
             //+ " AND family_number = ?"
             //+ " AND genus_number = ?"
             + " AND is_accepted = ?"
-            + " AND is_basionym = ?"
-            + " AND note = ?";
+            + " AND is_basionym = ?";
+            //+ " AND note = ?";
 
     try(PreparedStatement ps = connection.prepareStatement(query)) {
       prepareSynonymDuplicateStatement(ps, synonym);
@@ -123,7 +123,7 @@ public final class DatabaseHandler {
     //ps.setString(5, synonym.getGenusNumber().trim());
     ps.setBoolean(3, synonym.isAccepted());
     ps.setBoolean(4, synonym.isBasionym());
-    ps.setString(5, synonym.getNote().trim());
+    //ps.setString(5, synonym.getNote().trim());
 
   }
 

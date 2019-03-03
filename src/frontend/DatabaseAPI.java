@@ -20,7 +20,7 @@ public class DatabaseAPI {
 
         Synonym synonym = new Synonym(speciesItem.getScientificString(),
                 speciesItem.getFamily().toString(), parseScheme(codes), parseFamily(codes), parseGenus(codes),
-                !speciesItem.isSynonym(), speciesItem.isBasionym(), "");
+                !speciesItem.isSynonym(), speciesItem.isBasionym(), speciesItem.getNotes().toString());
 
 
         String newCode = speciesItem.getCode();
