@@ -24,9 +24,6 @@ public class DatabaseAPI {
         // The database handler already checks for duplicates, so just pass straight to
         // insert synonym function
         boolean success = databaseHandler.insertSynonym(synonym);
-        System.out.println("success status = " + success);
-
-        System.out.println("insert called");
     }
 
     public void deleteEntry(SpeciesItem speciesItem){
@@ -52,11 +49,9 @@ public class DatabaseAPI {
         //get Synonym from database and convert to species object
 
         Species speciesResult;
-        System.out.println(scientificName);
 
         // Fetch the first synonym name from the table
         Synonym synonym = databaseHandler.getFirstSynonymByName(scientificName);
-        System.out.println(synonym);
 
         // If the synonym is not a null object create the Species object from its fields
         if(synonym != null){

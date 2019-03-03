@@ -124,6 +124,7 @@ public final class DatabaseHandler {
     ps.setBoolean(6, synonym.isAccepted());
     ps.setBoolean(7, synonym.isBasionym());
     ps.setString(8, synonym.getNote().trim());
+    
   }
 
   /**

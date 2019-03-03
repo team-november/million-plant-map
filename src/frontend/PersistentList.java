@@ -79,7 +79,6 @@ public class PersistentList {
             // Open the file
             String line;
             RandomAccessFile file = getFile();
-            System.out.println("Length: " + file.length());
 
             // Add each line of the file to the list
             while ((line = file.readLine()) != null) {
