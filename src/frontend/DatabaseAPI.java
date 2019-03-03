@@ -16,14 +16,17 @@ public class DatabaseAPI {
     public void updateEntry(SpeciesItem speciesItem){
         String codes = speciesItem.getCodes().get().getText();
 
-        Synonym synonym = new Synonym(speciesItem.getCanonicalName().toString(),
+        Synonym synonym = new Synonym(speciesItem.getScientificString(),
                 speciesItem.getFamily().toString(), parseScheme(codes), parseFamily(codes), parseGenus(codes),
-                !speciesItem.isSynonym(), speciesItem.isBasionym(), "Testing");
+                !speciesItem.isSynonym(), speciesItem.isBasionym(), "");
 
         //update entry based on species if it exists, otherwise create it
         // The database handler already checks for duplicates, so just pass straight to
         // insert synonym function
-        databaseHandler.insertSynonym(synonym);
+        boolean success = databaseHandler.insertSynonym(synonym);
+        System.out.println("success status = " + success);
+
+        System.out.println("insert called");
     }
 
     public void deleteEntry(SpeciesItem speciesItem){
@@ -45,21 +48,24 @@ public class DatabaseAPI {
 
     }
 
-    public Species getEntry(String query){
+    public Species getEntry(String scientificName){
         //get Synonym from database and convert to species object
 
         Species speciesResult;
+        System.out.println(scientificName);
 
         // Fetch the first synonym name from the table
-        Synonym synonym = databaseHandler.getFirstSynonymByName(query);
+        Synonym synonym = databaseHandler.getFirstSynonymByName(scientificName);
+        System.out.println(synonym);
 
         // If the synonym is not a null object create the Species object from its fields
         if(synonym != null){
             speciesResult = Species.convertSynonymToSpecies(synonym);
             return speciesResult;
-        }
+        } else {
 
-        return null;
+            return null;
+        }
 
     }
 
@@ -88,7 +94,7 @@ public class DatabaseAPI {
 
     private static String parseGenus(String codes) {
         if(parseScheme(codes)==IndexScheme.OTHER){
-            return null;
+            return "";
         }else{
             return codes.split(":")[1].split("/")[1];
         }
