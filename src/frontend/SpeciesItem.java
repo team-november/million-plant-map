@@ -103,5 +103,7 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
         return new ReadOnlyObjectWrapper<>(noteField);
     }
 
-
+    Species getSpeciesObject(){
+        return species;
+    }
 }
