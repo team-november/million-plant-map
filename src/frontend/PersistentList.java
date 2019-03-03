@@ -27,8 +27,12 @@ public class PersistentList {
     private static RandomAccessFile getFile() throws IOException{
 
         // gets a handle to the resources file:
-        // This is the problem, its just accessing a txt in the resources folder
-        RandomAccessFile file = new RandomAccessFile("resources/"+filepath, "rw");
+        URL storepath = PersistentList.class.getProtectionDomain().getCodeSource().getLocation();
+        String urlString = storepath.toString();
+        int firstSlash =  urlString.indexOf("/");
+        int targetSlash = urlString.lastIndexOf("/", urlString.length() - 2) + 1;
+
+        RandomAccessFile file = new RandomAccessFile(urlString.substring(firstSlash, targetSlash)+"queries.txt", "rw");
 
         return file;
     }
@@ -49,7 +53,7 @@ public class PersistentList {
 
             int size = queries.size();
             // Add all the recent results to the start of the query
-            for (int i = 1; i < size; i++) {
+            for (int i = 1; i <= size; i++) {
                 // Access the results in reverse order, so they appear in correct order to the user
                 String query = queries.get(size-i);
 
