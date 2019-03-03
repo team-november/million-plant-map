@@ -31,6 +31,10 @@ dependencies {
     compile 'com.jfoenix:jfoenix:8.0.8'
     compile 'com.google.code.gson:gson:2.2+'
 
+    // Dependencies for database access (MySQL) and SSH tunnelling (JSch)
+    compile 'mysql:mysql-connector-java:8.0.11'
+    compile 'com.jcraft:jsch:0.1.55'
+
     // Use the latest Groovy version for Spock testing
     testImplementation 'org.codehaus.groovy:groovy-all:2.5.4'
 
