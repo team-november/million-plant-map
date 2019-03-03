@@ -1,5 +1,7 @@
 package api;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class QueryResult implements Iterable<Species> {
@@ -48,6 +50,13 @@ public class QueryResult implements Iterable<Species> {
 
     public void setGeoCodes(String[][] geoCodes) {
         this.geoCodes = geoCodes;
+    }
+
+    public void addDatabaseSpecies(ArrayList<Species> extras){
+        // add extra matches from the database to the species list
+        ArrayList<Species> current = new ArrayList<Species>(Arrays.asList(synonyms));
+        current.addAll(extras);
+        synonyms = (Species[]) current.toArray();
     }
 
     @Override

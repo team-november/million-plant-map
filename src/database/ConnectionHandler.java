@@ -39,8 +39,7 @@ public final class ConnectionHandler {
    */
   private ConnectionHandler() {
     // Loads the connection authentication properties.
-    try (InputStream input = new FileInputStream(
-        "config.properties")) {
+    try (InputStream input = getClass().getResourceAsStream("/config.properties")) {
       connectionProperties = new Properties();
       connectionProperties.load(input);
     } catch (IOException e) {

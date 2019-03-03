@@ -1,5 +1,8 @@
 package api;
 
+import database.IndexScheme;
+import database.Synonym;
+
 public class Species {
     private String key;
     private String canonicalName;
@@ -93,5 +96,43 @@ public class Species {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public static Species convertSynonymToSpecies(Synonym synonym){
+    // Given a Synonym object, create a species object and return it
+
+
+        // copy over the fields
+        Species speciesResult = new Species();
+        speciesResult.family = synonym.getFamilyName();
+        speciesResult.genus = synonym.getName().split(" ")[0];
+        speciesResult.canonicalName = synonym.getName();
+        speciesResult.note = synonym.getNote();
+        speciesResult.basionym = synonym.isBasionym();
+        speciesResult.isInHerbarium = true;
+        speciesResult.authorship = ""; // author not stored in the database?
+        speciesResult.note = synonym.getNote(); // note inputted by the client
+
+        // create the code using the index information from the synonym class
+        String indexCode = getScheme(synonym.getScheme()) +  ":" + synonym.getFamilyNumber() +
+                    "/" + synonym.getGenusNumber();
+
+
+        speciesResult.codes = indexCode;
+
+
+        return speciesResult;
+    }
+
+    private static String getScheme(IndexScheme scheme){
+        String result = "";
+        switch (scheme){
+            case FLORA_EUROPAEA: result = "FE"; break;
+            case BENTHAM_HOOKER: result = "BH"; break;
+            case GB_AND_I: result = "FOGBI"; break;
+            default: return result = "OTHER";
+
+        }
+        return result;
     }
 }

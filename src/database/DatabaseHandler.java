@@ -46,15 +46,15 @@ public final class DatabaseHandler {
     String query =  "SELECT COUNT(*) FROM synonyms"
             + " WHERE species_name = ? "
             + " AND family_name = ?"
-            + " AND index_scheme = ?"
-            + " AND family_number = ?"
-            + " AND genus_number = ?"
+            //+ " AND index_scheme = ?"
+            //+ " AND family_number = ?"
+            //+ " AND genus_number = ?"
             + " AND is_accepted = ?"
             + " AND is_basionym = ?"
             + " AND note = ?";
 
     try(PreparedStatement ps = connection.prepareStatement(query)) {
-      prepareSynonymStatement(ps, synonym);
+      prepareSynonymDuplicateStatement(ps, synonym);
       ResultSet resultSet = ps.executeQuery();
       if (resultSet.next())
         duplicates = (resultSet.getInt(1) >= 1);
@@ -107,6 +107,26 @@ public final class DatabaseHandler {
     }
   }
 
+  /**
+   * Prepares the parameters for the `synonym` table queries in
+   * `herbarium_index` - just for checking duplicates
+   *
+   * @param ps the statement to be prepared with {@link Synonym} data
+   * @param synonym the {@link Synonym} data
+   */
+  private void prepareSynonymDuplicateStatement(PreparedStatement ps, Synonym synonym)
+          throws SQLException {
+    ps.setString(1, synonym.getName().trim());
+    ps.setString(2, synonym.getFamilyName().trim());
+    //ps.setString(3, synonym.getScheme().toString().trim());
+    //ps.setString(4, synonym.getFamilyNumber().trim());
+    //ps.setString(5, synonym.getGenusNumber().trim());
+    ps.setBoolean(3, synonym.isAccepted());
+    ps.setBoolean(4, synonym.isBasionym());
+    ps.setString(5, synonym.getNote().trim());
+
+  }
+
   /** 
    * Prepares the parameters for the `synonym` table queries in
    * `herbarium_index`.
@@ -124,6 +144,7 @@ public final class DatabaseHandler {
     ps.setBoolean(6, synonym.isAccepted());
     ps.setBoolean(7, synonym.isBasionym());
     ps.setString(8, synonym.getNote().trim());
+
   }
 
   /**
