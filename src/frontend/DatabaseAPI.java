@@ -14,14 +14,11 @@ public class DatabaseAPI {
     }
 
     public void updateEntry(SpeciesItem speciesItem){
-        String codes = speciesItem.getCodes().get().getText();
-
-        Synonym synonym = new Synonym(speciesItem.getCanonicalName().toString(),
-                speciesItem.getFamily().toString(), parseScheme(codes), parseFamily(codes), parseGenus(codes),
-                !speciesItem.isSynonym(), speciesItem.isBasionym(), "Testing");
+        speciesToSynonym(speciesItem);
 
         //TODO: update entry based on species if it exists, otherwise create it
     }
+
 
     public void deleteEntry(SpeciesItem speciesItem){
         //TODO:  delete entry based on species if it exists
@@ -32,6 +29,13 @@ public class DatabaseAPI {
         return null;
     }
 
+    private static Synonym speciesToSynonym(SpeciesItem speciesItem) {
+        String codes = speciesItem.getCodes().get().getText();
+
+        return new Synonym(speciesItem.getCanonicalName().toString(),
+                speciesItem.getFamily().toString(), parseScheme(codes), parseFamily(codes), parseGenus(codes),
+                !speciesItem.isSynonym(), speciesItem.isBasionym(), "Testing");
+    }
 
     private static IndexScheme parseScheme(String codes) {
         String[] split = codes.split(":");

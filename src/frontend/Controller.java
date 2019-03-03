@@ -8,6 +8,7 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -299,5 +300,10 @@ public class Controller implements Initializable {
         dialog.showAndWait();
     }
 
-
+    @FXML
+    public void clearRecent() {
+        queries.clear();
+        PersistentList.updateFile(queries);
+        recentMenu.getItems().remove(0, recentMenu.getItems().size() - 1);
+    }
 }
