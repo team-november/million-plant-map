@@ -1,14 +1,15 @@
 /* VARIABLE DEFINITIONS*/
 * {
     -fx-my-menu-color: #FFFFFF;                  
-    -fx-main-color:  #24cc64;               
+    -fx-main-color:  #24cc64;
+    -fx-main-darker:  rgba(26, 154, 70);
     -fx-my-menu-font-color: #000000;             
     -fx-my-menu-font-color-highlighted: #FFFFFF; 
 }
 
 .tree-table-view{
-    -fx-tree-table-color: -fx-main-color;;
-    -fx-tree-table-rippler-color : rgba(26, 154, 70, 0.8);;
+    -fx-tree-table-color: -fx-main-color;
+    -fx-tree-table-rippler-color : rgba(26, 154, 70, 0.8);
 }
 .tree-table-view:focused .tree-table-row-cell:selected {
     -fx-background-color: -fx-tree-table-color  ;
@@ -195,4 +196,24 @@
 
 .jfx-text-area {
     -fx-background-color: #eeeeee;
+}
+
+.accepted-row .text{
+    -fx-fill: -fx-main-darker;
+}
+
+.accepted-row-field{
+    -fx-text-fill: -fx-main-darker;
+}
+
+.row-field{
+    -fx-padding: 0 20 0 0;
+}
+
+.accepted-row-selected .text{
+    -fx-fill: white;
+}
+
+.basionym-row{
+    -fx-font-weight: bold;
 }

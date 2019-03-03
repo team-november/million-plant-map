@@ -6,7 +6,6 @@ import api.Species;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.application.Platform;
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,29 +13,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TreeItem;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class Controller implements Initializable {
 
@@ -55,11 +47,13 @@ public class Controller implements Initializable {
 
     private List<QueryResult> currentResults;
 
-    private LinkedList<String> recentSearches = new LinkedList<>();
-
     private String[] autocompleteResults = null;
     private String autocompleteSearch;
     private int autocompleteIndex = 0;
+
+
+    private LinkedList<String> queries = new LinkedList<>();
+    private static int maximumQueries = 15;
 
     static String formatCodes(String name, String[][] codes) {
         StringBuilder result = new StringBuilder();
@@ -76,14 +70,19 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void searchClick() {
+    void searchClick(){
         String query = searchBar.getText();
-
-        recentSearches.addFirst(query);
 
         MenuItem item = new MenuItem(query);
         item.setOnAction(t -> search(query));
         recentMenu.getItems().add(0, item);
+
+        queries.add(query);
+        if(queries.size() > maximumQueries){
+            queries.remove(0);
+            recentMenu.getItems().removeAll(recentMenu.getItems().get(maximumQueries));
+        }
+        PersistentList.updateFile(queries);
 
         search(searchBar.getText());
     }
@@ -176,6 +175,13 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        queries = PersistentList.retrieveFile();
+        for(String query : queries){
+            MenuItem item = new MenuItem(query);
+            item.setOnAction(t -> search(query));
+            recentMenu.getItems().add(item);
+        }
+
         JFXTreeTableColumn<SpeciesItem, JFXCheckBox> checkbox = new JFXTreeTableColumn<>("");
         checkbox.setPrefWidth(50);
         checkbox.setCellValueFactory(param -> param.getValue().getValue().getCheckbox());
@@ -204,19 +210,40 @@ public class Controller implements Initializable {
         codes.setPrefWidth(200);
         codes.setCellValueFactory(param -> param.getValue().getValue().getCodes());
 
-        JFXTreeTableColumn<SpeciesItem, String> isAccepted = new JFXTreeTableColumn<>("Accepted?");
-        isAccepted.setPrefWidth(100);
-        isAccepted.setCellValueFactory(param -> param.getValue().getValue().isSynonym() ? new ReadOnlyStringWrapper(" ") : new ReadOnlyStringWrapper("X"));
+        JFXTreeTableColumn<SpeciesItem, JFXTextField> notes = new JFXTreeTableColumn<>("Notes");
+        notes.setPrefWidth(150);
+        notes.setCellValueFactory(param -> param.getValue().getValue().getNotes());
 
-        JFXTreeTableColumn<SpeciesItem, String> isBasionym = new JFXTreeTableColumn<>("Basionym?");
-        isBasionym.setPrefWidth(100);
-        isBasionym.setCellValueFactory(param -> param.getValue().getValue().isBasionym() ? new ReadOnlyStringWrapper("X") : new ReadOnlyStringWrapper("     "));
 
-        treeView.getColumns().setAll(checkbox, canonicalName, author, species, genus, family, codes, isAccepted, isBasionym);
+        treeView.getColumns().setAll(checkbox, canonicalName, author, species, genus, family, codes, notes);
 
         ImageView imageView = new ImageView("file:resources/about_m.png");
         imageView.setOpacity(0.8);
         treeView.setPlaceholder(imageView);
+
+        treeView.setRowFactory(s -> {
+            final TreeTableRow<SpeciesItem> row = new TreeTableRow<SpeciesItem>() {
+                @Override
+                protected void updateItem(SpeciesItem speciesItem, boolean empty){
+                    super.updateItem(speciesItem, empty);
+                    if(speciesItem==null) {
+                        return;
+                    }
+                    if (speciesItem.isBasionym()) {
+                        getStyleClass().add("basionym-row");
+                    } else{
+                        getStyleClass().removeAll(Arrays.asList("basionym-row"));
+                    }if (!speciesItem.isSynonym()){
+                        getStyleClass().add("accepted-row");
+                    }else{
+                        getStyleClass().removeAll(Arrays.asList("accepted-row"));
+                    }
+                }
+            };
+            return row;
+        });
+
+        treeView.setSelectionModel(new NoSelectionModel<SpeciesItem>(treeView));
     }
 
     @FXML
@@ -271,5 +298,6 @@ public class Controller implements Initializable {
         dialog.sizeToScene();
         dialog.showAndWait();
     }
+
 
 }
