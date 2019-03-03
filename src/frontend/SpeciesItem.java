@@ -12,6 +12,7 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
 
     private JFXCheckBox checkBox;
     private JFXTextField textField, noteField;
+    //private String newCode = "";
 
     private DatabaseAPI databaseAPI;
 
@@ -32,6 +33,7 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
             if(s.getCode().equals(KeyCode.ENTER)){
                 textField.getParent().requestFocus();
                 changed(null, null, checkBox.selectedProperty().getValue());
+                //newCode = textField.getText();
             }
         });
 
@@ -110,5 +112,9 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
 
     String getScientificString(){
         return species.getScientificName();
+    }
+
+    String getCode(){
+        return textField.getText();
     }
 }

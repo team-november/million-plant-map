@@ -40,7 +40,7 @@ public class PersistentList {
 
     public static void updateFile(LinkedList<String> queries) {
         //update file with new list
-
+        /*
         try {
 
 
@@ -67,13 +67,14 @@ public class PersistentList {
             // In this case do nothing
             e.printStackTrace();
         }
+        */
 
     }
 
     public static LinkedList<String> retrieveFile() {
         // return list of queries from file or emptyList
         LinkedList<String> result = new LinkedList<>();
-
+        /*
         // Read each line and add the result to the list
         try {
 
@@ -104,7 +105,7 @@ public class PersistentList {
             return result;
 
         }
-
+*/
         return result;
 
     }

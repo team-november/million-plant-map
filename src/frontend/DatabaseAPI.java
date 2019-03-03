@@ -4,6 +4,8 @@ import api.Species;
 import database.DatabaseHandler;
 import database.IndexScheme;
 import database.Synonym;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.property.StringProperty;
 
 public class DatabaseAPI {
 
@@ -19,6 +21,14 @@ public class DatabaseAPI {
         Synonym synonym = new Synonym(speciesItem.getScientificString(),
                 speciesItem.getFamily().toString(), parseScheme(codes), parseFamily(codes), parseGenus(codes),
                 !speciesItem.isSynonym(), speciesItem.isBasionym(), "");
+
+
+        String newCode = speciesItem.getCode();
+        System.out.println("new code is: " + newCode);
+        synonym.setScheme(parseScheme(newCode));
+        synonym.setFamilyNumber(parseFamily(newCode));
+        synonym.setGenusNumber(parseGenus(codes));
+
 
         //update entry based on species if it exists, otherwise create it
         // The database handler already checks for duplicates, so just pass straight to
@@ -88,10 +98,14 @@ public class DatabaseAPI {
     }
 
     private static String parseGenus(String codes) {
-        if(parseScheme(codes)==IndexScheme.OTHER){
+        try {
+            if (parseScheme(codes) == IndexScheme.OTHER) {
+                return "";
+            } else {
+                return codes.split(":")[1].split("/")[1];
+            }
+        } catch (IndexOutOfBoundsException e){
             return "";
-        }else{
-            return codes.split(":")[1].split("/")[1];
         }
     }
 

@@ -112,8 +112,11 @@ public class Species {
         speciesResult.authorship = ""; // author not stored in the database?
 
         // create the code using the index information from the synonym class
-        String indexCode = synonym.getScheme().toString() + synonym.getFamilyNumber() +
-                "/" + synonym.getGenusNumber();
+        String indexCode = synonym.getScheme().toString() +  " " + synonym.getFamilyNumber() +
+                    "/" + synonym.getGenusNumber();
+
+
+        speciesResult.codes = indexCode;
 
 
         return speciesResult;
