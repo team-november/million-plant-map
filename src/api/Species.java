@@ -108,7 +108,7 @@ public class Species {
         speciesResult.note = synonym.getNote();
         speciesResult.basionym = synonym.isBasionym();
         speciesResult.isInHerbarium = true;
-        speciesResult.authorship = ""; // author not stored in the databse
+        speciesResult.authorship = ""; // author not stored in the database?
 
         // create the code using the index information from the synonym class
         String indexCode = synonym.getScheme().toString() + synonym.getFamilyNumber() +
