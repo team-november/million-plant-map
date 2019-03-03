@@ -245,6 +245,8 @@ public class Controller implements Initializable {
         });
 
         treeView.setSelectionModel(new NoSelectionModel<SpeciesItem>(treeView));
+
+        codesLabel.setEditable(false);
     }
 
     @FXML
