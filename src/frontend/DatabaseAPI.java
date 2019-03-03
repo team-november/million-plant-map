@@ -29,6 +29,9 @@ public class DatabaseAPI {
         synonym.setFamilyNumber(parseFamily(newCode));
         synonym.setGenusNumber(parseGenus(codes));
 
+        System.out.println("NOTE: " + speciesItem.getNote());
+        synonym.setNote(speciesItem.getNote());
+
 
         //update entry based on species if it exists, otherwise create it
         // The database handler already checks for duplicates, so just pass straight to

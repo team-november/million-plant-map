@@ -117,4 +117,8 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
     String getCode(){
         return textField.getText();
     }
+
+    String getNote(){
+        return noteField.getText();
+    }
 }

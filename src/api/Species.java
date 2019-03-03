@@ -1,5 +1,6 @@
 package api;
 
+import database.IndexScheme;
 import database.Synonym;
 
 public class Species {
@@ -113,7 +114,7 @@ public class Species {
         speciesResult.note = synonym.getNote(); // note inputted by the client
 
         // create the code using the index information from the synonym class
-        String indexCode = synonym.getScheme().toString() +  " " + synonym.getFamilyNumber() +
+        String indexCode = getScheme(synonym.getScheme()) +  ":" + synonym.getFamilyNumber() +
                     "/" + synonym.getGenusNumber();
 
 
@@ -121,5 +122,17 @@ public class Species {
 
 
         return speciesResult;
+    }
+
+    private static String getScheme(IndexScheme scheme){
+        String result = "";
+        switch (scheme){
+            case FLORA_EUROPAEA: result = "FE"; break;
+            case BENTHAM_HOOKER: result = "BH"; break;
+            case GB_AND_I: result = "FOGBI"; break;
+            default: return result = "OTHER";
+
+        }
+        return result;
     }
 }
