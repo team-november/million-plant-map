@@ -27,14 +27,19 @@ public class DatabaseAPI {
             synonym.setFamilyNumber(parseFamily(newCode));
             synonym.setGenusNumber(parseGenus(codes));
 
-            synonym.setNote(speciesItem.getNote());
+            if(speciesItem.getNote() != null){
+                synonym.setNote(speciesItem.getNote());
+            } else{
+                synonym.setNote("");
+            }
+
 
             //update entry based on species if it exists, otherwise create it
             // The database handler already checks for duplicates, so just pass straight to
             // insert synonym function
             boolean success = databaseHandler.insertSynonym(synonym);
         } catch (Exception e){
-
+            e.printStackTrace();
         }
 
     }
