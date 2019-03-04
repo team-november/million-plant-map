@@ -76,15 +76,14 @@ public class Controller implements Initializable {
 
         MenuItem item = new MenuItem(query);
         item.setOnAction(t -> search(query));
-        recentMenu.getItems().add(0, item);
+        recentMenu.getItems().add(1, item);
 
-        queries.add(query);
+        queries.add(0,query);
         if(queries.size() > maximumQueries){
-            queries.remove(0);
-            recentMenu.getItems().removeAll(recentMenu.getItems().get(maximumQueries));
+            queries.remove(queries.size()-1);
+            recentMenu.getItems().removeAll(recentMenu.getItems().get(maximumQueries+1));
         }
         PersistentList.updateFile(queries);
-
         search(searchBar.getText());
     }
 
@@ -306,6 +305,6 @@ public class Controller implements Initializable {
     public void clearRecent() {
         queries.clear();
         PersistentList.updateFile(queries);
-        recentMenu.getItems().remove(0, recentMenu.getItems().size() - 1);
+        recentMenu.getItems().remove(1, recentMenu.getItems().size());
     }
 }

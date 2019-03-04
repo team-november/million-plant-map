@@ -23,7 +23,6 @@ public class PersistentList {
         int firstSlash =  urlString.indexOf("/");
         int targetSlash = urlString.lastIndexOf("/", urlString.length() - 2) + 1;
         RandomAccessFile file = new RandomAccessFile(urlString.substring(firstSlash, targetSlash)+"queries.txt", "rw");
-
         return file;
     }
 
@@ -33,17 +32,14 @@ public class PersistentList {
         try {
             // Open the file
             RandomAccessFile file = getFile();
-            System.out.println("Length: " + file.length());
-
+            // Clean the file
+            file.setLength(0);
             // Seek the start
             file.seek(0);
-
             int size = queries.size();
             // Add all the recent results to the start of the query
-            for (int i = 1; i <= size; i++) {
+            for (String query : queries) {
                 // Access the results in reverse order, so they appear in correct order to the user
-                String query = queries.get(size-i);
-
                 file.write((query+"\n").getBytes());
             }
             // Close the file
@@ -59,21 +55,12 @@ public class PersistentList {
         LinkedList<String> result = new LinkedList<>();
         // Read each line and add the result to the list
         try {
-            int counter = 0;
-
             // Open the file
-            String line;
             RandomAccessFile file = getFile();
-
+            String line;
             // Add each line of the file to the list
             while ((line = file.readLine()) != null) {
-                counter += 1;
-                if (counter > 15){
-                    file.write("".getBytes());
-                }
-
                 result.add(line);
-
             }
             // Close the file after access
             file.close();
