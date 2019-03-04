@@ -1,8 +1,6 @@
 package database;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -40,11 +38,9 @@ public final class ConnectionHandler {
   private ConnectionHandler() {
     // Loads the connection authentication properties.
     try {
-      InputStream input = getClass().getResourceAsStream("/config.properties");
-      if(input == null){
-        System.out.println("no credentials founded");
-        return;
-      }
+      File jarFile = new File(ConnectionHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
+      String inputFilePath = jarFile.getParent() + "/config.properties";
+      InputStream input = new FileInputStream(new File(inputFilePath));
       connectionProperties = new Properties();
       connectionProperties.load(input);
     } catch (Exception e ) {

@@ -4,10 +4,7 @@ import api.Species;
 import database.DatabaseHandler;
 import database.IndexScheme;
 import database.Synonym;
-import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.beans.property.StringProperty;
 
-import java.util.concurrent.ExecutionException;
 
 public class DatabaseAPI {
 
