@@ -117,9 +117,23 @@ public class Species {
         String indexCode = getScheme(synonym.getScheme()) +  ":" + synonym.getFamilyNumber() +
                     "/" + synonym.getGenusNumber();
 
-
-        speciesResult.codes = indexCode;
-
+        if (synonym.getScheme() == IndexScheme.OTHER) {
+            speciesResult.codes = synonym.getFamilyNumber();
+        } else {
+            IndexScheme iS = synonym.getScheme();
+            String index;
+            switch (iS) {
+                case FLORA_EUROPAEA:
+                    index = "FE"; break;
+                case BENTHAM_HOOKER:
+                    index = "BH"; break;
+                case GB_AND_I:
+                    index = "FOGBI"; break;
+                default:
+                    index = "";
+            }
+            speciesResult.codes = index + ":" + synonym.getFamilyNumber() + "/" + synonym.getGenusNumber();
+        }
 
         return speciesResult;
     }

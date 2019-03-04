@@ -34,6 +34,9 @@ public class QueryHandler {
                 species.setCodes(inDatabase.getCodes());
                 species.setNote(inDatabase.getNote());
             }
+            else{
+                species.setIsInHerbarium(false);
+            }
 
         }
         return queryResult;
