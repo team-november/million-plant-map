@@ -40,7 +40,6 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
                 databaseAPI.deleteEntry(this, oldCode, oldNote);
                 databaseAPI.updateEntry(this);
                 oldCode = textField.getText();
-                System.out.println("I FOUND A PRESS ENTER YAY");
 
             }
         });
@@ -57,8 +56,6 @@ public class SpeciesItem extends RecursiveTreeObject<SpeciesItem> {
                 databaseAPI.updateEntry(this);
                 oldNote = noteField.getText();
 
-
-                System.out.println("I FOUND A PRESS ENTER YAY on notes");
             }
         });
 
