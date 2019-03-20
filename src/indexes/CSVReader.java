@@ -1,6 +1,7 @@
 package indexes;
 
 import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class CSVReader {
@@ -13,9 +14,27 @@ public class CSVReader {
     private final String csvSplitBy = ",";
     private final String extn = ".csv";
 
+    private BufferedReader openExternalCSV(String csvName) throws IOException {
+        // Reads in a file from an external source
+        URL storepath = CSVReader.class.getProtectionDomain().getCodeSource().getLocation();
+        String urlString = storepath.toString();
+        int firstSlash =  urlString.indexOf("/");
+        int targetSlash = urlString.lastIndexOf("/", urlString.length() - 2) + 1;
+        BufferedReader file = new BufferedReader(
+                new FileReader(urlString.substring(firstSlash, targetSlash)+csvName));
+        return file;
+    }
+
     private BufferedReader openCSV(String csvName) throws IOException {
-        BufferedReader buf = new BufferedReader(new InputStreamReader(CSVReader.class.getResourceAsStream("/"+csvName+extn)));
-        return buf;
+        // This establishes the convention that internal files do not have the extension,
+        // external ones do have one, if the extension is detected anywhere in the file, try and load an external
+        // file.
+        if(csvName.contains(extn)){
+            return openExternalCSV(csvName);
+        } else {
+            BufferedReader buf = new BufferedReader(new InputStreamReader(CSVReader.class.getResourceAsStream("/" + csvName + extn)));
+            return buf;
+        }
     }
 
     private String[] getValues(String[] values, int searchIndex) throws IOException{

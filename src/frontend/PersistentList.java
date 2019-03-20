@@ -29,7 +29,7 @@ public class PersistentList {
 
     public static void updateFile(LinkedList<String> queries) {
         //update file with new list
-        /*
+
         try {
             // Open the file
             RandomAccessFile file = getFile();
@@ -49,14 +49,13 @@ public class PersistentList {
             // In this case do nothing
             e.printStackTrace();
         }
-        */
+
     }
 
     public static LinkedList<String> retrieveFile() {
         // return list of queries from file or emptyList
         LinkedList<String> result = new LinkedList<>();
-        return result;
-        /*
+
         // Read each line and add the result to the list
         try {
             // Open the file
@@ -75,6 +74,6 @@ public class PersistentList {
             return result;
         }
         return result;
-        */
+
     }
 }
