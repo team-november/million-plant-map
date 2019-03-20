@@ -40,9 +40,14 @@ public final class ConnectionHandler {
     try {
       File jarFile = new File(ConnectionHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
       String inputFilePath = jarFile.getParent() + "/config.properties";
-      InputStream input = new FileInputStream(new File(inputFilePath));
+      //InputStream input = new FileInputStream(new File(inputFilePath));
+      //InputStream input = new FileInputStream()
+      //BufferedReader buf = new BufferedReader(new InputStreamReader(ConnectionHandler.class.getResourceAsStream("/"+csvName+extn)));
+
+      BufferedReader buf = new BufferedReader(new InputStreamReader(ConnectionHandler.class.getResourceAsStream("/config.properties")));
+
       connectionProperties = new Properties();
-      connectionProperties.load(input);
+      connectionProperties.load(buf);
     } catch (Exception e ) {
       System.err.println("Could not load the properties file.");
       e.printStackTrace();
