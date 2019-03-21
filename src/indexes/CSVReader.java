@@ -15,7 +15,8 @@ public class CSVReader {
     private final String extn = ".csv";
 
     private BufferedReader openExternalCSV(String csvName) throws IOException {
-        // Reads in a file from an external source
+        // Reads in a file from an external source - file is expected to be in
+        // same directory as jar
         URL storepath = CSVReader.class.getProtectionDomain().getCodeSource().getLocation();
         String urlString = storepath.toString();
         int firstSlash =  urlString.indexOf("/");

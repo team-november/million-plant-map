@@ -43,7 +43,6 @@ public final class ConnectionHandler {
       //InputStream input = new FileInputStream(new File(inputFilePath));
       //InputStream input = new FileInputStream()
       //BufferedReader buf = new BufferedReader(new InputStreamReader(ConnectionHandler.class.getResourceAsStream("/"+csvName+extn)));
-
       BufferedReader buf = new BufferedReader(new InputStreamReader(ConnectionHandler.class.getResourceAsStream("/config.properties")));
 
       connectionProperties = new Properties();
